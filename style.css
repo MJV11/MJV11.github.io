@@ -64,8 +64,22 @@ header {
 
 section {
   height: 100vh;
-  border: 1px solid black;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+  
+.section-header {
+  font-family: "Arial" ;
+  font-size: 80px ;
+  color: black;
+  padding: 20px
+}
+
+.section-text-muted{
+  font-family: "Times New Roman" ;
+  color: grey ;
 }
   
 
