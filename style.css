@@ -16,7 +16,8 @@ nav * { /* * means any element, so here * means anything inside nav */
 }
 
 .navbar { /* set style of HTML class navbar*/
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Arial";
+   font-weight: bold;
 }
 
 nav li {
@@ -37,27 +38,27 @@ body {
 }
 
 header {  
-  max-width: 500px;
-  font-family: "Helvetica", "Arial", sans-serif;
   line-height: 1.5;
-  padding: 30px; /*set to give space under header before body*/
+  padding: 100px; /*set to give space under header before body*/
   color: #555; /* sets background color*/
 }
 
 .masthead-tagline {
   font-size: 50px;
-  font-family: "Times New Roman" ;
+  font-family: "Times New Roman";
   font-style: italic;
   color: black;
 }
 
 .masthead-name {
   font-size: 80px;
+  padding: 20px;
   font-family: "Roboto";
   color: #27C9F9;
 }
 
 .masthead-name {
+  padding: 20px;
   font-family: "Times New Roman"
   color: gray;
 }
