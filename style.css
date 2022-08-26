@@ -60,6 +60,7 @@ header {
 }
 
 .text-muted {
+  font-size: 22px;
   font-family: "Times New Roman"
   color: gray;
 }
@@ -80,6 +81,7 @@ section {
 }
 
 .section-text-muted{
+  font-size: 22px ;
   font-family: "Times New Roman" ;
   color: grey ;
 }
