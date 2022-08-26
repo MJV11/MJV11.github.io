@@ -2,7 +2,7 @@ body {
   height : 125vh; /*sets veiwport hieght of site to facilitate scrolling*/
   margin-top: 80px; /*set equal to the header so webpage doesn't sit below header */
   margin: 0 auto;
-  max-width: 50px;
+  max-width: 500px;
   font-family: "Helvetica", "Arial", sans-serif;
   line-height: 1.5;
   padding: 30px; /*set to give space under header before body*/
@@ -10,7 +10,7 @@ body {
 }
 
 nav {
-  color: #27C9F9 ;  /* sets nav color*/
+  color: DeepSkyBlue ;  /* sets nav color... must it be one of the 160 HTML colors?*/
   position: fixed;
   top: 0;
   left: 0;
