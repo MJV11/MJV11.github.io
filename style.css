@@ -1,6 +1,6 @@
 
 nav {
-  color: #27C9F9 ;  /* sets nav color... must it be one of the 160 HTML colors?*/
+  background-color: #27C9F9 ;  /* sets nav color... must it be one of the 160 HTML colors?*/
   position: fixed;
   top: 0;
   left: 0;
@@ -15,9 +15,12 @@ nav * { /* * means any element, so here * means anything inside nav */
   display: inline;
 }
 
+.navbar { /* set style of HTML class navbar*/
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
 nav li {
   margin: 100px; /* set line items in nav x px apart */
-  text-align: center; /* centers items */
 }
 
 nav li a {
@@ -28,6 +31,9 @@ nav li a {
 body {
   height : 125vh; /*sets veiwport hieght of site to facilitate scrolling*/
   margin-top: 80px; /*set equal to the header so webpage doesn't sit below header */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 header {  
