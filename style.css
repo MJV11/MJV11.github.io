@@ -16,6 +16,22 @@ nav {
   left: 0;
   right: 0;
   height: 80px;  
+  display: flex; /* set items to top*/
+  align-items: center; /* set top items to center*/
+  box-shadow: 0 0 25px 0 black; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
+}
+
+nav * { /* * means any element, so here * means anything inside nav */
+    display: inline;
+}
+
+nav li {
+    margin: 50px; /* set line items in nav x px apart */
+}
+
+nav li a {
+    color: black;
+    text-decoration: none; /* override and remove underline style */
 }
 
 a {
