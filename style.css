@@ -1,15 +1,16 @@
 body {
   height : 125vh; /*sets veiwport hieght of site to facilitate scrolling*/
+  margin-top: 80px; /*set equal to the header so webpage doesn't sit below header */
   margin: 0 auto;
   max-width: 50px;
   font-family: "Helvetica", "Arial", sans-serif;
   line-height: 1.5;
-  padding: 4em 1em;
+  padding: 30px; /*set to give space under header before body*/
   color: #555; /* sets background color*/
 }
 
-header {
-  color: #27C9F9 ;  /* sets header color*/
+nav {
+  color: #27C9F9 ;  /* sets nav color*/
   position: fixed;
   top: 0;
   left: 0;
@@ -17,18 +18,6 @@ header {
   height: 80px;  
 }
 
-h2 {
-  margin-top: 1em;
-  padding-top: 1em;
-}
-
-h1,
-h2,
-strong {
-  color: #333;
-}
-
-
 a {
-  color: #27C9F9;
+  color: #27C9F9; /* sets link color*/
 }
