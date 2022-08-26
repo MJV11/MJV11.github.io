@@ -44,16 +44,16 @@ header {
 }
 
 .masthead-tagline {
-  font-size: 48px;
+  font-size: 32px;
   font-family: "Georgia";
   font-style: italic;
   color: black;
 }
 
 .masthead-name {
-  font-size: 120px;
-  padding: 20px;
-  font-family: "Roboto";
+  font-size: 80px;
+  padding: 10px;
+  font-family: "Arial";
   color: #27C9F9;
 }
 
@@ -72,9 +72,9 @@ section {
   
 .section-header {
   font-family: "Arial" ;
-  font-size: 80px ;
+  font-size: 55px ;
   color: black;
-  padding: 20px
+  padding: 15px
 }
 
 .section-text-muted{
