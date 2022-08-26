@@ -1,4 +1,4 @@
-body {
+header {
   height : 125vh; /*sets veiwport hieght of site to facilitate scrolling*/
   margin-top: 80px; /*set equal to the header so webpage doesn't sit below header */
   max-width: 500px;
