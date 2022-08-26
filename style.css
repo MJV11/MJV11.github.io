@@ -44,21 +44,20 @@ header {
 }
 
 .masthead-tagline {
-  font-size: 50px;
-  font-family: "Times New Roman";
+  font-size: 48px;
+  font-family: "Georgia";
   font-style: italic;
   color: black;
 }
 
 .masthead-name {
-  font-size: 80px;
+  font-size: 120px;
   padding: 20px;
   font-family: "Roboto";
   color: #27C9F9;
 }
 
-.masthead-name {
-  padding: 20px;
+.text-muted {
   font-family: "Times New Roman"
   color: gray;
 }
