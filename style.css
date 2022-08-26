@@ -23,7 +23,7 @@ nav * { /* * means any element, so here * means anything inside nav */
 }
 
 nav li {
-  margin: 150px; /* set line items in nav x px apart */
+  margin: 100px; /* set line items in nav x px apart */
 }
 
 nav li a {
@@ -85,7 +85,13 @@ section {
   font-family: "Times New Roman" ;
   color: grey ;
 }
+ 
+.name-again{
+  font-family: "Arial";
+  font-size: 50px;
+  color: #27C9F9;
   
+}
 
 a {
   color: #27C9F9; /* sets link color*/
