@@ -100,13 +100,19 @@ section {
   color: #27C9F9;
 }
 
+.section-text-muted * {
+  display: inline;
+}
+
 a {
   color: #27C9F9; /* sets link color*/
 }
 
 footer{
-  color: b3b3b3
+  background-color: b3b3b3 ;
+  padding: 100px ;
 }
+
 .footer{
   font-size: 22px;
   font-family: sans-serif;
