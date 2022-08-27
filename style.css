@@ -23,7 +23,7 @@ nav * { /* * means any element, so here * means anything inside nav */
 }
 
 nav li {
-  margin: 100px; /* set line items in nav x px apart */
+  margin: 10%; /* set line items in nav x px apart */
 }
 
 nav li a {
