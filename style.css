@@ -101,3 +101,12 @@ section {
 a {
   color: #27C9F9; /* sets link color*/
 }
+
+footer{
+  color: b3b3b3
+}
+.footer{
+  font-size: 22px;
+  font-family: sans-serif;
+  color: gray;
+}
