@@ -94,6 +94,10 @@ section {
   color: grey ;
 }
  
+.image-rounded{
+  
+}
+
 .name-again{
   font-family: "Arial";
   font-size: 50px;
@@ -110,7 +114,10 @@ a {
 
 footer{
   background-color: #b3b3b3 ;
-  padding: 30px ;
+  padding: 10px ;
+  left: 0 ;
+  right: 0 ;
+  bottom: 0 ;
 }
 
 .footer{
