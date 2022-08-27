@@ -7,7 +7,9 @@ nav {
   right: 0;
   height: 80px;  
   display: flex; /* set items to top*/
-  align-items: center; /* set top items to center*/
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* set top items to center*/
   box-shadow: 0 0 25px 0 black; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
 }
 
