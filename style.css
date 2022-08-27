@@ -17,7 +17,7 @@ nav * { /* * means any element, so here * means anything inside nav */
 
 .navbar { /* set style of HTML class navbar*/
   font-family: "Arial";
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase ;
 }
@@ -56,7 +56,7 @@ header {
   font-size: 80px;
   padding: 10px;
   font-family: "Arial";
-  font-style: bold;
+  font-weight: bold;
   color: #27C9F9;
 }
 
@@ -76,7 +76,7 @@ section {
   
 .section-header {
   font-family: "Arial" ;
-  font-style: bold;
+  font-weight: bold;
   font-size: 55px ;
   color: black;
   padding: 15px
