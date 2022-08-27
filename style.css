@@ -17,7 +17,7 @@ nav * { /* * means any element, so here * means anything inside nav */
 
 .navbar { /* set style of HTML class navbar*/
   font-family: "Arial";
-  font-weight: bold;
+  font-weight: 900;
   letter-spacing: 3px;
   text-transform: uppercase ;
 }
