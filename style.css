@@ -94,7 +94,7 @@ section {
 }
  
 .image-rounded{
-  color: black;
+  border-radius: 50%;
 }
 
 .name-again{
