@@ -4,7 +4,7 @@
       "value": 100
     },
     "color": {
-      "value": #27C9F9
+      "value": "#27C9F9"
     },
     "opacity": {
       "value": 0.5
@@ -15,11 +15,12 @@
     },
     "line_linked": {
       "opacity": {
-        "value" : 4
+        "value" : 4,
         "random" : true
       }
+    },
     "move" : {
-      "speed": 5
+      "speed": 5,
       "random": true
     }
   },
