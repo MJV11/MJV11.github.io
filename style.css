@@ -39,6 +39,10 @@ body {
   text-align: center;
 }
 
+#particles-js {
+  background: white;
+}
+
 header {  
   line-height: 1.5;
   padding: 100px; /*set to give space under header before body*/
