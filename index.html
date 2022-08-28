@@ -3,7 +3,7 @@
   
   <head>
     <title> Max Vink </title>
-    <link rel="stylesheet" type="text/css" href="https://MJV11.github.io/style.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   
   <body>
@@ -26,46 +26,52 @@
         <div class="masthead-name"> Max Vink </div>
         <div class="text-muted"> Berkeley, CA </div>
       </div>
-      <div id="particles-js"></div>
-      <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-      <script> ParticlesJS.load('particles-js', 'particles.json', function(){console.log('particles.json loaded...');});</script>          
+      <!-- particle script insert attempt-->
+      <div id="particles-js"></div>   
+             
     </header>
     
     <main> 
+      <!-- timeline: intended to be a downward list in reverse chronological order chronicaling events-->
       <section id = "timeline">
         <div class="container">
           <div class="section-header"> Timeline </div>
           <div class="section-text-muted"> A brief overview of my career thus far </div>
           <ul class="timeline">
             <li>
-              <div class="timeline-image">
-                <img class="rounded-circle" href="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>
+              <div class="timeline-image"> test
+              <img class="rounded-circle-timeline" src="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>
               </div>
           </ul>
         </div>
       </section>
-      
+      <!-- portfolio -->
       <section id = "portfolio">
         <div class="container">
           <div class="section-header"> Portfolio </div>
           <div class="section-text-muted"> Some of the projects I'm most proud of </div>
         </div>
       </section>        
-        
+      <!-- contact --> 
       <section id = "contact">
         <div class="container">
           <div class="section-header"> Contact </div>
-          <img class="rounded-circle" src="https://scontent-sjc3-1.cdninstagram.com/v/t51.2885-19/299945450_609076160683149_6795862602367364327_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-sjc3-1.cdninstagram.com&_nc_cat=109&_nc_ohc=fr4d7C_60mgAX-OfY-3&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AT8MNdUrDYMTEAuI3Jg2WMqYje5YjRU7ftUgWXxj_rWUXQ&oe=6310DFF0&_nc_sid=8fd12b" alt>
+          <img class="rounded-circle" id="contact-photo" src="maxwebsiteprofile.jpg" alt>
           <div class="name-again"> Max Vink </div>
           <div class="section-text-muted"> Feel free to get in touch! </div>
-          <li><a href="587max@gmail.com">Contact Info</a></li>
-          <li><a href="https://github.com/MJV11">Github</a></li>
+          <div class="pointsofcontact">
+            <li><a href="https://www.linkedin.com/in/maxvink/">LinkedIn</a></li>
+            <li><a href="https://github.com/MJV11">Github</a></li>
+          </div>
         </div>
       </section>
     </main>
-    
+    <!-- footer -->
     <footer>
       <div class="footer"> @ 2022 Max Vink </div>
     </footer>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="particles.js"></script>
+  <script> particlesJS.load('particles-js', 'particles.json', function(){console.log('particles.json loaded...');});</script>
   </body>
 </html>
