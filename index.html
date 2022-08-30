@@ -8,15 +8,30 @@
   
   <body>
     <!-- navigation -->
-    <nav class="navbar" id="main-nav"> 
+    <nav class="navbar" id="main-nav">
       <div class="container">
         <ul> <!-- links done in bullet point form because google likes it and because navigation is easier-->
           <li><a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a></li>
           <li><a class="navbar-brand js-scroll-trigger" href="#timeline">Timeline</a></li>
           <li><a class="navbar-brand js-scroll-trigger" href="#portfolio">Portfolio</a></li>
           <li><a class="navbar-brand js-scroll-trigger" href="#contact">Contact</a></li>
+          
         </ul>
       </div>
+      <!-- <script>
+        function getid() {
+          var body = document.getElementsByTagName('navbar')[0];
+          body.style.backgroundColor = transparent;
+
+          // trigger this function every time the user scrolls
+          window.onscroll = function (event) {
+            var scroll = window.pageYOffset;
+            if (scroll > 300) {                    
+              body.style.backgroundColor = '#212529';
+            }
+          }
+        }
+      </script> -->
     </nav>
     
     <!-- masthead -->
@@ -39,27 +54,48 @@
           <div class="section-header"> Timeline </div>
           <div class="section-text-muted"> A brief overview of my career thus far </div>
           <ul class="timeline">
-            <div>
-              <div class="timeline-date"> Summer 2022 </div>
-              <div class="timeline-title"> Began Double Major </div>
-              <img class="rounded-circle-timeline" src="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>
-              <div class="timeline-text"> Explored my passion for Computer Science, ultimately adding it as a second major </div>
-
-              <div class="timeline-date"> Fall 2021 </div>
-              <div class="timeline-title"> Research Associate </div>
-              <img class="rounded-circle-timeline" src="assets/SURG.png" alt>
-              <div class="timeline-text"> Joined <a href="https://surg.berkeley.edu/SURG">SURG</a>, an Undergraduate Research Groups which focuses on improving sustainibility across all societal endeavors </div>
-
-              <div class="timeline-date"> Fall 2021 </div>
-              <div class="timeline-title"> Director of Political Strategy and Media </div>
-              <img class="rounded-circle-timeline" src="assets/telegraphforpeople.png" alt>
-              <div class="timeline-text"> Joined and helped create <a href="https://telegraphforpeople.com">TelegraphForPeople</a>, a student-ran transit and urban design advocacy group that seeks the redesign of Berkeley's college neighborhoods to be bike and pedestrian centric instead of an urban hellscape</div>
+            <div class="flex-timeline">
+              <div class="flex-timeline-item">
+                <img class="rounded-circle-timeline" src="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>
               
-              <div class="timeline-date"> Fall 2020 </div>
-              <div class="timeline-title"> Began Undergraduate Studies at UC Berkeley </div>
-              <img class="rounded-circle-timeline" src="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>
-              <div class="timeline-text"> Enrolled as a Political Science Major </div>
+                <div class="flex-timeline-item-body">
+                  <div class="timeline-date"> Summer 2022 </div>
+                  <div class="timeline-title"> Began Double Major </div>
+                  <div class="timeline-text"> Explored my passion for Computer Science, ultimately adding it as a second major </div>
+                </div>
               </div>
+            <div class="flex-timeline">
+              <div class="flex-timeline-item">
+                <img class="rounded-circle-timeline" src="assets/SURG.png" alt>
+                
+                <div class="flex-timeline-item-body">
+                  <div class="timeline-date"> Fall 2021 </div>
+                  <div class="timeline-title"> Research Associate </div>
+                  <div class="timeline-text"> Joined the <a href="https://surg.berkeley.edu/SURG">SDG Undergraduate Research Group</a>, a self-directed ungraduate think tank that focuses on improving sustainibility across all societal endeavors </div>
+                </div>
+              </div>
+            <div class="flex-timeline">
+              <div class="flex-timeline-item">
+                <img class="rounded-circle-timeline" src="assets/telegraphforpeople.png" alt>
+              
+                <div class="flex-timeline-item-body">
+                  <div class="timeline-date"> Fall 2021 </div>
+                  <div class="timeline-title"> Director of Political Strategy and Media </div>
+                  <div class="timeline-text"> Joined and helped create <a href="https://telegraphforpeople.com">TelegraphForPeople</a>, a student-ran transit and urban design advocacy group that seeks the redesign of Berkeley's college neighborhoods to be bike and pedestrian centric instead of an urban hellscape</div>
+                </div>
+              </div>
+            </div>
+            <div class="flex-timeline">
+              <div class="flex-timeline-item">
+                <img class="rounded-circle-timeline" src="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>
+              
+                <div class="flex-timeline-item-body">
+                  <div class="timeline-date"> Fall 2020 </div>
+                  <div class="timeline-title"> Began Undergraduate Studies at UC Berkeley </div>
+                  <div class="timeline-text"> Enrolled as a Political Science Major </div>
+                </div>
+              </div>
+            </div>
           </ul>
         </div>
       </section>
