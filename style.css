@@ -1,13 +1,13 @@
 
 nav {
-  background-color: #27C9F9 ;  /* sets nav color... must it be one of the 160 HTML colors?*/
+  /*background-color: transparent/*#27C9F9*/   /* sets nav color... must it be one of the 160 HTML colors?*/
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 80px;  
+  height: 10vh;  
   display: flex; /* set items to top*/
-  flex-wrap: wrap;
+  z-index: 1;
   justify-content: center;
   align-items: center;
   text-align: center; /* set top items to center*/
@@ -21,8 +21,10 @@ nav * { /* * means any element, so here * means anything inside nav */
 .navbar { /* set style of HTML class navbar*/
   font-family: "Arial";
   font-weight: 700;
-  letter-spacing: 3px;
+  letter-spacing: .1vh;
   text-transform: uppercase ;
+  font-size: 1.4vmax
+  
 }
 
 nav li {
@@ -30,17 +32,20 @@ nav li {
 }
 
 nav li a {
-  color: black;
+  color : #27C9F9 ;
   text-decoration: none; /* override and remove underline style */
+}
+
+nav li a:hover {
+  color: white ;
+
 }
 
 body {
   margin: 0;
   /*height : 80vh; sets veiwport hieght of site to facilitate scrolling*/
   /*margin-top: 80px; set equal to the header so webpage doesn't sit below header */
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+
 }
 
 #particles-js{
@@ -55,7 +60,7 @@ body {
   z-index: -10;
   top: 0px;
   left: 0px;
-  padding-bottom: 0rem;
+
   position: absolute;
   pointer-events: all;
 }
@@ -79,6 +84,12 @@ header {
   color: #27C9F9;
 }
 */
+
+/* ============================================== HEADER ================================== */
+header{
+  height: 100vh ;
+}
+
 .text-muted {
   font-size: 22px;
   font-family: "Times New Roman";
@@ -99,6 +110,7 @@ header.masthead {
   z-index: 0;
   pointer-events: none;
 }
+
 header.masthead .masthead-tagline {
   font-size: 1.5rem;
   font-style: italic;
@@ -111,7 +123,7 @@ header.masthead .masthead-tagline {
   blink-caret .5s step-end infinite alternate;*/
 }
 header.masthead .masthead-name {
-  font-size: 3.25rem;
+  font-size: 5rem;
   font-weight: 700;
   line-height: 3.25rem;
   margin-bottom: 2rem;
@@ -125,8 +137,8 @@ header.masthead .masthead-name {
 @media (min-width: 768px) {
   header.masthead {
     padding-top: 17rem;
-    padding-bottom: 12.5rem;
-    /* padding-top: 0rem;
+    padding-bottom: 0rem;
+    /*12.5 padding-top: 0rem;
     padding-bottom: 0rem; */
   }
   header.masthead .masthead-tagline {
@@ -136,11 +148,11 @@ header.masthead .masthead-name {
     margin-bottom: 2rem;
   }
   header.masthead .masthead-name {
-    font-size: 4.5rem;
+    font-size: 6rem;
     font-weight: 700;
     line-height: 4.5rem;
     /* margin-bottom: 4rem; */
-    margin-bottom: 1rem;
+
 
   }
 }
@@ -152,32 +164,32 @@ section, header {
 }
 
 section {
-  margin-top: 10rem;
-  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+
+ 
+  padding-bottom: 5rem ;
 }
 
-section * {
 
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-  
 .section-header {
+  margin-top: 5rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: bold;
-  font-size: 55px ;
+  font-size: 3.5vmax ;
   color: black;
-  padding-bottom: 15px
+  padding-bottom: 1vh ;
+  text-transform: uppercase ;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .section-text-muted * {
   display: inline;
   font-style: italic;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 a {
@@ -190,7 +202,7 @@ a {
   padding-left: 0.75rem;
   margin-right: auto;
   margin-left: auto;
-  display: inline-block;
+
 }
 @media (min-width: 576px) {
   .container {
@@ -218,17 +230,41 @@ a {
   margin-bottom: 0.5rem;
 }
 
+#timeline .section-text-muted {
+  padding-bottom: 2rem;
+}
+
+.flex-timeline{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-timeline-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center; /*makes all the items within the flexbox centered on this flexbox's axis*/
+}
+
+.flex-timeline-item-body{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  inline-size: 20vmax ;
+  padding: 1vmax
+}
+
 .rounded-circle-timeline{
   border-radius: 50%;
   position: flex;
-  z-index: 100;
+  z-index: -2;
   left: 10;
-  width: 80px;
-  height: 80px;
+  width: 11vmax;
+  height: 11vmax;
   margin-left: 0;
   text-align: center;
   color: white;
-  border: 7px solid #e9ecef;
+  border: .7vmax solid #e9ecef;
   border-radius: 100%;
   /* background-color: #fed136; */
   background-color: white;
@@ -238,15 +274,16 @@ a {
   margin-bottom: 0.5rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.6vmax;
   line-height: 1.2;
 }
 
 .timeline-text{
   color: #6c757d !important;
+  margin-bottom: 0.5rem;
   text-decoration: none;
+  justify-content: left;
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
 }
 
 /*============================== Portfolio =============================================*/
@@ -263,20 +300,25 @@ section#contact {
   background-color: #e9ecef;
   background-repeat: no-repeat;
   background-position: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
+
 #contact-photo {
-  width: 14rem;
-  height: 14rem;
+  width: 16rem;
+  height: 16rem;
   border: 0.5rem solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
 }
 
 .name-again{
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 30px;
+  font-size: 3vmax;
   color: #27C9F9;
   font-weight: bold;
+  padding: 1vmax;
 }
 
 .section-text-muted{
@@ -284,6 +326,9 @@ section#contact {
   font-family: "Times New Roman" ;
   color: grey ;
   margin-bottom: 0.5rem;
+  font-style: italic ;
+
+  text-align: center;
 }
  
 .pointsofcontact * { /* * means any element, so here * means anything inside nav */
