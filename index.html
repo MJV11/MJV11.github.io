@@ -19,17 +19,16 @@
         </ul>
       </div>
       <!-- <script>
-        function getid() {
-          var body = document.getElementsByTagName('navbar')[0];
-          body.style.backgroundColor = transparent;
+        var body = document.getElementsByTagName('navbar')[0];
+        body.style.backgroundColor = transparent;
 
-          // trigger this function every time the user scrolls
-          window.onscroll = function (event) {
-            var scroll = window.pageYOffset;
-            if (scroll > 300) {                    
+        // trigger this function every time the user scrolls
+        window.onscroll = function (event) {
+          var scroll = window.pageYOffset;
+          if (scroll > 300) {                    
               body.style.backgroundColor = '#212529';
-            }
-          }
+            
+        
         }
       </script> -->
     </nav>
@@ -52,10 +51,10 @@
       <section id = "timeline">
         <div class="container">
           <div class="section-header"> Timeline </div>
-          <div class="section-text-muted"> A brief overview of my career thus far </div>
-          <ul class="timeline">
+          <div class="section-text-muted"> A summarized chronology of my career thus far </div>
+          <div class="timeline">
             <div class="flex-timeline">
-              <div class="flex-timeline-item">
+              <div class="flex-timeline-item-right">
                 <img class="rounded-circle-timeline" src="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>
               
                 <div class="flex-timeline-item-body">
@@ -65,7 +64,7 @@
                 </div>
               </div>
             <div class="flex-timeline">
-              <div class="flex-timeline-item">
+              <div class="flex-timeline-item-left">
                 <img class="rounded-circle-timeline" src="assets/SURG.png" alt>
                 
                 <div class="flex-timeline-item-body">
@@ -75,7 +74,7 @@
                 </div>
               </div>
             <div class="flex-timeline">
-              <div class="flex-timeline-item">
+              <div class="flex-timeline-item-right">
                 <img class="rounded-circle-timeline" src="assets/telegraphforpeople.png" alt>
               
                 <div class="flex-timeline-item-body">
@@ -86,7 +85,7 @@
               </div>
             </div>
             <div class="flex-timeline">
-              <div class="flex-timeline-item">
+              <div class="flex-timeline-item-left">
                 <img class="rounded-circle-timeline" src="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>
               
                 <div class="flex-timeline-item-body">
@@ -96,7 +95,7 @@
                 </div>
               </div>
             </div>
-          </ul>
+          </div>
         </div>
       </section>
       <!-- portfolio -->
@@ -104,6 +103,7 @@
         <div class="container">
           <div class="section-header"> Portfolio </div>
           <div class="section-text-muted"> Some of the projects I'm most proud of </div>
+          <div class="section-text-muted"> (currently under construction) </div>
         </div>
       </section>        
       <!-- contact --> 
@@ -112,10 +112,11 @@
           <div class="section-header"> Contact </div>
           <img class="rounded-circle" id="contact-photo" src="assets/maxwebsiteprofile.jpg" alt>
           <div class="name-again"> Max Vink </div>
-          <div class="section-text-muted"> Feel free to get in touch! </div>
+          <div class="section-text-muted"> Feel free to get in touch </div>
           <div class="pointsofcontact">
-            <li><a href="https://www.linkedin.com/in/maxvink/">LinkedIn</a></li>
-            <li><a href="https://github.com/MJV11">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/maxvink/"><img class="contact-method-photos" src="assets/linkedinlogo.png" ></a></li>
+            <li><a href="mailto:max.vink@berkeley.edu"><img class="contact-method-photos" src="assets/gmaillogo.png" ></a></li>
+            <li><a href="https://github.com/MJV11"><img class="contact-method-photos" src="assets/githublogo.png" ></a></li>
           </div>
         </div>
       </section>
