@@ -1,6 +1,10 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* ================================================= NAVIGATION ==================================*/
 
 nav {
-  /*background-color: transparent/*#27C9F9*/   /* sets nav color... must it be one of the 160 HTML colors?*/
   position: fixed;
   top: 0;
   left: 0;
@@ -11,21 +15,26 @@ nav {
   justify-content: center;
   align-items: center;
   text-align: center; /* set top items to center*/
+  transition: background-color .2s ease-out;
   box-shadow: 0 0 25px 0 black; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
-}
-
-nav * { /* * means any element, so here * means anything inside nav */
-  display: inline;
-  white-space:nowrap;
-}
-
-.navbar { /* set style of HTML class navbar*/
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   letter-spacing: .1vh;
   text-transform: uppercase ;
   font-size: 1.4vmax
-  
+}
+
+.scroll {
+  background-color: #212529;
+}
+
+.navbar {
+  background-color: transparent;
+}
+
+nav * { /* * means any element, so here * means anything inside nav */
+  display: inline;
+  white-space:nowrap;
 }
 
 nav li {
@@ -332,7 +341,7 @@ section#contact > .container > .section-text-muted{
 
 .name-again{
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 2vmax;
+  font-size: 1.6vmax;
   color: black;
   font-weight: bold;
   padding: .5vmax;
