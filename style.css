@@ -16,10 +16,11 @@ nav {
 
 nav * { /* * means any element, so here * means anything inside nav */
   display: inline;
+  white-space:nowrap;
 }
 
 .navbar { /* set style of HTML class navbar*/
-  font-family: "Arial";
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   letter-spacing: .1vh;
   text-transform: uppercase ;
@@ -64,30 +65,11 @@ body {
   position: absolute;
   pointer-events: all;
 }
-/* V1.0
-header {  
-  line-height: 1.5;
-  padding: 100px; 
 
-.masthead-tagline {
-  font-size: 32px;
-  font-family: "Georgia";
-  font-style: italic;
-  color: black;
-}
-
-.masthead-name {
-  font-size: 80px;
-  padding: 10px;
-  font-family: "Arial";
-  font-weight: bold;
-  color: #27C9F9;
-}
-*/
 
 /* ============================================== HEADER ================================== */
 header{
-  height: 100vh ;
+  height: 63vh ;
 }
 
 .text-muted {
@@ -117,7 +99,7 @@ header.masthead .masthead-tagline {
   line-height: 1.5rem;
   margin-bottom: 25px;
   /* color: #fed136; */
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* z-index: 2 */
   /*a nimation: typing 7s steps(15, end), 
   blink-caret .5s step-end infinite alternate;*/
@@ -143,7 +125,6 @@ header.masthead .masthead-name {
   }
   header.masthead .masthead-tagline {
     font-size: 2.25rem;
-    font-style: italic;
     line-height: 2.25rem;
     margin-bottom: 2rem;
   }
@@ -197,12 +178,15 @@ a {
 }
 
 .container {
+  display: flex ; /*might not be necessary*/
+  flex-direction: column;
   width: 100%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
-  margin-right: auto;
-  margin-left: auto;
-
+  margin: auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 @media (min-width: 576px) {
   .container {
@@ -225,49 +209,8 @@ a {
   }
 }
 /* ============================ Timeline ============================== */
-.timeline * {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
 #timeline .section-text-muted {
   padding-bottom: 2rem;
-}
-
-.flex-timeline{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.flex-timeline-item{
-  display: flex;
-  flex-direction: row;
-  align-items: center; /*makes all the items within the flexbox centered on this flexbox's axis*/
-}
-
-.flex-timeline-item-body{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  inline-size: 20vmax ;
-  padding: 1vmax
-}
-
-.rounded-circle-timeline{
-  border-radius: 50%;
-  position: flex;
-  z-index: -2;
-  left: 10;
-  width: 11vmax;
-  height: 11vmax;
-  margin-left: 0;
-  text-align: center;
-  color: white;
-  border: .7vmax solid #e9ecef;
-  border-radius: 100%;
-  /* background-color: #fed136; */
-  background-color: white;
 }
 
 .timeline-date, .timeline-title {
@@ -276,21 +219,81 @@ a {
   font-weight: 700;
   font-size: 1.6vmax;
   line-height: 1.2;
+  inline-size: 20vmax ;
 }
 
 .timeline-text{
   color: #6c757d !important;
-  margin-bottom: 0.5rem;
   text-decoration: none;
   justify-content: left;
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  inline-size: 28vmax ;
 }
+
+
+
+.flex-timeline{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-timeline-item-left{
+  display: flex;
+
+  align-items: center; /*makes all the items within the flexbox centered on this flexbox's horizontal axis*/
+  justify-content: center;
+  height: 30vh;
+}
+
+.flex-timeline-item-right{
+  display: flex;
+
+  align-items: center; /*makes all the items within the flexbox centered on this flexbox's horizontal axis*/
+  justify-content: center; /*vertical axis*/
+  height: 30vh;
+  position: relative;
+  float: right;
+}
+
+.flex-timeline-item-right .flex-timeline-item-body{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  text-align: left;
+}
+
+.flex-timeline-item-right .flex-timeline-item-body{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  text-align: right;
+}
+
+
+.rounded-circle-timeline{
+  z-index: -2;
+  width: 11vmax;
+  height: 11vmax;
+  color: white;
+  border: .7vmax solid #e9ecef;
+  border-radius: 100%;
+  /* background-color: #fed136; */
+  background-color: white;
+  position: absolute; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 14px;
+  float: left;
+}
+
 
 /*============================== Portfolio =============================================*/
 
 section#portfolio {
-  background-color: #f8f9fa
-  ;
+  background-color: #f8f9fa;
 }
 
 /* -----------------------------CONTACT-------------------------------- */
@@ -305,20 +308,34 @@ section#contact {
   text-align: center;
 }
 
+section#contact > .container > .section-header {
+  font-size: 2.2vmax ;
+  padding-bottom: 7vh ;
+  margin-top: 2rem;
+}
+
+section#contact > .container > .section-text-muted{
+  font-size: 1.2vmax ;
+  font-family: "Times New Roman" ;
+  color: grey ;
+  margin-bottom: 0.5rem;
+  font-style: normal ;
+  text-align: center;
+}
 
 #contact-photo {
-  width: 16rem;
-  height: 16rem;
+  width: 13rem;
+  height: 13rem;
   border: 0.5rem solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
 }
 
 .name-again{
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 3vmax;
-  color: #27C9F9;
+  font-size: 2vmax;
+  color: black;
   font-weight: bold;
-  padding: 1vmax;
+  padding: .5vmax;
 }
 
 .section-text-muted{
@@ -331,26 +348,38 @@ section#contact {
   text-align: center;
 }
  
-.pointsofcontact * { /* * means any element, so here * means anything inside nav */
-  padding: 10px;
+.pointsofcontact * { 
+  padding: 8px;
   display: inline;
   text-decoration: none;
   text-transform: uppercase ;
-  margin: .1vw;
+  margin: .05vw;
   font-family: "Arial";
   margin-bottom: 0.5rem;
 }
 
+.contact-method-photos{
+  z-index: 0;
+  width: 4vmax;
+  height: 4vmax;
+  color: white;
+  border: .0.5rem solid #e9ecef;
+  border-radius: 100%;
+  /* background-color: #fed136; */
+  background-color: white;
+
+}
+
+/*=============================================== FOOTER ===================================*/
+
 footer{
-  background-color: #b3b3b3 ;
-  padding: 10px ;
-  left: 0 ;
-  right: 0 ;
-  bottom: 0 ;
+  background-color: white ;
 }
 
 .footer {
   text-align: center;
+  margin: 3.5vh;  
   font-size: 0.9rem;
+  color: black;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
