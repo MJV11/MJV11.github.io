@@ -1,6 +1,7 @@
 html {
   scroll-behavior: smooth;
   width: 100%;
+  background-color: black;
 }
 
 /* ================================================= NAVIGATION ==================================*/
@@ -12,7 +13,7 @@ nav {
   right: 0;
   height: 10vh;  
   display: flex; /* set items to top*/
-  z-index: 1;
+  z-index: 10000;
   justify-content: center;
   align-items: center;
   text-align: center; /* set top items to center*/
@@ -60,10 +61,9 @@ nav li a:hover,
   color: white;
 }
 
-body {
+body, main {
   margin: 0;
-  /*height : 80vh; sets veiwport hieght of site to facilitate scrolling*/
-  /*margin-top: 80px; set equal to the header so webpage doesn't sit below header */
+  background-color: transparent;
 }
 
 #particles-js{
@@ -80,8 +80,14 @@ body {
   left: 0px;
   position: absolute;
   pointer-events: all;
+  background-color: black;
 }
 
+.break {
+  background-color: #e9ecef;
+  height: 10vh;
+
+}
 
 /* ============================================== HEADER ================================== */
 header{
@@ -99,7 +105,7 @@ header.masthead {
   padding-bottom: 0rem;
   text-align: center;
   color: #fff;
-  background-color: black;
+  background-color: transparent;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -199,6 +205,9 @@ a {
 }
 
 /* ============================ Timeline ============================== */
+section#timeline {
+  background-color: white;
+}
 #timeline .section-text-muted {
   padding-bottom: 2rem;
 }
@@ -235,7 +244,7 @@ a {
   bottom: 0;
   left: 50%;
   margin-left: -3px;
-  z-index: -4;
+  z-index: 1;
 }
 
 
@@ -304,7 +313,7 @@ a {
 }
 
 .rounded-circle-timeline{
-  z-index: -2;
+  z-index: 2;
   width: 11vmax;
   height: 11vmax;
   color: white;
@@ -339,7 +348,7 @@ section#portfolio .section-text-muted{
   align-items: center;
   border: 1.5vh solid #e9ecef;
   border-radius: .8vw;
-  width: 85%; /* of .container */
+  width: 90%; /* of .container */
 }
 
 .portfolio-container * {
@@ -349,7 +358,7 @@ section#portfolio .section-text-muted{
 .portfolio-item {
   margin: 1vmax;
   height: 28vmax;
-  width: 35vmax;
+  width: 22vmax;
   align-items: center;
   border: .03vh solid #C9ECF7;
   background-color: white;
@@ -361,14 +370,15 @@ section#portfolio .section-text-muted{
 
 .portfolio-item:hover {
   border: 0 ;
+  margin: 1.03vmax;
   box-shadow: 0 0 18px 0 #C9ECF7; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
 }
 
 .portfolio-title {
   text-align: center;
-  width: 30vmax;
+  width: 20vmax;
   font-weight: 630;
-  font-size: 2.3vmax;
+  font-size: 2vmax;
   color: black;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   transition: .07s ease-in-out;
@@ -380,8 +390,8 @@ section#portfolio .section-text-muted{
 
 .portfolio-desc {
   text-align: center;
-  width: 30vmax;
-  font-size: 1.2vmax;
+  width: 20vmax;
+  font-size: 1vmax;
   color: #212529;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -391,7 +401,7 @@ section#portfolio .section-text-muted{
 
 section#contact {
   /* background-color: #212529; */
-  background-color: #e9ecef;
+  background-color: white;
   background-repeat: no-repeat;
   background-position: center;
   justify-content: center;
@@ -455,7 +465,7 @@ section#contact > .container > .section-text-muted{
 }
 
 .contact-method-photos{
-  z-index: 0;
+  z-index: 1;
   width: 4vmax;
   height: 4vmax;
   color: white;
@@ -469,12 +479,14 @@ section#contact > .container > .section-text-muted{
 /*=============================================== FOOTER ===================================*/
 
 footer{
-  background-color: white ;
+  background-color: gray ;
+  height: 8vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {
-  text-align: center;
-  margin: 3.5vh;  
+  text-align: center; 
   font-size: 0.9rem;
   color: black;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
