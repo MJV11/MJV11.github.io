@@ -66,11 +66,9 @@ body, main {
   background-color: transparent;
 }
 
-#particles-js{
-  /* pointer-events: stroke; */
+.particles-js{
   width: 100% !important;
   height: 100% !important;
-  /* background-color: #4850a9; */
   background-image: url('');
   background-size: cover;
   background-position: 50% 50%;
@@ -84,9 +82,8 @@ body, main {
 }
 
 .break {
-  background-color: #e9ecef;
-  height: 10vh;
-
+  background-color: #212529;
+  height: 3vh;
 }
 
 /* ============================================== HEADER ================================== */
@@ -186,6 +183,15 @@ section {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.section-text-muted-bottom {
+  margin-top:.7vmax;
+  margin-bottom: 2vmax;
+  font-weight: 700;
+  font-size: 1.6vmax;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: gray;
 }
 
 a {
@@ -346,7 +352,6 @@ section#portfolio .section-text-muted{
   text-decoration: none;
   justify-content: center;
   align-items: center;
-  border: 1.5vh solid #e9ecef;
   border-radius: .8vw;
   width: 90%; /* of .container */
 }
@@ -360,18 +365,32 @@ section#portfolio .section-text-muted{
   height: 28vmax;
   width: 22vmax;
   align-items: center;
-  border: .03vh solid #C9ECF7;
+  border: .3vmax solid gray;
   background-color: white;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   border-radius: .8vw;
 }
 
 .portfolio-item:hover {
-  border: 0 ;
-  margin: 1.03vmax;
-  box-shadow: 0 0 18px 0 #C9ECF7; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
+  border-color: #C9ECF7;
+  transition: .15s ease-in-out;
+  box-shadow: 0 0 3vmax 0 #C9ECF7; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
+}
+
+.portfolio-image {
+  height: 6vmax;
+  width: 6vmax;
+  border-radius: 10%;
+  margin-top: 4vmax;
+  margin-bottom: .3vmax;
+  border: .3vmax solid transparent;
+
+}
+
+.portfolio-item:hover .portfolio-image {
+  border: .3vmax solid #C9ECF7;
+  transition: .15s ease-in-out; 
 }
 
 .portfolio-title {
@@ -381,7 +400,9 @@ section#portfolio .section-text-muted{
   font-size: 2vmax;
   color: black;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  transition: .07s ease-in-out;
+  transition: .15s ease-in-out;
+  margin-bottom: .5vmax;
+  line-height: 2vmax;
 }
 
 .portfolio-item:hover .portfolio-title {
@@ -392,8 +413,85 @@ section#portfolio .section-text-muted{
   text-align: center;
   width: 20vmax;
   font-size: 1vmax;
-  color: #212529;
+  color: gray;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/*============================== Life =============================================*/
+
+section#life {
+  background-color: white;
+}
+
+.life::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #e9ecef;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: 1;
+}
+
+.life-container{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  width: 90%; /* of .container */
+}
+
+.life-container * {
+  text-decoration: none; /* this whole mf is a URL */
+}
+
+.life-item {
+  margin: 1vmax;
+  height: 20vmax;
+  width: 15vmax;
+  align-items: center;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 2.5vmax;
+  padding-right: 2.5vmax;
+}
+
+.life-image {
+  height: 12vmax;
+  width: 12vmax;
+  border-radius: 50%;
+  margin-bottom: 1vmax;
+  border: .7vmax solid #e9ecef;
+
+}
+
+.life-title {
+  text-align: center;
+  color: black;
+  margin-bottom: 0.9vh;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  font-size: 1.6vmax;
+  line-height: 1.2;
+  inline-size: 20vmax ;
+  width: 15vmax;
+}
+
+.life-desc {
+  text-align: center;
+  color: #6c757d !important;
+  font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  inline-size: 28vmax ;
+  font-size: 1.15vmax;
+  width: 15vmax;
 }
 
 
@@ -479,7 +577,7 @@ section#contact > .container > .section-text-muted{
 /*=============================================== FOOTER ===================================*/
 
 footer{
-  background-color: gray ;
+  background-color: #212529 ;
   height: 8vh;
   align-items: center;
   justify-content: center;
@@ -487,7 +585,8 @@ footer{
 
 .footer {
   text-align: center; 
-  font-size: 0.9rem;
-  color: black;
+  justify-content: center;
+  font-size: 1.4vmax;
+  color: #27C9F9;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
