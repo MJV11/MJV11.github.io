@@ -7,7 +7,6 @@
   </head>
   
   <body>
-    <div id="particles-js"></div>   
 
     <!-- navigation -->
     <nav class="navbar" id="main-nav">
@@ -26,12 +25,12 @@
     <header class="masthead" id="page-top">
       <div class="container">
         <!-- <div class="masthead-tagline"> <span data-typed-items="Engineer, Triathlete, Artist"></span></div> -->
-        <div class="masthead-tagline"> Engineer, Triathlete, Artist</div> 
+        <div class="masthead-tagline"> Engineer, Triathlete, Student</div> 
         <div class="masthead-name"> Max Vink </div>
         <div class="text-muted"> Berkeley, CA </div>
       </div>
       <!-- particle script insert attempt-->
-             
+      <div class="particles-js" id="particles-js"></div>   
     </header>
     
     <main> 
@@ -99,7 +98,7 @@
       </section>
 
       <!-- portfolio -->
-      <div class="break"></div>
+      <div class="break" id="particles-js"></div>
       <section id = "portfolio">
         <div class="container">
           <div class="section-header"> Portfolio </div>
@@ -107,23 +106,23 @@
           <div class="portfolio-container">
 
             <div class="portfolio-item">
-              <img class="portfolio-image">
+              <img class="portfolio-image" src="assets/pcslogo.png">
               <div class="portfolio-title">Recitivism Machine Learning Model</div>              
               <div class="portfolio-desc">Machine learning encourages Recitivism models to associate race with risk due to external, historical patterns of overpolicing, oversentencing, and overprofiling. Developed in Python and fed 2.6 million entries, this model escapes those biases, offering a better path.                          
               </div>
             </div>  
 
             <div class="portfolio-item">
-              <img class="portfolio-image">
+              <img class="portfolio-image" src="assets/portfolio/engine.jpg">
               <div class="portfolio-title">2D Worldbuilding Engine</div>              
               <div class="portfolio-desc">An interactive 2D tile-based world engine that pseudorandomly generates interative worlds.
                                           The engine supports persistence, dynamic lighting, scoring, customizable avatars, and a dynamic HUD,
-                                          creating an immersive and fully explorable world!                          
+                                          creating an immersive and fully explorable world! Built in Java.                         
               </div>
             </div>
 
             <div class="portfolio-item">
-              <img class="portfolio-image">
+              <img class="portfolio-image" src="assets/portfolio/scheme.png">
               <div class="portfolio-title">Scheme Interpreter</div>              
               <div class="portfolio-desc">An interpreter that parses and evaluates user-generated Scheme code
                                           by tokenizing and parsing Scheme inputs defined by Scheme syntax rules. 
@@ -133,14 +132,14 @@
             </div>
 
             <a href="https://github.com/MJV11/Music-Discord-Bot"><div class="portfolio-item">
-              <img class="portfolio-image">
+              <img class="portfolio-image" src="assets/portfolio/amplitude.jpg">
               <div class="portfolio-title">Amped Discord Bot</div>              
               <div class="portfolio-desc">All your favorite Discord music bots are dead. Amped revives the deprecated features of Rhythm and Groovy to allow users to bypass the ad-laden alternatives and listen to music directly inside their voice channels! Uses Python to serve the Discord API for interface.          
               </div>
             </div></a>
 
             <div class="portfolio-item">
-              <img class="portfolio-image">
+              <img class="portfolio-image" src="assets/portfolio/2048_logo.png">
               <div class="portfolio-title">2048</div>              
               <div class="portfolio-desc">Thanks for reading this far! 2048, but in Java. Does it serve a larger purpose? No. But I love this game. 
               </div>
@@ -149,12 +148,42 @@
             <a href="https://github.com/MJV11/MJV11.github.io"><div class="portfolio-item"> 
               <img class="portfolio-image" src="assets/favicon-32x32.png">
               <div class="portfolio-title">This Website!</div>              
-              <div class="portfolio-desc">You're looking at it! A hard-coded vanity monument built to teach myself HTML, CSS, and JavaScript, as well as chronical my professional development!                                        
+              <div class="portfolio-desc">You're looking at it! A hard-coded vanity monument built to teach myself HTML, CSS, and JavaScript, as well as chronicle my professional development!                                        
               </div>
             </div></a>
           </div>
+          <div class="section-text-muted-bottom"> [Click to Expand] </div>
+
         </div>
       </section>        
+
+      <!-- extracirriculars -->
+      <div class="break"></div>
+      <section id = "life">
+        <div class="container">
+          <div class="section-header"> Extracirriculars </div>
+          <div class="section-text-muted"> Life Outside Academics </div>
+          <div class="life-container">
+            <a href="https://instagram.com/calcycling"><div class="life-item"> 
+              <img class="life-image" src="assets/life/calcycling2021.jpg">
+              <div class="life-title">Cal Cycling</div>              
+              <div class="life-desc">PR and Media Officer</div>
+            </div></a>
+
+            <a href="https://trek.com"><div class="life-item"> 
+              <img class="life-image" src="assets/life/trekbikes2021.jpg">
+              <div class="life-title">Trek</div>              
+              <div class="life-desc">Mechanic</div>
+            </div></a>
+
+            <a href="https://instagram.com/cal_triathlon"><div class="life-item"> 
+              <img class="life-image" src="assets/life/caltri2021.jpg">
+              <div class="life-title">Cal Triathlon</div>              
+              <div class="life-desc">Athlete</div>
+            </div></a>
+          </div>
+        </div>
+      </section>
 
       <!-- contact --> 
       <div class="break"></div>
