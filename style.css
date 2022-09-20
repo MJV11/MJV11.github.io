@@ -83,7 +83,7 @@ body, main {
 
 .break {
   background-color: #212529;
-  height: 3vh;
+  height: 0vh;
 }
 
 /* ============================================== HEADER ================================== */
@@ -363,17 +363,18 @@ section#portfolio .section-text-muted{
   height: 28vmax;
   width: 22vmax;
   align-items: center;
-  border: .3vmax solid gray;
-  background-color: white;
+  border: .05vmax solid transparent;
+  box-shadow: 0 0 2vmax 0 #EEEFEF; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
+  background-color: #F9FDFF;
   display: flex;
   flex-direction: column;
   border-radius: .8vw;
 }
 
 .portfolio-item:hover {
-  border-color: #C9ECF7;
-  transition: .15s ease-in-out;
-  box-shadow: 0 0 3vmax 0 #C9ECF7; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
+  border-color: transparent;
+  transition: .3s ease-in-out;
+  box-shadow: 0 0 3vmax 0 #C8DEE8; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
 }
 
 .portfolio-image {
@@ -387,8 +388,8 @@ section#portfolio .section-text-muted{
 }
 
 .portfolio-item:hover .portfolio-image {
-  border: .3vmax solid #C9ECF7;
-  transition: .15s ease-in-out; 
+  border: .3vmax solid #EAF1F5;
+  transition: .3s ease-in-out; 
 }
 
 .portfolio-title {
@@ -418,7 +419,8 @@ section#portfolio .section-text-muted{
 /*============================== Life =============================================*/
 
 section#life {
-  background-color: white;
+  background-color: #FAFAFA;
+
 }
 
 
@@ -459,7 +461,7 @@ section#life {
   height: 20vw;
   width: 15vw;
   align-items: center;
-  background-color: white;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
