@@ -154,7 +154,7 @@ header.masthead .masthead-name {
   }
 }
 
-/* ================================= SECTION ===========================*/
+/* ================================= SECTION GENERALIZABLES===========================*/
 section, header {
   display: block;
 }
@@ -331,6 +331,47 @@ section#timeline {
   justify-content: center;
 }
 
+/*============================== Skills =============================================*/
+
+section#languages {
+  background-color: #FAFAFA;
+}
+
+
+.languages-container{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  width: 90%; /* of .skills-container */
+}
+
+.language { 
+  /* set in one line */
+  display: inline;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  /* text formatting */
+  color: #2276ed;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.5vw;
+  font-weight: 500;
+
+  /* shape formatting */
+  background-color: #e7f1fd ;
+  border-radius: .5vw;
+  margin-inline: .5vw;
+  text-align: center;
+  padding-top: .3vw;
+  padding-bottom: .3vw; 
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
 
 /*============================== Portfolio =============================================*/
 
@@ -420,7 +461,6 @@ section#portfolio .section-text-muted{
 
 section#life {
   background-color: #FAFAFA;
-
 }
 
 
@@ -452,6 +492,7 @@ section#life {
     width: 0px;
   }
 }
+
 .life-container * {
   text-decoration: none; /* this whole mf is a URL */
 }
