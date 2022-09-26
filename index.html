@@ -4,11 +4,12 @@
   <head>
     <title> Max Vink </title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon-32x32.png" type="image/x-icon">
   </head>
   
   <body>
 
-    <!-- navigation -->
+    <!-- NAVIGATION -->
     <nav class="navbar" id="main-nav">
       <div class="container">
         <ul> <!-- links done in bullet point form because google likes it and because navigation is easier-->
@@ -21,21 +22,22 @@
       </div>
     </nav>
     
-    <!-- masthead -->
+    <!-- MASTHEAD -->
     <header class="masthead" id="page-top">
       <div class="container">
-        <!-- <div class="masthead-tagline"> <span data-typed-items="Engineer, Triathlete, Artist"></span></div> -->
-        <div class="masthead-tagline"> Engineer, Triathlete, Student</div> 
         <div class="masthead-name"> Max Vink </div>
+        <div class="masthead-tagline"> 
+          <span class="txt-rotate" data-period="2000"
+          data-rotate='[ "Software Engineer.", "Triathlete.", "Student.", "Web Developer.", "Food Vacuum.", "Aspiring Cheese Expert." ]'></span></div> 
+        <a class="resume-button" href="assets/life/Vink_Resume_Internship_Sept25_22.pdf" target="_blank">RESUME</a>
         <div class="text-muted"> Berkeley, CA </div>
       </div>
-      <!-- particle script insert attempt-->
       <div class="particles-js" id="particles-js"></div>   
     </header>
     
     <main> 
-      <!-- timeline: intended to be a downward list in reverse chronological order chronicaling events-->
-      <section id = "timeline">
+      <!-- TIMELINE: intended to be a downward list in reverse chronological order chronicaling events-->
+      <section id="timeline">
         <div class="container">
           <div class="section-header"> Timeline </div>
           <div class="section-text-muted"> A summarized chronology of my career thus far </div>
@@ -97,29 +99,27 @@
         </div>
       </section>
 
-      <!-- skills -->
+      <!-- LANGUAGES -->
       <div class="break" id="particles-js"></div>
-      <section id ="languages">
+      <section id="languages">
         <div class="container">
           <div class="section-header"> Languages </div>
-          <div class="section-text-muted"> Languages I have proficieny in </div>
+          <div class="section-text-muted"> I speak these fluently </div>
           <div class="languages-container">
-            <ul>
-              <li class="language"> Java</li>
-              <li class="language"> JavaScript</li>
-              <li class="language"> Python</li>
-              <li class="language"> SQL</li>
-              <li class="language"> R</li>
-              <li class="language"> Scheme</li>
-              <li class="language"> MATLAB</li>
-              <li class="language"> HTML</li>
-              <li class="language"> CSS</li>
-            </ul>
+            <div class="language"> Java</div>
+            <div class="language"> JavaScript</div>
+            <div class="language"> Python</div>
+            <div class="language"> SQL</div>
+            <div class="language"> R</div>
+            <div class="language"> Scheme</div>
+            <div class="language"> MATLAB</div>
+            <div class="language"> HTML</div>
+            <div class="language"> CSS</div>              
           </div>            
         </div>
       </section>
 
-      <!-- portfolio -->
+      <!-- PORTFOLIO -->
       <div class="break" id="particles-js"></div>
       <section id = "portfolio">
         <div class="container">
@@ -179,7 +179,7 @@
         </div>
       </section>        
 
-      <!-- extracirriculars -->
+      <!-- EXTRACIRRICULARS -->
       <div class="break"></div>
       <section id = "life">
         <div class="container">
@@ -207,7 +207,7 @@
         </div>
       </section>
 
-      <!-- contact --> 
+      <!-- CONTACT --> 
       <div class="break"></div>
       <section id = "contact">
         <div class="container">
@@ -223,13 +223,16 @@
         </div>
       </section>
     </main>
-    <!-- footer -->
+
+    <!-- FOOTER -->
     <footer>
       <div class="footer"> @ 2022 Max Vink </div>
     </footer>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="particles.js"></script>
-  <script> particlesJS.load('particles-js', 'particles.json', function(){console.log('particles.json loaded...');});</script>
-  <script src="navscroll.js"></script>
+  
+    <!-- Load React Components -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/navscroll.js"></script>
+    <script src="js/typewriter.js"></script>
   </body>
 </html>

@@ -1,11 +1,93 @@
+/*--------------------------------------------------------------
+ PAGE CONFIG
+--------------------------------------------------------------*/
+
 html {
   scroll-behavior: smooth;
   width: 100%;
   background-color: black;
 }
 
-/* ================================================= NAVIGATION ==================================*/
+/* cursor highlight */
+::selection {
+  background-color: #C8DEE8;
+}
 
+body, main {
+  margin: 0;
+  background-color: transparent;
+}
+
+
+
+/*--------------------------------------------------------------
+ MULTI-SECTION CSS ANIMATIONS
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+|
+| QUARTER BORDERS
+|
+--------------------------------------------------------------*/
+
+.flex-timeline-item-body, 
+.masthead-name,
+.life-item {
+  position: relative;
+  pointer-events: all;
+}
+
+.flex-timeline-item-body::before, .flex-timeline-item-body::after, 
+.masthead-name::before, .masthead-name::after,
+.life-item::before, .life-item::after {
+  content: " ";
+  position: absolute;
+  width: 0vmax;
+  height: 0vmax;
+  border: .2vmax solid transparent;
+  transition: .5s ease;
+  transition-property: width height;
+  z-index: 4;
+}
+
+.flex-timeline-item-body::before,
+.masthead-name::before,
+.life-item::before {
+  left: -1vmax;
+  top: -1vmax;
+  border-width: .2vmax 0 0 .2vmax;
+}
+
+.flex-timeline-item-body::after, 
+.masthead-name::after,
+.life-item::after {
+  right: -1vmax;
+  bottom: -1vmax;
+  border-width: 0 .2vmax .2vmax 0;
+}
+
+.flex-timeline-item-body:hover::before, .flex-timeline-item-body:hover::after,
+.masthead-name:hover::before, .masthead-name:hover::after,
+.life-item:hover::before, .life-item:hover::after {
+  border-color: deepskyblue;
+  width: calc(30% + 1.8vmax);  
+  height: calc(40% + 1.8vmax);
+}
+
+
+
+
+/*--------------------------------------------------------------
+ SECTIONS
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+|
+| NAVIGATION
+|
+--------------------------------------------------------------*/
+
+/* -- Nav Setup -- */
 nav {
   position: fixed;
   top: 0;
@@ -31,41 +113,40 @@ nav {
   }
 }
 
+/* -- Default of Nav without Scroll -- */
+.navbar {
+  background-color: transparent;
+}
+
+/* -- Changes to Nav on Scroll -- */
 .scroll {
   background-color: #212529;
   box-shadow: 0 0 25px 0 black; /* one of the many ways to give shadow. we basically only gave the blur parameter a nonstandard value for a simple shadow*/
 }
 
-.navbar {
-  background-color: transparent;
-}
-
-nav * { /* * means any element, so here * means anything inside nav */
+/* -- Keep Nav Links Formatted In Line -- */
+nav li { 
   display: inline;
   white-space:nowrap;
   justify-content: center;
   align-items: center;
-}
-
-nav li {
   margin: 5vw; /* set line items in nav x px apart */
 }
 
+/* -- Keep Nav Links Links Formatted As Dynamic Text -- */
 nav li a {
   color : #27C9F9 ;
-  text-decoration: none; /* override and remove underline style */
+  text-decoration: none; 
 }
 
 nav li a:hover,
 .active {
   color: white;
+  transition: .3s ease-in-out;
+  text-decoration: underline;
 }
 
-body, main {
-  margin: 0;
-  background-color: transparent;
-}
-
+/* -- Particles Background Configuration -- */
 .particles-js{
   width: 100% !important;
   height: 100% !important;
@@ -81,22 +162,25 @@ body, main {
   background-color: black;
 }
 
-.break {
-  background-color: #212529;
-  height: 0vh;
-}
 
-/* ============================================== HEADER ================================== */
+/*--------------------------------------------------------------
+|
+| HEADER
+|
+--------------------------------------------------------------*/
+/* -- Background -- */
 header{
   height: 63vh ;
 }
 
+/* -- Below Name Text -- */
 .text-muted {
   font-size: 22px;
-  font-family: "Times New Roman";
+  font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: gray;
 }
 
+/* -- Container for Name and Info -- */
 header.masthead {
   padding-top: 17rem;
   padding-bottom: 0rem;
@@ -112,34 +196,83 @@ header.masthead {
   pointer-events: none;
 }
 
+/* -- Typed Info By Name -- */
 header.masthead .masthead-tagline {
   font-size: 1.5rem;
   font-style: italic;
   line-height: 1.5rem;
-  margin-bottom: 25px;
-  /* color: #fed136; */
+  margin-bottom: 1.5rem;
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  /* z-index: 2 */
-  /*a nimation: typing 7s steps(15, end), 
-  blink-caret .5s step-end infinite alternate;*/
 }
+
+/* -- Cursor Effect -- */
+.txt-rotate::after{
+  content: "|";
+  font-size: 110%;
+  animation: blink .75s step-end infinite;
+}
+
+@keyframes blink {
+  from {opacity: 1;}
+  20% {opacity: 1;}
+  28% {opacity: 0;}
+  72% {opacity: 0;}
+  80% {opacity: 1;}
+  to {opacity: 1;}
+}
+
+/* -- Name -- */
 header.masthead .masthead-name {
   font-size: 5rem;
   font-weight: 700;
   line-height: 3.25rem;
-  margin-bottom: 2rem;
-  /* margin-bottom: 0rem; */
+  margin-bottom: 1.5rem;
   color: #27C9F9;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  /* behavior: url(../js/particles.js) */
-  /* z-index: 2 */
 }
 
+/* -- Button -- */
+.resume-button {
+  /* button formatting */
+  padding: 1.5rem 3rem;
+  pointer-events: all;
+  background-color: #2276ed;
+  border-radius: .25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+  margin-bottom: .75rem;
+
+  /* text formatting */
+  text-decoration: none;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+
+  /* arrow insert */
+  display: flex;
+}
+
+.resume-button:hover {
+  /* button hover formatting */
+  background-color: #27C9F9 ;
+}
+
+.resume-button::after {
+  /* button hover formatting */
+
+  display: block;
+  width: 24px;
+  overflow: scroll;
+  background-image: url("assets/icons/arrow-right-solid.svg");
+  margin-left: 8px;
+  
+}
+
+/* -- Scaling Limits -- */
 @media (min-width: 768px) {
   header.masthead {
     padding-bottom: 0rem;
-    /*12.5 padding-top: 0rem;
-    padding-bottom: 0rem; */
   }
   header.masthead .masthead-tagline {
     font-size: 2.25rem;
@@ -150,33 +283,42 @@ header.masthead .masthead-name {
     font-size: 6rem;
     font-weight: 700;
     line-height: 4.5rem;
-    /* margin-bottom: 4rem; */
   }
 }
 
-/* ================================= SECTION GENERALIZABLES===========================*/
-section, header {
-  display: block;
+/*--------------------------------------------------------------
+|
+| SECTION GENERALIZABLES
+|
+--------------------------------------------------------------*/
+
+/* -- Section Breakup (Currently Not In Use) -- */
+.break {
+  background-color: #212529;
+  height: 0vh;
 }
 
+/* -- Section Configuration -- */
 section {
   display: flex; 
   padding-bottom: 5rem ;
 }
 
+/* -- Section Title/Header Formatting -- */
 .section-header {
   margin-top: 5rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: bold;
   font-size: 3.5vmax ;
   color: black;
-  padding-bottom: 1vh ;
+  margin-bottom: 1vh ;
   text-transform: uppercase ;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
+/* -- Section Subheading/Subtitle Formatting -- */
 .section-text-muted * {
   display: inline;
   font-style: italic;
@@ -185,6 +327,7 @@ section {
   text-align: center;
 }
 
+/* -- Section Directions Text Formatting (Currently used in #Portfolio only) -- */
 .section-text-muted-bottom {
   margin-top:.7vmax;
   margin-bottom: 2vmax;
@@ -194,10 +337,12 @@ section {
   color: gray;
 }
 
+/* -- Set Link Color -- */
 a {
   color: #27C9F9; /* sets link color*/
 }
 
+/* -- Standard Container Size -- */
 .container {
   display: flex ; /*might not be necessary*/
   flex-direction: column;
@@ -210,7 +355,13 @@ a {
   justify-content: space-between;
 }
 
-/* ============================ Timeline ============================== */
+/*--------------------------------------------------------------
+|
+| TIMELINE
+|
+--------------------------------------------------------------*/
+
+/* -- TimeLine Configuration -- */
 section#timeline {
   background-color: white;
 }
@@ -218,6 +369,7 @@ section#timeline {
   padding-bottom: 2rem;
 }
 
+/* -- Text In Timeline Tiles Configuration -- */
 .timeline-date, .timeline-title {
   margin-bottom: 0.9vh;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -236,6 +388,7 @@ section#timeline {
   font-size: 1.15vmax;
 }
 
+/* -- Timeline Vertical Line Formatting -- */
 .timeline {
   position: relative;
   margin: 0 auto;
@@ -253,6 +406,7 @@ section#timeline {
   z-index: 1;
 }
 
+/* -- Timeline Flexbox Configuration -- */
 .flex-timeline{
   display: flex;
   flex-direction: column; 
@@ -279,7 +433,7 @@ section#timeline {
   align-content: flex-end;
   position: relative ;
   text-align: left;
-  padding-left: 2vw ;
+  margin-left: 2vw ;
 }
 
 .flex-timeline-item-left .flex-timeline-item-body{
@@ -287,7 +441,7 @@ section#timeline {
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
-  padding-right: 2vw ;
+  margin-right: 2vw ;
 }
 
 @media (max-width: 700px) {
@@ -331,50 +485,64 @@ section#timeline {
   justify-content: center;
 }
 
-/*============================== Skills =============================================*/
+/*--------------------------------------------------------------
+|
+| LANGUAGES
+|
+--------------------------------------------------------------*/
 
+/* -- Languages Configuration -- */
 section#languages {
   background-color: #FAFAFA;
 }
 
-
-.languages-container{
+.languages-container {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  text-decoration: none;
   justify-content: center;
   align-items: center;
-  width: 90%; /* of .skills-container */
+  width: 90%; 
+  height: 6vmax;
 }
 
 .language { 
   /* set in one line */
   display: inline;
-  white-space: nowrap;
+  white-space: wrap;
   justify-content: center;
   align-items: center;
 
   /* text formatting */
   color: #2276ed;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1.5vw;
+  font-size: 1.5vmax;
   font-weight: 500;
 
   /* shape formatting */
   background-color: #e7f1fd ;
-  border-radius: .5vw;
-  margin-inline: .5vw;
+  border-radius: .5vmax;
+  margin-inline: .5vmax;
+  margin-top: .5vmax;
+  margin-bottom: .5vmax;
   text-align: center;
-  padding-top: .3vw;
-  padding-bottom: .3vw; 
-  padding-left: 1vw;
-  padding-right: 1vw;
+  padding-top: .3vmax;
+  padding-bottom: .3vmax; 
+  padding-left: 1vmax;
+  padding-right: 1vmax;
 }
 
-/*============================== Portfolio =============================================*/
+.language:hover {
+  color: #27C9F9;
+}
 
+/*--------------------------------------------------------------
+|
+| PORTFOLIO
+|
+--------------------------------------------------------------*/
+
+/* -- Portfolio Configuration -- */
 section#portfolio {
   background-color: white;
 }
@@ -383,6 +551,7 @@ section#portfolio .section-text-muted{
   padding-bottom: 3vh;
 }
 
+/* -- Portfolio Container Configuration -- */
 .portfolio-container{
   position: relative;
   display: flex;
@@ -399,6 +568,7 @@ section#portfolio .section-text-muted{
   text-decoration: none;
 }
 
+/* -- Portfolio Item Formatting -- */
 .portfolio-item {
   margin: 1vmax;
   height: 28vmax;
@@ -457,12 +627,16 @@ section#portfolio .section-text-muted{
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/*============================== Life =============================================*/
+/*--------------------------------------------------------------
+|
+| LIFE/EXTRACIRRICULARS
+|
+--------------------------------------------------------------*/
 
+/* -- Life/Extracirriculars Configuration -- */
 section#life {
   background-color: #FAFAFA;
 }
-
 
 .life-container{
   position: relative;
@@ -501,7 +675,6 @@ section#life {
   margin: 1vmax;
   height: 20vw;
   width: 15vw;
-  align-items: center;
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -542,7 +715,11 @@ section#life {
 }
 
 
-/* -----------------------------CONTACT-------------------------------- */
+/*--------------------------------------------------------------
+|
+| CONTACT
+|
+--------------------------------------------------------------*/
 
 section#contact {
   /* background-color: #212529; */
@@ -552,6 +729,7 @@ section#contact {
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index: 4;
 }
 
 section#contact > .container > .section-header {
@@ -621,19 +799,20 @@ section#contact > .container > .section-text-muted{
 
 }
 
-/*=============================================== FOOTER ===================================*/
+/*--------------------------------------------------------------
+|
+| FOOTER
+|
+--------------------------------------------------------------*/
 
-footer{
+footer {
   background-color: #212529 ;
-  height: 8vh;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer {
   text-align: center; 
   justify-content: center;
+  text-align: center;
   font-size: 1.4vmax;
+  height: 8vh;
+  padding-top: 4vh;
   color: #27C9F9;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
