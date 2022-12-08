@@ -1,238 +1,426 @@
 <!DOCTYPE html>
 <html>
-  
-  <head>
-    <title> Max Vink </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/favicon-32x32.png" type="image/x-icon">
-  </head>
-  
-  <body>
 
-    <!-- NAVIGATION -->
-    <nav class="navbar" id="main-nav">
-      <div class="container">
-        <ul> <!-- links done in bullet point form because google likes it and because navigation is easier-->
-          <li><a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a></li>
-          <li><a class="navbar-brand js-scroll-trigger" href="#timeline">Timeline</a></li>
-          <li><a class="navbar-brand js-scroll-trigger" href="#portfolio">Portfolio</a></li>
-          <li><a class="navbar-brand js-scroll-trigger" href="#contact">Contact</a></li>
-          
-        </ul>
-      </div>
+<head>
+  <title>Max Vink</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=10">
+  <meta name="keywords" content="Max Vink, portfolio">
+  <meta name="description" content="Website Version 2.0, now with a functioning knowledge of javascript and three">
+  <meta property="og:title" content="Max Vink, The Website, and Other Contrived Titles">
+  <meta property="og:description"
+    content="Website Version 2.0, now with a functioning knowledge of javascript and three">
+  <meta property="og:url" content="http://sample.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="http://sample.com/assets/img/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Max Vink Portfolio">
+  <meta name="twitter:description" content="description description description description">
+  <meta name="twitter:image" content="http://sample.com/assets/img/ogp.png">
+  <!--link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"-->
+  <link rel="stylesheet" href="assets/css/common.css" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="index">
+  <div id="loading">
+
+  </div>
+
+  <section id="main">
+    <canvas></canvas>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <a class="items" id="navworks" href="#main">Works</a>
+      <a class="items" id="navmain" href="#main">Main</a>
+      <a class="items" id="navabout" href="#main">About</a>
     </nav>
-    
+
+    <!-- CONNECTIONS -->
+    <!--<a class="resume-button" href="assets/life/Vink_Resume_Internship_Dec01.pdf" target="_blank">RESUME</a>-->
     <!-- MASTHEAD -->
-    <header class="masthead" id="page-top">
-      <div class="container">
-        <div class="masthead-name"> Max Vink </div>
-        <div class="masthead-tagline"> 
-          <span class="txt-rotate" data-period="2000"
-          data-rotate='[ "Software Engineer.", "Triathlete.", "Student.", "Web Developer.", "Food Vacuum.", "Aspiring Cheese Expert." ]'></span></div> 
-        <a class="resume-button" href="assets/life/Vink_Resume_Internship_Sept25_22.pdf" target="_blank">RESUME</a>
-        <div class="text-muted"> Berkeley, CA </div>
+    <div id="masthead-section">
+      <div id="masthead-name">Max Vink</div>
+      <div class="masthead-tagline">
+        <span class="txt-rotate" data-period="2000"
+          data-rotate='[ "Software Engineer.", "Triathlete.", "Student.", "Web Developer.", "Food Vacuum.", "Thinks Triangles Are Dope." ]'>
+        </span>
       </div>
-      <div class="particles-js" id="particles-js"></div>   
-    </header>
-    
-    <main> 
-      <!-- TIMELINE: intended to be a downward list in reverse chronological order chronicaling events-->
-      <section id="timeline">
-        <div class="container">
-          <div class="section-header"> Timeline </div>
-          <div class="section-text-muted"> A summarized chronology of my career thus far </div>
-          <div class="timeline">
+    </div>
 
-             <div class="flex-timeline">
-              <div class="flex-timeline-item-left">
-                <img class="rounded-circle-timeline" src="assets/pcslogo.png" alt>          
-                <div class="flex-timeline-item-body">
-                  <div class="timeline-date"> Fall 2022 </div>
-                  <div class="timeline-title"> Research Associate and Developer </div>
-                  <div class="timeline-text"> Admitted into <a href="https://pcs.berkeley.edu/about">Political Computer Science @ Berkeley</a>, a project-based organization that utilizes computer science to address political problems and create tools that help everyday people navigate complex political topics. </div>
-                </div>
-              </div>
-               
-            <div class="flex-timeline">
-              <div class="flex-timeline-item-right">
-                <img class="rounded-circle-timeline" src="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>              
-                <div class="flex-timeline-item-body">
-                  <div class="timeline-date"> Summer 2022 </div>
-                  <div class="timeline-title"> Began Double Major </div>
-                  <div class="timeline-text"> Explored my passion for Computer Science, ultimately adding it as a second major </div>
-                </div>
-              </div>
-              
-            <div class="flex-timeline">
-              <div class="flex-timeline-item-left">
-                <img class="rounded-circle-timeline" src="assets/SURG.png" alt>                
-                <div class="flex-timeline-item-body">
-                  <div class="timeline-date"> Fall 2021 </div>
-                  <div class="timeline-title"> Research Associate </div>
-                  <div class="timeline-text"> Joined the <a href="https://surg.berkeley.edu/SURG">SDG Undergraduate Research Group</a>, a self-directed undergraduate think tank that focuses on improving sustainibility across all societal endeavors </div>
-                </div>
-              </div>
-              
-            <div class="flex-timeline">
-              <div class="flex-timeline-item-right">
-                <img class="rounded-circle-timeline" src="assets/telegraphforpeople.png" alt>              
-                <div class="flex-timeline-item-body">
-                  <div class="timeline-date"> Fall 2021 </div>
-                  <div class="timeline-title"> Director of Political Strategy and Media </div>
-                  <div class="timeline-text"> Joined and helped create <a href="https://telegraphforpeople.com">TelegraphForPeople</a>, a student-ran transit and urban design advocacy group that seeks the redesign of Berkeley's college neighborhoods to be bike and pedestrian centric instead of an urban hellscape</div>
-                </div>
-              </div>
-            </div>
-              
-            <div class="flex-timeline">
-              <div class="flex-timeline-item-left">
-                <img class="rounded-circle-timeline" src="https://disruptingafrica.com/images/b/b7/UCB_Logo.png" alt>            
-                <div class="flex-timeline-item-body">
-                  <div class="timeline-date"> Fall 2020 </div>
-                  <div class="timeline-title"> Began Undergraduate Studies at UC Berkeley </div>
-                  <div class="timeline-text"> Enrolled as a Political Science Major </div>
-                </div>
-              </div>
-            </div>
-              
-          </div>
+  </section>
+
+  <!-- PORTFOLIO - title cards. name, tools, description, photos.-->
+  <section id="works">
+    <div id="title">
+      Portfolio
+    </div>
+    <div class="work-item">
+      <div class="arrowholder">
+        <a class="prev" onclick="plusSlides(-1, 0)">❮</a>
+        <div class="work-images">
+          <img class="work-image1" src="assets/files/images/Works/Website/partial wave.png">
+          <img class="work-image1" src="assets/files/images/Works/Website/cubes.png">
+          <img class="work-image1" src="assets/files/images/Works/Website/sphere.png">
         </div>
-      </section>
-
-      <!-- LANGUAGES -->
-      <div class="break" id="particles-js"></div>
-      <section id="languages">
-        <div class="container">
-          <div class="section-header"> Languages </div>
-          <div class="section-text-muted"> I speak these fluently </div>
-          <div class="languages-container">
+        <a class="next" onclick="plusSlides(1, 0)">❯</a>
+      </div>
+      <div class="work-title">
+        Max Vink, The Website
+      </div>
+      <div class="work-date">
+        December 2022
+      </div>
+      <div class="work-description">
+        I finally redid my website! Though version one was interesting and fun, it lacked the sophistication and
+        intricacy that
+        comes with an expanded command of JavaScript, and moreover, was structurally limited by the ignorance inheret
+        in a
+        beginner's knowledge at the outset of my venture into HTML and CSS.
+      </div>
+      <div class="work-description">
+        Working with Three.JS experimentementally, and as a founding member of Berkeley's Google Student Developer
+        Club, along with
+        being inspired by some of the amazing constructions I've seen online I realized
+        the potential it had to become the centerpiece of an updated, upgraded site. 10,000 choreographed triangles
+        make quite the
+        visual spectacle.
+      </div>
+      <div class="work-description">
+        A little explanation for engineers:
+      </div>
+      <div class="work-description">
+        The main visual is built with WebGL via Three.JS.
+        It's a combination of triangular parallelepipeds, so it's not too complicated.
+      </div>
+      <div class="work-description">
+        However, I didn't use the BoxGeometry module in the API,
+        and instead added the vertices myself via a custom object derived from the InstancedBufferGeometry
+        because I wanted to transform the vertices individually.
+        Because I sought to manipulate units of disjointed triangles, I built voxels.
+      </div>
+      <div class="work-description">
+        After that, I move vertices in units of indices, move indices in units triangles, and move triangles in units
+        of solids.
+        The positions, velocities, colors, and sizes of these units are predicated on a noise function also inside
+        Triangles.JS.
+        All vertex coordinate calculations are done without shaders. This is a technique called GPGPU.
+      </div>
+      <div class="work-description">
+        As for how GPGPU controls transforms, all animation patterns are written in the vertex shader.
+        Instead of writing a bunch of animation methods inside the object, transforming vertices matrices and
+        manipulating them via
+        vectors significantly reduces processing time, allowing me to add thousands of triangles to the animation
+        without blowing
+        up a viewer's computer.
+      </div>
+      <div class="work-description">
+        The animationParam coefficients, an attribute I built in to the object created in Triangles.js,
+        determines which animations to apply. When set to zero, animation cannot be triggered.
+        Only when an animation parameter is set to one is that animation pattern applied.
+      </div>
+      <div class="work-description">
+        Because the animationParam is set instantly across all triangles,
+        but processing those triangles happens sequentially inside the vertex shader,
+        the resulting switch from one pattern to another, drawn out a few extra seconds by creating intermediary
+        frames via Tween.JS,
+        allows seamless transitions between the two animation patterns and have an additional visual appeal.
+      </div>
+      <div class="work-description">
+        The RBG color transition is also quite interesting. Instead of writing an algorithm in the fragment shader, I
+        built it in to
+        the vertex shader to save memory. To change colors, I applied trig functions to noise values multiplied by
+        coefficients activated
+        by animation parameters, then multiply those by their own position. These values output an HSV-described
+        color, which is prefered
+        over RBG because I can (1) achieve the full spectrum of colors and (2) avoid black and white.
+      </div>
+      <div class="work-description">
+        I then applied those values to an HSV to RGB algorithm that transforms the
+        HSV vector into an RGB vector and maps the return value an essentially normalized vector. Then, triangle
+        colors are simply
+        incremented by that value.
+      </div>
+      <div class="work-description">
+        In the end, voila: a mesmerizing canvas of dancing triangles.
+      </div>
+      <div class="work-skills">
+        <div class="skills-container">
+          <div class="language"> HTML</div>
+          <div class="language"> CSS</div>
+          <div class="language"> JavaScript</div>
+          <div class="technologies"> Three.JS</div>
+          <div class="technologies"> WebGL</div>
+          <div class="technologies"> GLSL</div>
+          <div class="technologies"> GSAP (TweenMax)</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="arrowholder">
+          <a class="prev" onclick="plusSlides(1, 1)">❮</a>
+          <div class="work-images">
+            <img class="work-image2" src="assets/files/images/Works/WorldGeneration/MapLitNoLights.png">
+            <img class="work-image2" src="assets/files/images/Works/WorldGeneration/NotLitHalfLights.png">
+            <img class="work-image2" src="assets/files/images/Works/WorldGeneration/menu.png">
+          </div>
+          <a class="next" onclick="plusSlides(1, 1)">❯</a>
+        </div>
+        <div class="work-title">
+          CS61b World Engine
+        </div>
+        <div class="work-date">
+          November 2022
+        </div>
+        <div class="work-description">
+          For the class final in CS61b, we were required to demonstrate our understanding of software engineering
+          principles
+          by creating a video game. What data structures will you choose? What algorithms will you employ?
+          How will you organize your classes and methods? How will you test your project to verify that it functions
+          properly,
+          even despite odd edge cases?
+          I engineered an 2D tile-based world engine that generates an interactive labyrinth world in Java. World
+          generation
+          is predicated on Randoms derived from seeds, so the world is psuedorandom -- able to be regenerated with the
+          same seeds.
+          First, centers are randomly placed. Rooms are built around these centers in random sizes. Then, a Weighted
+          Quick Union
+          algorithm connects all the rooms, ensuring that all are navigable and connected.
+        </div>
+        <div class="work-description">
+          Beyond the main menu and basic world layout, I decided to go further than the project spec,
+          adding some polish and intrigue to the game. I programmed persistence via save files,
+          dynamic lighting predicated on line of sight vision, scoring and high scores, a way to win, interactive
+          light sources, and a dynamic HUD.
+        </div>
+        <div class="work-description">
+          Line of sight vision is predicated on a Breadth First Search algorithm that only grants vision on seeable
+          paths. In other
+          words, light sources do not give vision around corners. Victory is contingent on lighting up all the rooms
+          in the shortest
+          period of time, making the game a speedrun. I think it's little touches like this that make a world of
+          difference to users. Despite being easier to construct than an engine, they are the features that matter the
+          most to a
+          player and provide the interest that foments immersion.
+        </div>
+        <div class="work-skills">
+          <div class="skills-container">
             <div class="language"> Java</div>
-            <div class="language"> JavaScript</div>
-            <div class="language"> Python</div>
-            <div class="language"> SQL</div>
-            <div class="language"> R</div>
-            <div class="language"> Scheme</div>
-            <div class="language"> MATLAB</div>
-            <div class="language"> HTML</div>
-            <div class="language"> CSS</div>              
-          </div>            
-        </div>
-      </section>
-
-      <!-- PORTFOLIO -->
-      <div class="break" id="particles-js"></div>
-      <section id = "portfolio">
-        <div class="container">
-          <div class="section-header"> Portfolio </div>
-          <div class="section-text-muted"> Some of the projects I'm most proud of </div>
-          <div class="portfolio-container">
-
-            <div class="portfolio-item">
-              <img class="portfolio-image" src="assets/pcslogo.png">
-              <div class="portfolio-title">Recitivism Machine Learning Model</div>              
-              <div class="portfolio-desc">Machine learning encourages Recitivism models to associate race with risk due to external, historical patterns of overpolicing, oversentencing, and overprofiling. Developed in Python and fed 2.6 million entries, this model escapes those biases, offering a better path.                          
-              </div>
-            </div>  
-
-            <div class="portfolio-item">
-              <img class="portfolio-image" src="assets/portfolio/engine.jpg">
-              <div class="portfolio-title">2D Worldbuilding Engine</div>              
-              <div class="portfolio-desc">An interactive 2D tile-based world engine that pseudorandomly generates interative worlds.
-                                          The engine supports persistence, dynamic lighting, scoring, customizable avatars, and a dynamic HUD,
-                                          creating an immersive and fully explorable world! Built in Java.                         
-              </div>
-            </div>
-
-            <div class="portfolio-item">
-              <img class="portfolio-image" src="assets/portfolio/scheme.png">
-              <div class="portfolio-title">Scheme Interpreter</div>              
-              <div class="portfolio-desc">An interpreter that parses and evaluates user-generated Scheme code
-                                          by tokenizing and parsing Scheme inputs defined by Scheme syntax rules. 
-                                          Assigned to ascertain understanding of Scheme, Python, and interpreters, 
-                                          I moved beyond the course project and implemented tail-recursion optimization with Python.                                          
-              </div>
-            </div>
-
-            <a href="https://github.com/MJV11/Music-Discord-Bot"><div class="portfolio-item">
-              <img class="portfolio-image" src="assets/portfolio/amplitude.jpg">
-              <div class="portfolio-title">Amped Discord Bot</div>              
-              <div class="portfolio-desc">All your favorite Discord music bots are dead. Amped revives the deprecated features of Rhythm and Groovy to allow users to bypass the ad-laden alternatives and listen to music directly inside their voice channels! Uses Python to serve the Discord API for interface.          
-              </div>
-            </div></a>
-
-            <div class="portfolio-item">
-              <img class="portfolio-image" src="assets/portfolio/2048_logo.png">
-              <div class="portfolio-title">2048</div>              
-              <div class="portfolio-desc">Thanks for reading this far! 2048, but in Java. Does it serve a larger purpose? No. But I love this game. 
-              </div>
-            </div>
-
-            <a href="https://github.com/MJV11/MJV11.github.io"><div class="portfolio-item"> 
-              <img class="portfolio-image" src="assets/favicon-32x32.png">
-              <div class="portfolio-title">This Website!</div>              
-              <div class="portfolio-desc">You're looking at it! A hard-coded vanity monument built to teach myself HTML, CSS, and JavaScript, as well as chronicle my professional development!                                        
-              </div>
-            </div></a>
-          </div>
-          <div class="section-text-muted-bottom"> [Click to Expand] </div>
-
-        </div>
-      </section>        
-
-      <!-- EXTRACIRRICULARS -->
-      <div class="break"></div>
-      <section id = "life">
-        <div class="container">
-          <div class="section-header"> Extracirriculars </div>
-          <div class="section-text-muted"> Life Outside Academics </div>
-          <div class="life-container">
-            <a href="https://instagram.com/calcycling"><div class="life-item"> 
-              <img class="life-image" src="assets/life/calcycling2021.jpg">
-              <div class="life-title">Cal Cycling</div>              
-              <div class="life-desc">PR and Media Officer</div>
-            </div></a>
-
-            <a href="https://trek.com"><div class="life-item"> 
-              <img class="life-image" src="assets/life/trekbikes2021.jpg">
-              <div class="life-title">Trek</div>              
-              <div class="life-desc">Mechanic</div>
-            </div></a>
-
-            <a href="https://instagram.com/cal_triathlon"><div class="life-item"> 
-              <img class="life-image" src="assets/life/caltri2021.jpg">
-              <div class="life-title">Cal Triathlon</div>              
-              <div class="life-desc">Athlete</div>
-            </div></a>
+            <div class="technologies"> StdDraw</div>
           </div>
         </div>
-      </section>
 
-      <!-- CONTACT --> 
-      <div class="break"></div>
-      <section id = "contact">
-        <div class="container">
-          <div class="section-header"> Contact </div>
-          <img class="rounded-circle" id="contact-photo" src="assets/maxwebsiteprofile.jpg" alt>
-          <div class="name-again"> Max Vink </div>
-          <div class="life-desc"> Feel free to get in touch </div>
-          <div class="pointsofcontact">
-            <li><a href="https://www.linkedin.com/in/maxvink/"><img class="contact-method-photos" src="assets/linkedinlogo.png" ></a></li>
-            <li><a href="mailto:max.vink@berkeley.edu"><img class="contact-method-photos" src="assets/gmaillogo.png" ></a></li>
-            <li><a href="https://github.com/MJV11"><img class="contact-method-photos" src="assets/githublogo.png" ></a></li>
+        <div class="work-item">
+          <div class="arrowholder">
+            <a class="prev" onclick="plusSlides(-1, 2)">❮</a>
+            <div class="work-images">
+              <img class="work-image3" src="assets/files/images/Works/Recidivism/confusionMatrix.png">
+              <img class="work-image3" src="assets/files/images/Works/Recidivism/comparisons.png">
+              <img class="work-image3" src="assets/files/images/Works/Recidivism/featureimportances.png">
+            </div>
+            <a class="next" onclick="plusSlides(1, 2)">❯</a>
+          </div>
+
+          <div class="work-title">
+            Recidivism Behavioral Machine Learning Model
+          </div>
+          <div class="work-date">
+            November 2022
+          </div>
+          <div class="work-description">
+            As a researcher and developer in Political Computer Science @ Berkeley and someone who cares deeply about
+            fairness,
+            I learned about an ML model used in our criminal justice system that attempts to predict recidivism, the
+            likelihood
+            of commiting another crime after a release from prison, called COMPAS.
+            This model is used to set bail, parole, and sentences, and includes race as one of the primary factors it
+            considers.
+            Beyond that, the model is only 66% accurate, which is abysmal given that it is used to shape a defendant's
+            life, and moreover,
+            is only 40% accurate when predicting innocence / no risk. Worse still, COMPAS refuses to show the inner
+            workings of their model,
+            making the judicial system also a black box via its implementation. See the presentation for all the awful
+            weaknesses.
+            Is it possible to build a more accurate model that does not include race? I decided to find out.
+          </div>
+          <div class="work-description">
+            At the end of the semester, I presented the model and my findings at a symposium on campus.
+            My most accurate model was built on XGBoost, with 75% validation accuracy. However, given that it is
+            relatively hard
+            to explain to a layperson on a jury or on a bench, I reccomended an alternative as well.
+            A three-factored logistic regression model acheives 70% cross-validation accuracy, which is still better
+            than the industry standard,
+            but also accessible to a jury.
+          </div>
+          <div class="work-skills">
+            <div class="skills-container">
+              <div class="language"> Python</div>
+              <div class="technologies"> Numpy</div>
+              <div class="technologies"> Pandas</div>
+              <div class="technologies"> Machine Learning</div>
+            </div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-images">
+              <img class="work-image" src="assets/files/images/Works/Scheme/SchemeInterpreter.png">
+            </div>
+            <div class="work-title">
+              Scheme Interpreter
+            </div>
+            <div class="work-date">
+              August 2022
+            </div>
+            <div class="work-description">
+              In CS61A, we were required to demonstrate our ability to understand and write algorithms
+              by creating a Scheme interpreter. Do people still use Scheme? Minor details.
+            </div>
+            <div class="work-description">
+              I designed an interpreter that prompts users for scheme code, then parses that user generated code,
+              tokenizes it by white space,
+              and then evaluates it by recusively calling eval and apply code with Python.
+            </div>
+            <div class="work-description">
+              Beyond this basic functionality that achieves the minimum requirements to call something an interpreter,
+              I went futher,
+              optimizing the interpreter to handle some of the unique architectural advantages of Scheme, including
+              visually appearance and
+              tail recursion optimization.
+              Whereas Python saves each environment that a recursive method is called within, even if no recombination
+              follows, thereby potentially
+              inducing major memory consumption, Scheme is designed such that recursive calls that lack a
+              recombination step simply override the
+              current environment, effectively utilizing storage.
+            </div>
+            <div class="work-description">
+              How does one use a language without tail recursion optimiztion to support that very feature in one that
+              does? Ironically, with iteration.
+              By iteratively calling evaluation and application methods within a while loop, instead of recusively
+              calling them as was suggested
+              by course staff, it was possible to achieve this functionality.
+            </div>
+            <div class="work-skills">
+              <div class="skills-container">
+                <div class="language"> Python</div>
+                <div class="language"> Scheme</div>
+              </div>
+            </div>
+  </section>
+
+  <section id="about">
+    <!-- Comprises the Left Tab of The Vanity Monument to Myself-->
+    <div id="left">
+      <img id="about-image" src="assets/files/images/About/MaxOnTopOfTamHoldingBike.jpg" alt="profilepicture">
+      <div id="name">
+        Max Vink
+      </div>
+      <div id="bio">
+        Max Vink is a double major at the University of California, Berkeley, where he studies
+        Political Science and Computer Science, because whether it's transformative software or alternative thought
+        experiments,
+        the power to improve the world around is firmly within our grasp.
+      </div>
+      <div id="bio">
+        When he isn't conducting research with Political Computer Science @ Berkeley
+        or teaching ten thousand triangles choreographed dance routines,
+        you can find him competing with Cal Triathlon and Cal Cycling around the state,
+        obsessing over Christopher Nolan movies,
+        winning yet another pie eating contest,
+        or fantasizing about snow.
+      </div>
+      <div id="bio">
+        If you'd like to connect, don't hesitate to reach out!
+      </div>
+    </div>
+    <!-- Comprises the Right Scroll Wheel of Relevant Coursework-->
+    <div id="right">
+      <div id="coursework-box">
+        <div id="coursework-title">
+          Relevant Coursework
+        </div>
+        <div id="scroll">
+          <div class="scroll-item">
+            <div class="scroll-title">
+              Spring 2023
+            </div>
+            <div class="scroll-body">
+              <li class="CS">CS 70 - Discrete Mathematics and Probability Theory</li>
+              <li class="CS">Math 54 - Linear Algebra</li>
+              <li class="PS">Polsci 149C - Southeast Asian Politics</li>
+            </div>
+          </div>
+          <div class="scroll-item">
+            <div class="scroll-title">
+              Fall 2022
+            </div>
+            <div class="scroll-body">
+              <li class="CS">CS 61A - Computer Programs</li>
+              <li class="CS">CS 61B - Data Structures</li>
+              <li class="CS">Econ 110C - Game Theory</li>
+              <li class="PS">Polsci 141A - Russian Politics</li>
+            </div>
+          </div>
+          <div class="scroll-item">
+            <div class="scroll-title">
+              Spring 2022
+            </div>
+            <div class="scroll-body">
+              <li class="CS">Polsci 3 - Empirical Analysis and Quantitative Methods</li>
+              <li class="PS">Polecon 101 - Contemporary Theories of Political Economy</li>
+            </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer"> @ 2022 Max Vink </div>
-    </footer>
-  
-    <!-- Load React Components -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/navscroll.js"></script>
-    <script src="js/typewriter.js"></script>
-  </body>
+      <div id="skills">
+        <div id="skills-title">
+          Skills
+        </div>
+        <div class="skills-container">
+          <div class="language"> Java</div>
+          <div class="language"> JavaScript</div>
+          <div class="language"> Python</div>
+          <div class="language"> SQL</div>
+          <div class="language"> Postgress</div>
+          <div class="language"> R</div>
+          <div class="language"> Scheme</div>
+          <div class="language"> MATLAB</div>
+          <div class="language"> HTML</div>
+          <div class="language"> CSS</div>
+          <div class="language"> Markdown</div>
+          <div class="technologies"> Git</div>
+          <div class="technologies"> WebGL</div>
+          <div class="technologies"> GLSL</div>
+          <div class="technologies"> GSAP (TweenMax)</div>
+          <div class="technologies"> three.js</div>
+          <div class="technologies"> Numpy</div>
+          <div class="technologies"> Pandas</div>
+          <div class="technologies"> Machine Learning</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Inject JS -->
+  <script src="assets/js/lib/three.js" type="text/javascript"></script>
+  <script src="assets/js/lib/TrackballControls.js" type="text/javascript"></script>
+  <script src="assets/js/lib/TweenMax.js" type="text/javascript"></script>
+  <script src="assets/js/lib/dat.gui.js" type="text/javascript"></script>
+  <script src="assets/js/lib/jquery.js" type="text/javascript"></script>
+  <script src="assets/js/lib/webfontloader.js" type="text/javascript"></script>
+  <script src="assets/js/TriangleGeometry.js" type="text/javascript"></script>
+  <script src="assets/js/Triangles.js" type="text/javascript"></script>
+  <script src="assets/js/MainVisual.js" type="text/javascript"></script>
+  <script src="assets/js/index.js" type="text/javascript"></script>
+  <script src="assets/js/typewriter.js" type="text/javascript"></script>
+  <script src="assets/js/slideshow.js" type="text/javascript"></script>
+
+</body>
+
 </html>
