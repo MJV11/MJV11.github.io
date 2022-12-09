@@ -17,12 +17,12 @@
     // animation applicability
     // There are 3 animations defined in the vertex shader
     // value to switch between them
-    this.animationValue1 = 1;
+    this.animationValue1 = 0;
     this.animationValue2 = 0;
     this.animationValue3 = 0;
     this.animationValue4 = 0;
     this.animationValue5 = 0;
-    this.animationValue6 = 0;
+    this.animationValue6 = 1;
     this.animationValue7 = 0;
     this.animationValue8 = 0;
 

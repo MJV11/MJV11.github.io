@@ -31,12 +31,12 @@
         numVertices: { type: '1f', value: this.numVertices },
 
         // animation applicability
-        animationValue1: { type: '1f', value: 1 },
+        animationValue1: { type: '1f', value: 0 },
         animationValue2: { type: '1f', value: 0 },
         animationValue3: { type: '1f', value: 0 },
         animationValue4: { type: '1f', value: 0 },
         animationValue5: { type: '1f', value: 0 },
-        animationValue6: { type: '1f', value: 0 },
+        animationValue6: { type: '1f', value: 1 },
         animationValue7: { type: '1f', value: 0 },
         animationValue8: { type: '1f', value: 0 },
       },
