@@ -43,15 +43,24 @@
     <!-- CONNECTIONS -->
     <!--<a class="resume-button" href="assets/life/Vink_Resume_Internship_Dec01.pdf" target="_blank">RESUME</a>-->
     <!-- MASTHEAD -->
-    <div id="masthead-section">
+    <div class="masthead-section" id="masthead-main">
       <!--img id="logo" src="assets/files/images/trianglefavicon.png"-->
-      <div id="masthead-name">Max Vink</div>
-      <div class="masthead-tagline">
+      <div class="masthead-title" id="masthead-name">
+        Max Vink
+      </div>
+      <div class="masthead-title" id="masthead-works">
+        Works
+      </div>
+      <div class="masthead-title" id="masthead-about">
+        About
+      </div>
+      <div class="masthead-tagline" id="masthead-tagline">
         <span class="txt-rotate" data-period="2000"
           data-rotate='[ "Software Engineer.", "Triathlete.", "Student.", "Web Developer.", "Thinks Triangles Are Dope." ]'>
         </span>
       </div>
     </div>
+
 
     <div class="scrolldown" id="scrolldownwords">Scroll</div>
     <div class="scrolldown" id="scrolldownarrow">❯</div>
@@ -59,9 +68,6 @@
 
   <!-- PORTFOLIO - title cards. name, tools, description, photos.-->
   <section id="works">
-    <div id="title">
-      Portfolio
-    </div>
     <div class="work-item">
       <div class="arrowholder">
         <a class="prev" onclick="plusSlides(-1, 0)">❮</a>
@@ -80,7 +86,8 @@
       </div>
       <div class="work-description">
         I finally redid my website! Though version one was interesting and fun, it lacked the sophistication and
-        intricacy that comes with an expanded command of JavaScript, and moreover, was structurally limited by the ignorance inheret
+        intricacy that comes with an expanded command of JavaScript, and moreover, was structurally limited by the
+        ignorance inheret
         in a beginner's knowledge at the outset of my venture into HTML and CSS.
       </div>
       <div class="work-description">
@@ -97,7 +104,8 @@
       </div>
       <div class="work-description">
         After that, I move vertices in units of indices, move indices in units triangles, and move triangles in units
-        of solids. The positions, velocities, colors, and sizes of these units are predicated on a noise function also inside
+        of solids. The positions, velocities, colors, and sizes of these units are predicated on a noise function also
+        inside
         Triangles.JS. All vertex coordinate calculations are done without shaders. This is a technique called GPGPU.
       </div>
       <div class="work-description">
@@ -120,7 +128,7 @@
       </div>
       <div class="work-description">
         The RBG color transition is also quite interesting. Instead of writing an algorithm in the fragment shader, I
-        built it in to the vertex shader to save memory. To change colors, 
+        built it in to the vertex shader to save memory. To change colors,
         I applied trig functions to noise values multiplied by coefficients activated
         by animation parameters, then multiply those by their own position. These values output an HSV-described
         color, which is prefered
@@ -145,155 +153,170 @@
           <div class="technologies"> GSAP (TweenMax)</div>
         </div>
       </div>
-      <div class="work-item">
-        <div class="arrowholder">
-          <a class="prev" onclick="plusSlides(1, 1)">❮</a>
-          <div class="work-images">
-            <img class="work-image2" src="assets/files/images/Works/WorldGeneration/MapLitNoLights.png">
-            <img class="work-image2" src="assets/files/images/Works/WorldGeneration/NotLitHalfLights.png">
-            <img class="work-image2" src="assets/files/images/Works/WorldGeneration/menu.png">
-          </div>
-          <a class="next" onclick="plusSlides(1, 1)">❯</a>
-        </div>
-        <div class="work-title">
-          CS61b World Engine
-        </div>
-        <div class="work-date">
-          November 2022
-        </div>
-        <div class="work-description">
-          For the class final in CS61b, we were required to demonstrate our understanding of software engineering
-          principles
-          by creating a video game. What data structures will you choose? What algorithms will you employ?
-          How will you organize your classes and methods? How will you test your project to verify that it functions
-          properly,
-          even despite odd edge cases?
-          I engineered an 2D tile-based world engine that generates an interactive labyrinth world in Java. World
-          generation
-          is predicated on Randoms derived from seeds, so the world is psuedorandom -- able to be regenerated with the
-          same seeds.
-          First, centers are randomly placed. Rooms are built around these centers in random sizes. Then, a Weighted
-          Quick Union
-          algorithm connects all the rooms, ensuring that all are navigable and connected.
-        </div>
-        <div class="work-description">
-          Beyond the main menu and basic world layout, I decided to go further than the project spec,
-          adding some polish and intrigue to the game. I programmed persistence via save files,
-          dynamic lighting predicated on line of sight vision, scoring and high scores, a way to win, interactive
-          light sources, and a dynamic HUD.
-        </div>
-        <div class="work-description">
-          Line of sight vision is predicated on a Breadth First Search algorithm that only grants vision on seeable
-          paths. In other
-          words, light sources do not give vision around corners. Victory is contingent on lighting up all the rooms
-          in the shortest
-          period of time, making the game a speedrun. I think it's little touches like this that make a world of
-          difference to users. Despite being easier to construct than an engine, they are the features that matter the
-          most to a
-          player and provide the interest that foments immersion.
-        </div>
-        <div class="work-skills">
-          <div class="skills-container">
-            <div class="language"> Java</div>
-            <div class="technologies"> StdDraw</div>
-          </div>
-        </div>
+      <a class="portfolio-link"
+        href="https://github.com/MJV11/MJV11.github.io">
+        [See on Github]
+      </a>
+    </div>
 
-        <div class="work-item">
-          <div class="arrowholder">
-            <a class="prev" onclick="plusSlides(-1, 2)">❮</a>
-            <div class="work-images">
-              <img class="work-image3" src="assets/files/images/Works/Recidivism/confusionMatrix.png">
-              <img class="work-image3" src="assets/files/images/Works/Recidivism/comparisons.png">
-              <img class="work-image3" src="assets/files/images/Works/Recidivism/featureimportances.png">
-            </div>
-            <a class="next" onclick="plusSlides(1, 2)">❯</a>
-          </div>
+    <div class="work-item">
+      <div class="arrowholder">
+        <a class="prev" onclick="plusSlides(1, 1)">❮</a>
+        <div class="work-images">
+          <img class="work-image2" src="assets/files/images/Works/WorldGeneration/MapLitNoLights.png">
+          <img class="work-image2" src="assets/files/images/Works/WorldGeneration/NotLitHalfLights.png">
+          <img class="work-image2" src="assets/files/images/Works/WorldGeneration/menu.png">
+        </div>
+        <a class="next" onclick="plusSlides(1, 1)">❯</a>
+      </div>
+      <div class="work-title">
+        CS61b World Engine
+      </div>
+      <div class="work-date">
+        November 2022
+      </div>
+      <div class="work-description">
+        For the class final in CS61b, we were required to demonstrate our understanding of software engineering
+        principles
+        by creating a video game. What data structures will you choose? What algorithms will you employ?
+        How will you organize your classes and methods? How will you test your project to verify that it functions
+        properly,
+        even despite odd edge cases?
+        I engineered an 2D tile-based world engine that generates an interactive labyrinth world in Java. World
+        generation
+        is predicated on Randoms derived from seeds, so the world is psuedorandom -- able to be regenerated with the
+        same seeds.
+        First, centers are randomly placed. Rooms are built around these centers in random sizes. Then, a Weighted
+        Quick Union
+        algorithm connects all the rooms, ensuring that all are navigable and connected.
+      </div>
+      <div class="work-description">
+        Beyond the main menu and basic world layout, I decided to go further than the project spec,
+        adding some polish and intrigue to the game. I programmed persistence via save files,
+        dynamic lighting predicated on line of sight vision, scoring and high scores, a way to win, interactive
+        light sources, and a dynamic HUD.
+      </div>
+      <div class="work-description">
+        Line of sight vision is predicated on a Breadth First Search algorithm that only grants vision on seeable
+        paths. In other
+        words, light sources do not give vision around corners. Victory is contingent on lighting up all the rooms
+        in the shortest
+        period of time, making the game a speedrun. I think it's little touches like this that make a world of
+        difference to users. Despite being easier to construct than an engine, they are the features that matter the
+        most to a
+        player and provide the interest that foments immersion.
+      </div>
+      <div class="work-skills">
+        <div class="skills-container">
+          <div class="language"> Java</div>
+          <div class="technologies"> StdDraw</div>
+        </div>
+      </div>
+    </div>
 
-          <div class="work-title">
-            Recidivism Behavioral Machine Learning Model
-          </div>
-          <div class="work-date">
-            November 2022
-          </div>
-          <div class="work-description">
-            As a researcher and developer in Political Computer Science @ Berkeley and someone who cares deeply about
-            fairness,
-            I learned about an ML model used in our criminal justice system that attempts to predict recidivism, the
-            likelihood
-            of commiting another crime after a release from prison, called COMPAS.
-            This model is used to set bail, parole, and sentences, and includes race as one of the primary factors it
-            considers.
-            Beyond that, the model is only 66% accurate, which is abysmal given that it is used to shape a defendant's
-            life, and moreover,
-            is only 40% accurate when predicting innocence / no risk. Worse still, COMPAS refuses to show the inner
-            workings of their model,
-            making the judicial system also a black box via its implementation. See the presentation for all the awful
-            weaknesses.
-            Is it possible to build a more accurate model that does not include race? I decided to find out.
-          </div>
-          <div class="work-description">
-            At the end of the semester, I presented the model and my findings at a symposium on campus.
-            My most accurate model was built on XGBoost, with 75% validation accuracy. However, given that it is
-            relatively hard
-            to explain to a layperson on a jury or on a bench, I reccomended an alternative as well.
-            A three-factored logistic regression model acheives 70% cross-validation accuracy, which is still better
-            than the industry standard,
-            but also accessible to a jury.
-          </div>
-          <div class="work-skills">
-            <div class="skills-container">
-              <div class="language"> Python</div>
-              <div class="technologies"> Numpy</div>
-              <div class="technologies"> Pandas</div>
-              <div class="technologies"> Machine Learning</div>
-            </div>
-          </div>
+    <div class="work-item">
+      <div class="arrowholder">
+        <a class="prev" onclick="plusSlides(-1, 2)">❮</a>
+        <div class="work-images">
+          <img class="work-image3" src="assets/files/images/Works/Recidivism/confusionMatrix.png">
+          <img class="work-image3" src="assets/files/images/Works/Recidivism/comparisons.png">
+          <img class="work-image3" src="assets/files/images/Works/Recidivism/featureimportances.png">
+        </div>
+        <a class="next" onclick="plusSlides(1, 2)">❯</a>
+      </div>
 
-          <div class="work-item">
-            <div class="work-images">
-              <img class="work-image" src="assets/files/images/Works/Scheme/SchemeInterpreter.png">
-            </div>
-            <div class="work-title">
-              Scheme Interpreter
-            </div>
-            <div class="work-date">
-              August 2022
-            </div>
-            <div class="work-description">
-              In CS61A, we were required to demonstrate our ability to understand and write algorithms
-              by creating a Scheme interpreter. Do people still use Scheme? Minor details.
-            </div>
-            <div class="work-description">
-              I designed an interpreter that prompts users for scheme code, then parses that user generated code,
-              tokenizes it by white space,
-              and then evaluates it by recusively calling eval and apply code with Python.
-            </div>
-            <div class="work-description">
-              Beyond this basic functionality that achieves the minimum requirements to call something an interpreter,
-              I went futher,
-              optimizing the interpreter to handle some of the unique architectural advantages of Scheme, including
-              visually appearance and
-              tail recursion optimization.
-              Whereas Python saves each environment that a recursive method is called within, even if no recombination
-              follows, thereby potentially
-              inducing major memory consumption, Scheme is designed such that recursive calls that lack a
-              recombination step simply override the
-              current environment, effectively utilizing storage.
-            </div>
-            <div class="work-description">
-              How does one use a language without tail recursion optimiztion to support that very feature in one that
-              does? Ironically, with iteration.
-              By iteratively calling evaluation and application methods within a while loop, instead of recusively
-              calling them as was suggested
-              by course staff, it was possible to achieve this functionality.
-            </div>
-            <div class="work-skills">
-              <div class="skills-container">
-                <div class="language"> Python</div>
-                <div class="language"> Scheme</div>
-              </div>
-            </div>
+      <div class="work-title">
+        Recidivism Behavioral Machine Learning Model
+      </div>
+      <div class="work-date">
+        November 2022
+      </div>
+      <div class="work-description">
+        As a researcher and developer in Political Computer Science @ Berkeley and someone who cares deeply about
+        fairness,
+        I learned about an ML model used in our criminal justice system that attempts to predict recidivism, the
+        likelihood
+        of commiting another crime after a release from prison, called COMPAS.
+        This model is used to set bail, parole, and sentences, and includes race as one of the primary factors it
+        considers.
+        Beyond that, the model is only 66% accurate, which is abysmal given that it is used to shape a defendant's
+        life, and moreover,
+        is only 40% accurate when predicting innocence / no risk. Worse still, COMPAS refuses to show the inner
+        workings of their model,
+        making the judicial system also a black box via its implementation. See the presentation for all the awful
+        weaknesses.
+        Is it possible to build a more accurate model that does not include race? I decided to find out.
+      </div>
+      <div class="work-description">
+        At the end of the semester, I presented the model and my findings at a symposium on campus.
+        My most accurate model was built on XGBoost, with 75% validation accuracy. However, given that it is
+        relatively hard
+        to explain to a layperson on a jury or on a bench, I reccomended an alternative as well.
+        A three-factored logistic regression model acheives 70% cross-validation accuracy, which is still better
+        than the industry standard,
+        but also accessible to a jury.
+      </div>
+      <div class="work-skills">
+        <div class="skills-container">
+          <div class="language"> Python</div>
+          <div class="technologies"> Numpy</div>
+          <div class="technologies"> Pandas</div>
+          <div class="technologies"> Machine Learning</div>
+        </div>
+      </div>
+      <a class="portfolio-link"
+        href="https://docs.google.com/presentation/d/1OMxkdL2eFUSn7rNUHy4SNlETs66RkxHiKdF_W4qSGL0/edit?usp=sharing">
+        [See the Presentation]
+
+      </a>
+    </div>
+
+    <div class="work-item">
+      <div class="work-images">
+        <img class="work-image" src="assets/files/images/Works/Scheme/SchemeInterpreter.png">
+      </div>
+      <div class="work-title">
+        Scheme Interpreter
+      </div>
+      <div class="work-date">
+        August 2022
+      </div>
+      <div class="work-description">
+        In CS61A, we were required to demonstrate our ability to understand and write algorithms
+        by creating a Scheme interpreter. Do people still use Scheme? Minor details.
+      </div>
+      <div class="work-description">
+        I designed an interpreter that prompts users for scheme code, then parses that user generated code,
+        tokenizes it by white space,
+        and then evaluates it by recusively calling eval and apply code with Python.
+      </div>
+      <div class="work-description">
+        Beyond this basic functionality that achieves the minimum requirements to call something an interpreter,
+        I went futher,
+        optimizing the interpreter to handle some of the unique architectural advantages of Scheme, including
+        visually appearance and
+        tail recursion optimization.
+        Whereas Python saves each environment that a recursive method is called within, even if no recombination
+        follows, thereby potentially
+        inducing major memory consumption, Scheme is designed such that recursive calls that lack a
+        recombination step simply override the
+        current environment, effectively utilizing storage.
+      </div>
+      <div class="work-description">
+        How does one use a language without tail recursion optimiztion to support that very feature in one that
+        does? Ironically, with iteration.
+        By iteratively calling evaluation and application methods within a while loop, instead of recusively
+        calling them as was suggested
+        by course staff, it was possible to achieve this functionality.
+      </div>
+      <div class="work-skills">
+        <div class="skills-container">
+          <div class="language"> Python</div>
+          <div class="language"> Scheme</div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <section id="about">
@@ -370,7 +393,7 @@
           <div class="language"> JavaScript</div>
           <div class="language"> Python</div>
           <div class="language"> SQL</div>
-          <div class="language"> Postgress</div>
+          <div class="language"> Postgres</div>
           <div class="language"> R</div>
           <div class="language"> Scheme</div>
           <div class="language"> MATLAB</div>
@@ -403,7 +426,6 @@
   <script src="assets/js/MainVisual.js" type="text/javascript"></script>
   <script src="assets/js/index.js" type="text/javascript"></script>
   <script src="assets/js/typewriter.js" type="text/javascript"></script>
-  <script src="assets/js/navscroll.js" type="text/javascript"></script>
   <script src="assets/js/slideshow.js" type="text/javascript"></script>
 
 </body>

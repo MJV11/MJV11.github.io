@@ -31,42 +31,68 @@
     }
   }
 
+  // create graphic
   $(function() {
     new sample.MainVisual();
   });
 
+  // change masthead on nav navigation
   document.getElementById("navabout").onclick = function() {
     document.getElementById("about").style.display = "flex";
     document.getElementById("works").style.display = "none";
-    document.getElementById("scrolldownwords").style.display = "flex";
-    document.getElementById("scrolldownarrow").style.display = "flex";
-    globalNavTop(true);
-  }
-
-  document.getElementById("navmain").onclick = function() {
-    document.getElementById("about").style.display = "none";
-    document.getElementById("works").style.display = "none";
-    document.getElementById("scrolldownwords").style.display = "none";
-    document.getElementById("scrolldownarrow").style.display = "none";
-    globalNavTop(false);
-  }
-  
-  document.getElementById("logo").onclick = function() {
-    document.getElementById("about").style.display = "none";
-    document.getElementById("works").style.display = "none";
-    document.getElementById("scrolldownwords").style.display = "none";
-    document.getElementById("scrolldownarrow").style.display = "none";
-    globalNavTop(false);
+    isSectionMain(false);
+    displaySection(2);
   }
 
   document.getElementById("navworks").onclick = function() {
     document.getElementById("about").style.display = "none";
     document.getElementById("works").style.display = "flex";
-    document.getElementById("scrolldownwords").style.display = "flex";
-    document.getElementById("scrolldownarrow").style.display = "flex";
-    globalNavTop(true);
+    displaySection(1);
+    isSectionMain(false);
   }
 
+  document.getElementById("navmain").onclick = function() {
+    mainMenu();
+  }
   
+  document.getElementById("logo").onclick = function() {
+    mainMenu();
+  }
+
+  // encapsulate main menu init
+  function mainMenu() {
+    document.getElementById("about").style.display = "none";
+    document.getElementById("works").style.display = "none";
+    isSectionMain(true);
+    displaySection(0);
+  }
+
+  // encapsulate masthead init
+  function isSectionMain(i) {
+    if (i) {
+      document.getElementById("scrolldownwords").style.display = "none";
+      document.getElementById("scrolldownarrow").style.display = "none";
+      document.getElementById("masthead-tagline").style.display = "block";
+      globalNavTop(false);
+    } else {
+      document.getElementById("scrolldownwords").style.display = "flex";
+      document.getElementById("scrolldownarrow").style.display = "flex";
+      document.getElementById("masthead-tagline").style.display = "none";
+      globalNavTop(true);
+    }
+  }
+
+  // display what section
+  function displaySection(n) {
+    let pageID = ["masthead-name", "masthead-works", "masthead-about"]
+    for (i = 0; i < pageID.length; i++) {
+      if (i == n) {
+        document.getElementById(pageID[i]).style.display = "block";
+      } else {
+        document.getElementById(pageID[i]).style.display = "none";
+      }
+    }
+  }
+
 
 })();

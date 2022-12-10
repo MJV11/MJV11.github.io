@@ -123,7 +123,7 @@
           return map(mod(time * scale + offset, PI * 2.0), 0.0, PI * 2.0, -PI, PI, true);
         }
 
-        float exponentialInOut_6_4(float t) {
+        float exponentialInOut(float t) {
           return t == 0.0 || t == 1.0
             ? t
             : t < 0.5
@@ -131,21 +131,21 @@
               : -0.5 * pow(2.0, 10.0 - (t * 20.0)) + 1.0;
         }
 
-        vec3 mod289_5_5(vec3 x) {
+        vec3 mod(vec3 x) {
           return x - floor(x * (1.0 / 289.0)) * 289.0;
         }
         
-        vec2 mod289_5_5(vec2 x) {
+        vec2 mod(vec2 x) {
           return x - floor(x * (1.0 / 289.0)) * 289.0;
         }
 
-        vec3 permute_5_6(vec3 x) {
-          return mod289_5_5(((x*34.0)+1.0)*x);
+        vec3 permute(vec3 x) {
+          return mod(((x*34.0)+1.0)*x);
         }
         
         float getanimationValue(float animationValue, float randomValue) {
           float p = clamp(-map(randomValue, -1.0, 1.0, 0.0, 0.6, true) + animationValue * 1.5, 0.0, 1.0);
-          p = exponentialInOut_6_4(p);
+          p = exponentialInOut(p);
           return p;
         }
 
@@ -207,7 +207,9 @@
               pos.y += map(ringIndex, 0.0, numRings - 1.0, -2.0 * radius, 2.0 * radius, true);
               pos.z += 1.5 * radius; 
           
-              theta = getRad(10.0, PI * 2.0 / numVerticesPerRing * mod((ringVIndex - ringIndex) / numRings, numVerticesPerRing));
+              float direction = map(mod(ringIndex, 2.0), 0.0, 1.0, -1.0, 1.0, true);
+
+              theta = direction * getRad(10.0, PI * 2.0 / numVerticesPerRing * mod((ringVIndex - ringIndex) / numRings, numVerticesPerRing));
               pos = rotateVec3(pos, theta, vec3(0.0, 1.0, 0.0));
             }
           }
@@ -346,9 +348,9 @@
 
           float len = length(pos);
           vColor = vec4(hsv2rgb(vec3(
-            map(sin(getRad(2.0,  0.6 + len * (animationValue5 * 0.2 * 0.2 + animationValue6 * 0.2 * 0.5))), -1.0, 1.0, 0.0, 1.0, true),
+            map(sin(getRad(2.0,  1.6 + len * 0.3 * (animationValue5 * 0.2 + animationValue6 * 0.2))), -1.0, 1.0, 0.0, 1.0, true),
             map(cos(getRad(3.0,  2.0 + len * (animationValue8 * 2.0 + animationValue7 * 3.0))), -1.0, 1.0, 0.3, 0.5, true),
-            map(cos(getRad(1.0,  0.3)), -1.0, 1.0, 1.6, 2.0, true) + animationValue4 * 0.2
+            map(sin(getRad(1.0,  0.3)), -1.0, 1.0, 1.6, 2.0, true) + animationValue4 * 0.2
           )), 10.0);
 
           // light
