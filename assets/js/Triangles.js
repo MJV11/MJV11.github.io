@@ -39,6 +39,7 @@
         animationValue6: { type: '1f', value: 1 },
         animationValue7: { type: '1f', value: 0 },
         animationValue8: { type: '1f', value: 0 },
+        animationValue9: { type: '1f', value: 0 },
       },
 
       // how the triangles operate
@@ -61,8 +62,10 @@
         uniform float animationValue6;  
         uniform float animationValue7;  
         uniform float animationValue8;  
+        uniform float animationValue9;  
 
         // TriangleGeometry attributes
+        attribute vec3 logoPosition;  
         attribute vec3 position;  
         attribute vec3 randomValues;  
         attribute vec3 normal;
@@ -158,12 +161,31 @@
 
           float radius = 30.0;
 
+
+          //
+          // animation 9
+          // tk an 1
+          //
+
+          float p = exponentialInOut(animationValue9);
+          if(p > 0.0) {
+            pos = logoPosition;
+            rad1 = getRad(3.0, 0.0);
+            rad2 = getRad(5.0, 0.0);
+            pos = rotateVec3(pos, p * rad1, vec3(1.0, 0, 0));
+            pos = rotateVec3(pos, p * rad2, vec3(0, 1.0, 0));
+            n = rotateVec3(n, p * rad1, vec3(1.0, 0, 0));
+            n = rotateVec3(n, p * rad2, vec3(0, 1.0, 0));
+            pos += (p * sin(getRad(200.0,  200.0)) * 0.06 * normalize(pos));
+          }
+
           //
           // animation1 - billboard
           // 
           //
+          
 
-          float p = getanimationValue(animationValue1, randomValues.x);
+          p = getanimationValue(animationValue1, randomValues.x);
           if(p > 0.0) {
             pos -= position;
             theta = getRad(4.0, (randomValues.x + randomValues.y + randomValues.z) * 200.0);
@@ -325,9 +347,8 @@
             pos = rotateVec3(pos, p * getRad(1.0, 0.0), vec3(0.3, 1.0, 0.2));
             pos += (p * sin(getRad(160.0, 160.0)) * 0.3 * normalize(cubeCenterTo - pos)); 
           }
+      
 
-          //
-          // 
           //
 
           // model conversion
@@ -350,7 +371,7 @@
           vColor = vec4(hsv2rgb(vec3(
             map(sin(getRad(2.0,  1.6 + len * 0.3 * (animationValue5 * 0.2 + animationValue6 * 0.2))), -1.0, 1.0, 0.0, 1.0, true),
             map(cos(getRad(3.0,  2.0 + len * (animationValue8 * 2.0 + animationValue7 * 3.0))), -1.0, 1.0, 0.3, 0.5, true),
-            map(sin(getRad(1.0,  0.3)), -1.0, 1.0, 1.6, 2.0, true) + animationValue4 * 0.2
+            map(cos(getRad(1.0,  0.3)), -1.0, 1.0, 1.6, 2.0, true) + animationValue4 * 0.2
           )), 10.0);
 
           // light
