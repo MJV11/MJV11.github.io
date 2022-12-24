@@ -104,9 +104,10 @@
       </div>
       <div class="work-description">
         After that, I move vertices in units of indices, move indices in units of triangles, and move triangles in units
-        of solids. The positions, velocities, colors, and sizes of these units are predicated on a noise function also
-        inside
-        Triangles.JS. All vertex coordinate calculations are done without shaders. This is a technique called GPGPU.
+        of solids. The positions, velocities, colors, and sizes of these units are acheived by mathematically manipulating
+        vectors sequentially (unfortunately, this means an unfortunate side effect is that the speed of the animation is contingent
+        on a user's graphics card. It's very fast on the new Apple M2 chips). 
+        All vertex coordinate calculations are done within shaders. This is a technique called GPGPU.
       </div>
       <div class="work-description">
         As for how GPGPU controls transforms, all animation patterns are written in the vertex shader.
