@@ -7,13 +7,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=10">
   <meta name="keywords" content="Max Vink, portfolio">
   <meta name="description" content="Website Version 2.0, now with a functioning knowledge of javascript and three">
-  <meta property="og:title" content="Max Vink's Portfolio'">
+  <meta property="og:title" content="Max Vink's Portfolio Site">
   <meta property="og:description"
     content="Website Version 2.0, now with a functioning knowledge of javascript and three">
   <meta property="og:url" content="http://maxvink.me/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="http://maxvink.me/assets/files/images/trianglefavicon">
-  <meta name="twitter:image" content="http://maxvink.me/assets/files/images/trianglefavicon">
   <link rel="shortcut icon" href="assets/files/images/trianglefavicon.png">
   <link rel="apple-touch-icon" href="assets/files/images/trianglefavicon.png">
   <link rel="stylesheet" href="assets/css/style.css" type="text/css">
@@ -36,7 +35,7 @@
     <nav id="navbar" class="navbar">
       <a id="logo" href="#main"><img src="assets/files/images/trianglefavicon.png"> Max Vink</a>
       <a class="items" id="navworks">Works</a>
-      <a class="items" id="navmain" href="#main">Top</a>
+      <a class="items" id="navmain" href="#main">Home</a>
       <a class="items" id="navabout">About</a>
     </nav>
 
@@ -91,37 +90,37 @@
       </div>
       <div class="work-description">
         Working with Three.JS experimentementally and as a founding member of Berkeley's Google Student Developer
-        Club, along with being inspired by some of the amazing constructions I've seen online, I realized
-        the potential it had to become the centerpiece of an updated, upgraded site. 10,000 choreographed triangles
-        make quite the visual spectacle.
+        Club, along with being inspired by some of the amazing constructions I've seen online, including and especially those
+        by Takumi Hasegawa (whose often indecipherably complex creations offered insights into the workings of Three.js otherwise hidden behind various paywalls),
+        I aspired to be able to recreate a similar centerpiece on an upgraded site, and thus began this latest obsession. 
+        15,000 choreographed triangles make quite the visual spectacle.
       </div>
       <div class="work-description">
-        The main visual is built with WebGL via Three.JS. However, I didn't use the BoxGeometry module in the API,
-        and instead added the vertices myself via a custom object derived from the InstancedBufferGeometry,
-        allowing me to transform the vertices individually. 
-        Because I sought to manipulate units of disjointed triangles, I built voxels. The main animation is built programmatically, 
-        instead of via 3D modeling, allowing seamless transitions between the parallelepiped and the other animations.
+        The main visual is built with WebGL via Three.JS. However, I didn't use the PlaneGeometry module in the API,
+        and instead added the vertices myself by creating a custom object derived from the InstancedBufferGeometry module,
+        allowing me to transform the vertices individually by manipulating voxels, as well as give me creative control over the shaders. 
+        The main animation is built programmatically, instead of with 3D modeling, allowing seamless transitions between the parallelepipeds and the other animations.
       </div>
       <div class="work-description">
-        After that, I move vertices in units of indices, move indices in units of triangles, and move triangles in units
-        of solids. The positions, velocities, colors, and sizes of these units are acheived by mathematically manipulating
+        After that, I transform and mutate vertices by their indices. Those packages become groups of triangles, which are then
+        manipulated to develop various solids and patterns. 
+        The positions, velocities, colors, and sizes of these units are acheived by mathematically manipulating
         vectors sequentially (unfortunately, this means an unfortunate side effect is that the speed of the animation is contingent
         on a user's graphics card. It's very fast on the new Apple M2 chips). 
-        All vertex coordinate calculations are done within shaders. This is a technique called GPGPU.
       </div>
       <div class="work-description">
-        As for how GPGPU controls transforms, all animation patterns are written in the vertex shader.
+        All animation patterns are written in the vertex shader.
         Instead of writing a bunch of animation methods inside the object, I transform vertices matrices by manipulating
         vectors, which significantly reduces processing time, allowing me to add thousands of triangles to the animation
         without exploding a viewer's computer.
       </div>
       <div class="work-description">
-        The animationParam coefficients, an attribute I built in to the object created in Triangles.js,
+        The animationValue coefficients, an attribute I built in to the object created in Triangles.js,
         determines which animations to apply. When set to zero, an animation cannot be triggered.
-        Only when an animation parameter is set to one is that animation pattern applied.
+        When set to one, that animation parameter is then applied to the positions vector.
       </div>
       <div class="work-description">
-        Because the animationParam is set instantly across all triangles,
+        Because the animationValue is set instantly across all triangles,
         but processing those triangles happens sequentially inside the vertex shader,
         the resulting switch from one pattern to another, drawn out a few extra seconds by creating intermediary
         frames via Tween.JS,
