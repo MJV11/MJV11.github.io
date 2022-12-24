@@ -1,9 +1,11 @@
-(function() {
+(function () {
 
   var sample = window.sample || {};
   window.sample = sample;
 
-  var ID = Math.round(6 * Math.random() + 2);
+  var ID = 9;
+  var old = 9;
+
 
   /**
    * Main visual class
@@ -22,9 +24,10 @@
     this.animationValue3 = 0;
     this.animationValue4 = 0;
     this.animationValue5 = 0;
-    this.animationValue6 = 1;
+    this.animationValue6 = 0;
     this.animationValue7 = 0;
     this.animationValue8 = 0;
+    this.animationValue9 = 1;
 
     // initialize
     this.init();
@@ -33,7 +36,7 @@
   /**
    * Initialize
    */
-  sample.MainVisual.prototype.init = function() {
+  sample.MainVisual.prototype.init = function () {
     var self = this;
 
     this.$window = $(window);
@@ -56,11 +59,11 @@
     this.scene = new THREE.Scene();
 
     // camera
-    this.camera = new THREE.PerspectiveCamera(35, this.width / this.height, 10, 1000);
+    this.camera = new THREE.PerspectiveCamera(35, this.width / this.height, 1, 1000);
     this.camera.position.set(0, 0, 100);
 
     // window resize event
-    this.$window.on('resize', function(e) {
+    this.$window.on('resize', function (e) {
       // execute resize method
       self.resize();
     });
@@ -74,17 +77,17 @@
 
     // rotate animations
     // done like this to escape incorrect binding
-    setInterval(() => self.changeID(), 10000);
+    setInterval(() => self.changeID(), 8000);
 
     // start animation
     self.start();
-    
+
   }
 
   /**
    * Initialize triangles
    */
-  sample.MainVisual.prototype.initTriangles = function() {
+  sample.MainVisual.prototype.initTriangles = function () {
     var self = this;
     // Triangles instantiation
     self.Triangles = new sample.Triangles(
@@ -93,19 +96,19 @@
 
     self.scene.add(self.Triangles);
 
-    document.addEventListener('mousemove', function(e){
+    document.addEventListener('mousemove', function (e) {
       let scale = 0.0005;
-      orbit.rotateY( e.movementX * scale );
-      orbit.rotateX( e.movementY * scale ); 
+      orbit.rotateY(e.movementX * scale);
+      orbit.rotateX(e.movementY * scale);
       orbit.rotation.z = 0; //this is important to keep the camera level..
     })
-    
+
     //the camera rotation pivot
     orbit = new THREE.Object3D();
     orbit.rotation.order = "YXZ"; //this is important to keep level, so Z should be the last axis to rotate in order...
     orbit.position = (0, 0, 0);
-    self.scene.add(orbit );
-    
+    self.scene.add(orbit);
+
     //offset the camera and add it to the pivot
     orbit.add(self.camera);
 
@@ -115,10 +118,10 @@
   /**
    * start animation
    */
-  sample.MainVisual.prototype.start = function() {
+  sample.MainVisual.prototype.start = function () {
     var self = this;
 
-    var enterFrameHandler = function() {
+    var enterFrameHandler = function () {
       requestAnimationFrame(enterFrameHandler);
       self.update();
     };
@@ -130,7 +133,7 @@
   /**
    * Runs inside the animation loop
    */
-  sample.MainVisual.prototype.update = function() {
+  sample.MainVisual.prototype.update = function () {
     this.Triangles.update(this.camera);
     this.renderer.render(this.scene, this.camera);
   }
@@ -139,7 +142,7 @@
    * Resize processing
    * @param { jQuery.Event } e - jQuery event object
    */
-  sample.MainVisual.prototype.resize = function() {
+  sample.MainVisual.prototype.resize = function () {
     this.width = this.$window.width();
     this.height = this.$window.height();
 
@@ -155,7 +158,7 @@
    * Change animationValue
    * @param {number} index - 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8? (animationValue)
    */
-  sample.MainVisual.prototype.animate = function(index) {
+  sample.MainVisual.prototype.animate = function (index) {
     if (this.animateTween) {
       this.animateTween.kill();
     }
@@ -163,7 +166,7 @@
     var self = this;
 
     this.animateTween = TweenMax.to(this, 3, {
-      overwrite: true, 
+      overwrite: false,
       value: 10,
       ease: Linear.easeNone,
       animationValue1: (index == 1) ? 1 : 0,
@@ -174,6 +177,7 @@
       animationValue6: (index == 6) ? 1 : 0,
       animationValue7: (index == 7) ? 1 : 0,
       animationValue8: (index == 8) ? 1 : 0,
+      animationValue9: (index == 9) ? 1 : 0,
       onUpdate: function () {
         self.Triangles.setUniform('animationValue1', self.animationValue1);
         self.Triangles.setUniform('animationValue2', self.animationValue2);
@@ -183,48 +187,48 @@
         self.Triangles.setUniform('animationValue6', self.animationValue6);
         self.Triangles.setUniform('animationValue7', self.animationValue7);
         self.Triangles.setUniform('animationValue8', self.animationValue8);
+        self.Triangles.setUniform('animationValue9', self.animationValue9);
       }
     });
   }
 
-  sample.MainVisual.prototype.animation = function(i) {
+  sample.MainVisual.prototype.animation = function (i) {
     this.animate(i);
   }
 
-  sample.MainVisual.prototype.changeID = function() {
+  sample.MainVisual.prototype.changeID = function () {
     var self = this;
-
-    () => self.animation(5);
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    async function jankyWayToPause() {
-      await sleep(1000);
-    }
-    jankyWayToPause();
-    switch (ID) {      
-      case 3:
-        self.animation(ID);
-        break;
-      case 4:
-        self.animation(ID);
-        break;
-      case 5:
-        self.animation(ID);
-        break;
-      case 6:
-        self.animation(ID);
-        break;
-      case 7:
-        self.animation(ID);
-        break;
-      default:
-        self.animation(7);
-        break;
-    }
-    var old = ID;
-    while (ID == old) {
-      ID = Math.round(4 * Math.random() + 3);
+    if (ID == 9) {
+      do {
+        ID = Math.round(5 * Math.random() + 3);
+      } while (ID == old);
+      self.animation(9);
+    } else {
+      switch (ID) {
+        case 3:
+          self.animation(ID);
+          break;
+        case 4:
+          self.animation(ID);
+          break;
+        case 5:
+          self.animation(ID);
+          break;
+        case 6:
+          self.animation(ID);
+          break;
+        case 7:
+          self.animation(ID);
+          break;
+        case 8:
+          self.animation(ID);
+          break;
+        default:
+          self.animation(7);
+          break;
+      }
+      old = ID;
+      ID = 9;    
     }
   }
 

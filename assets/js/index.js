@@ -1,5 +1,10 @@
 (function() {
 
+  //notes for programmatic construction
+  // end peieces 3X4X3 (lines thicker than they are tall, gives depth to the shape)
+  // gaps x1
+  //
+
   var sample = window.sample || {};
   window.sample = sample;
   var navIsBottom = true;

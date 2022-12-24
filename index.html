@@ -87,8 +87,7 @@
       <div class="work-description">
         I finally redid my website! Though version one was interesting and fun, it lacked the sophistication and
         intricacy that comes with an expanded command of JavaScript, and moreover, was structurally limited by the
-        ignorance inheret
-        in a beginner's knowledge at the outset of my venture into HTML and CSS.
+        ignorance inheret in a beginner's knowledge at the outset of my venture into HTML and CSS.
       </div>
       <div class="work-description">
         Working with Three.JS experimentementally and as a founding member of Berkeley's Google Student Developer
@@ -98,9 +97,10 @@
       </div>
       <div class="work-description">
         The main visual is built with WebGL via Three.JS. However, I didn't use the BoxGeometry module in the API,
-        and instead added the vertices myself via a custom object derived from the InstancedBufferGeometry
-        because I wanted to transform the vertices individually.
-        Because I sought to manipulate units of disjointed triangles, I built voxels.
+        and instead added the vertices myself via a custom object derived from the InstancedBufferGeometry,
+        allowing me to transform the vertices individually. 
+        Because I sought to manipulate units of disjointed triangles, I built voxels. The main animation is built programmatically, 
+        instead of via 3D modeling, allowing seamless transitions between its parallelipeds and the other animations.
       </div>
       <div class="work-description">
         After that, I move vertices in units of indices, move indices in units triangles, and move triangles in units
@@ -267,7 +267,6 @@
       <a class="portfolio-link"
         href="https://docs.google.com/presentation/d/1OMxkdL2eFUSn7rNUHy4SNlETs66RkxHiKdF_W4qSGL0/edit?usp=sharing">
         [See the Presentation]
-
       </a>
     </div>
 
@@ -343,6 +342,10 @@
       <div id="bio">
         If you'd like to connect, don't hesitate to reach out!
       </div>
+      <a class="portfolio-link"
+        href="assets/files/Vink_Resume_Internship_Dec01.pdf">
+        [Resume]
+      </a>
     </div>
     <!-- Comprises the Right Scroll Wheel of Relevant Coursework-->
     <div id="right">
@@ -418,12 +421,13 @@
   <script src="assets/js/lib/three.js" type="text/javascript"></script>
   <script src="assets/js/lib/TrackballControls.js" type="text/javascript"></script>
   <script src="assets/js/lib/TweenMax.js" type="text/javascript"></script>
-  <!-- script src="assets/js/lib/dat.gui.js" type="text/javascript"></script-->
+  <script src="assets/js/lib/dat.gui.js" type="text/javascript"></script>
   <script src="assets/js/lib/jquery.js" type="text/javascript"></script>
   <script src="assets/js/lib/webfontloader.js" type="text/javascript"></script>
   <script src="assets/js/TriangleGeometry.js" type="text/javascript"></script>
   <script src="assets/js/Triangles.js" type="text/javascript"></script>
   <script src="assets/js/MainVisual.js" type="text/javascript"></script>
+  <script src="assets/js/MainVisual with DatGUI.js" type="text/javascript"></script>
   <script src="assets/js/index.js" type="text/javascript"></script>
   <script src="assets/js/typewriter.js" type="text/javascript"></script>
   <script src="assets/js/slideshow.js" type="text/javascript"></script>

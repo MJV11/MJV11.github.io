@@ -6,6 +6,11 @@
   font-family: "modernesans";
   src: url(modernesans.woff) format("woff");
 }
+
+::selection {
+  background-color: #000000;
+}
+
 html, body{
   width: 100%;
   height: 100%;
@@ -25,6 +30,7 @@ html, body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 }
 
 #main canvas {
@@ -89,6 +95,7 @@ html, body{
   height: 11vmax;
   width: 10vmax;
   margin-bottom: 1.5vmax;
+  pointer-events: all;
 
 }
 
@@ -185,6 +192,7 @@ html, body{
   align-items: center;
   justify-content: center;
   position: absolute;
+  pointer-events: all;
 
   /* positioning */
   bottom: 0;
@@ -214,9 +222,11 @@ html, body{
 .navbar #logo,
 .navbar #logo img {
   display: none;
+  pointer-events: all;
 }
 
-.navbarscrolltrigger {
+.navbarscrolltrigger,
+.scrolled {
   background-color: transparent;
   display: flex;
   flex-direction: row;
@@ -232,22 +242,11 @@ html, body{
   width: 100%;
 
   animation: transformTop 1s forwards;
+  pointer-events: all;
 }
 
 .scrolled {
   background-color: rgba(255, 255, 255, .6);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: right;
-  justify-content: right;
-  position: fixed;
-
-  /* positioning */
-  top: 0;
-  padding: .5vmax;
-  z-index: 1000;
-  width: 100%;
 
   animation: transformTop 1s forwards;
 }

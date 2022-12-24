@@ -36,10 +36,10 @@
         animationValue3: { type: '1f', value: 0 },
         animationValue4: { type: '1f', value: 0 },
         animationValue5: { type: '1f', value: 0 },
-        animationValue6: { type: '1f', value: 1 },
+        animationValue6: { type: '1f', value: 0 },
         animationValue7: { type: '1f', value: 0 },
         animationValue8: { type: '1f', value: 0 },
-        animationValue9: { type: '1f', value: 0 },
+        animationValue9: { type: '1f', value: 1 },
       },
 
       // how the triangles operate
@@ -65,12 +65,15 @@
         uniform float animationValue9;  
 
         // TriangleGeometry attributes
-        attribute vec3 logoPosition;  
         attribute vec3 position;  
-        attribute vec3 randomValues;  
+        attribute vec3 identicalTriangles;  
+        attribute vec3 centerTriangles;  
+        attribute vec3 triangleRandoms;  
+        attribute vec3 cubeRandoms;  
         attribute vec3 normal;
         attribute float ringVIndex;  
-        attribute float vIndex;
+        attribute float triangleIndex;
+        attribute float cubeIndex;
 
         varying vec4 vColor; 
 
@@ -154,7 +157,7 @@
 
         // main processing
         void main() {
-          vec3 pos = position;
+          vec3 pos = position ;
           float theta;
           vec3 n = normal;
           float rad1, rad2;
@@ -163,14 +166,13 @@
 
 
           //
-          // animation 9
-          // tk an 1
+          // animation 9 - MV main
+          // 
           //
 
           float p = exponentialInOut(animationValue9);
           if(p > 0.0) {
-            pos = logoPosition;
-            rad1 = getRad(3.0, 0.0);
+            rad1 = getRad(-3.0, 0.0);
             rad2 = getRad(5.0, 0.0);
             pos = rotateVec3(pos, p * rad1, vec3(1.0, 0, 0));
             pos = rotateVec3(pos, p * rad2, vec3(0, 1.0, 0));
@@ -185,16 +187,16 @@
           //
           
 
-          p = getanimationValue(animationValue1, randomValues.x);
+          p = getanimationValue(animationValue1, triangleRandoms.x);
           if(p > 0.0) {
-            pos -= position;
-            theta = getRad(4.0, (randomValues.x + randomValues.y + randomValues.z) * 200.0);
+            pos -= centerTriangles;
+            theta = getRad(4.0, (triangleRandoms.x + triangleRandoms.y + triangleRandoms.z) * 200.0);
             pos.z += radius + radius * map(sin(theta), -1.0, 1.0, 0.0, 1.0, true);
-            theta = getRad(4.0, randomValues.x * 20.0 );
+            theta = getRad(4.0, triangleRandoms.x * 20.0 );
             pos = rotateVec3(pos, theta, vec3(0.0, 1.0, 0.0));
-            theta = getRad(4.0, randomValues.y * 20.0);
+            theta = getRad(4.0, triangleRandoms.y * 20.0);
             pos = rotateVec3(pos, theta, vec3(0.0,0.0,1.0));
-            theta = getRad(4.0, randomValues.z * 20.0);
+            theta = getRad(4.0, triangleRandoms.z * 20.0);
             pos = rotateVec3(pos, theta, vec3(1.0, 0.0, 0.0));
           }
 
@@ -203,14 +205,14 @@
           // 
           //
 
-          p = getanimationValue(animationValue2, randomValues.x);
+          p = getanimationValue(animationValue2, triangleRandoms.x);
           if(p > 0.0) {
-            pos.z +=  radius;
-            theta = getRad(6.0, randomValues.x * 10.0);
+            pos.z += radius;
+            theta = getRad(6.0, triangleRandoms.x * 10.0);
             pos = rotateVec3(pos, theta, vec3(0.0, 1.0, 0.0));
-            theta = getRad(6.0, randomValues.y * 10.0);
+            theta = getRad(6.0, triangleRandoms.y * 10.0);
             pos = rotateVec3(pos, theta, vec3(1.0, 0.0, 0.0));
-            theta = getRad(6.0, randomValues.z * 10.0);
+            theta = getRad(6.0, triangleRandoms.z * 10.0);
             pos = rotateVec3(pos, theta, vec3(0.0, 0.0, 1.0));
           }
 
@@ -219,9 +221,11 @@
           // 
           //
 
-          p = getanimationValue(animationValue3, randomValues.x);
+          p = getanimationValue(animationValue3, triangleRandoms.x);
           if(p > 0.0) {
+            pos = identicalTriangles;
             if (mod(ringVIndex, 3.0) >= 0.0) {
+            
               float numRings = 8.0;  
               float ringIndex = mod(ringVIndex, numRings);  
               float numVerticesPerRing = numVertices / numRings; 
@@ -238,132 +242,113 @@
 
           //
           // animation4 - vibrating shards
-          // credit @ takumi hasegawa #4
+          // direction taken from @ takumi hasegawa #4
           //
 
-          p = getanimationValue(animationValue4, randomValues.x);
+          p = getanimationValue(animationValue4, triangleRandoms.x);
           if(p > 0.0) {
-            pos = pos - pos.z * p;
-            if (mod(vIndex, 3.0) > 0.0) { 
-              pos.z += (p * (8.0 * randomValues.z * sin(randomValues.z * 100.0))); // (p * initial size of the quill)
-              pos = rotateVec3(pos, p * getRad(10.0, randomValues.x * 10.0), vec3(1.0, 0, 0));
-              pos = rotateVec3(pos, p * getRad(10.0, randomValues.y * 10.0), vec3(0, 1.0, 0));
-              pos += (p * sin(getRad(60.0, randomValues.z * 60.0)) * randomValues.z * 16.0 * normalize(pos)); // (p *  speed of size change * maximum height *)
+            pos = position - centerTriangles * p;
+            if (mod(triangleIndex, 3.0) > 0.0) { 
+              pos.z += (p * (4.0 * triangleRandoms.z * sin(triangleRandoms.z * 100.0))); // (p * initial size of the quill)
+              pos = rotateVec3(pos, p * getRad(10.0, triangleRandoms.x * 10.0), vec3(1.0, 0, 0));
+              pos = rotateVec3(pos, p * getRad(10.0, triangleRandoms.y * 10.0), vec3(0, 1.0, 0));
+              pos += (p * sin(getRad(60.0, triangleRandoms.z * 60.0)) * triangleRandoms.z * 20.0 * normalize(pos)); // (p *  speed of size change * maximum height *)
             }
           }
 
           //
           // animation 5 - sphere (tangential particles)
-          // credit @ takumi hasegawa #5
+          // direction taken from @ takumi hasegawa #5
           // 
 
-          p = getanimationValue(animationValue5, randomValues.x);
+          p = getanimationValue(animationValue5, triangleRandoms.x);
           if(p > 0.0) {
-            pos.z *= 10.0;
-            pos = 1.0*pos - (pos - normalize(pos) * 3.0) * p; // 3.0 makes everything bigger
-            rad1 = getRad(10.0 * randomValues.z, randomValues.x * 10.0);
-            rad2 = getRad(10.0 * randomValues.z, randomValues.y * 10.0); // rad relates to the speed of the rotation
-            pos = rotateVec3(pos, p * rad1, vec3(1.0, 0, 0));
-            pos = rotateVec3(pos, p * rad2, vec3(0, 1.0, 0));
-            n = rotateVec3(n, p * rad1, vec3(1.0, 0, 0));
-            n = rotateVec3(n, p * rad2, vec3(0, 1.0, 0));
-            pos = (p * sin(getRad(10.0, randomValues.z * 10.0)) * randomValues.z * 30.0 * normalize(pos)); // 30.0 makes everything bigger, first 10 increases speed of oscillation
+              pos = pos - (pos - normalize(pos) * 3.0) * p; // 3.0 makes everything bigger
+              rad1 = getRad(10.0, triangleRandoms.x * 10.0);
+              rad2 = getRad(10.0, triangleRandoms.y * 10.0); // rad relates to the speed of the rotation
+              pos = rotateVec3(pos, p * rad1, vec3(1.0, 0, 0));
+              pos = rotateVec3(pos, p * rad2, vec3(0, 1.0, 0));
+              n = rotateVec3(n, p * rad1, vec3(1.0, 0, 0));
+              n = rotateVec3(n, p * rad2, vec3(0, 1.0, 0));
+              pos = ((p * sin(getRad(10.0, triangleRandoms.z * 10.0)) + .5 * triangleRandoms.z) * 20.0 * normalize(pos)); // 30.0 makes everything bigger, first 10 increases speed of oscillation
           }
 
           //
           // animation 6 - cube within a cube within a cube (cube cubed)
-          // credit @ takumi hasegawa #6
+          // direction taken from @ takumi hasegawa #6
           //
 
-          // animation6
-          p = getanimationValue(animationValue6, randomValues.x);
+          p = getanimationValue(animationValue6, triangleRandoms.x);
           if(p > 0.0) {
-            pos *= vec3(1.0, 1.0, 0.0);
-            rad1 = getRad(30.0, randomValues.x * 10.0);
-            rad2 = getRad(30.0, randomValues.y * 10.0);
+            pos = position - centerTriangles * p;
+            rad1 = getRad(30.0, triangleRandoms.x * 10.0);
+            rad2 = getRad(30.0, triangleRandoms.y * 10.0);
             pos = rotateVec3(pos, p * rad1, vec3(1.0, 0, 0));
             pos = rotateVec3(pos, p * rad2, vec3(0, 1.0, 0));
-            float triangleIndex = floor(vIndex / 3.0);
-            float cubeIndex = mod(mod(triangleIndex, 41.0), 3.0);
+            float tIndex = floor(triangleIndex / 3.0);
+            float cubeIndex = mod(mod(tIndex, 7.0), 3.0);
             float size = 8.0 + cubeIndex * 8.0;
-            float t = mod(time * 10.0 + randomValues.z * 10.0, 4.0);
+            float t = mod(time * 7.0 + triangleRandoms.z * 10.0, 4.0);
             pos.x += (map(t, 0.0, 1.0, -1.0, 1.0, true) * size * p - size * p);
             pos.y += (map(t, 1.0, 2.0, -1.0, 1.0, true) * size * p - size * p);
             pos.x -= map(t, 2.0, 3.0, -1.0, 1.0, true) * size * p;
             pos.y -= map(t, 3.0, 4.0, -1.0, 1.0, true) * size * p;
             pos.z -= size * p;
-            pos = rotateVec3(pos, p * PI * mod(triangleIndex, 2.0), vec3(0.0, 0.0, 1.0));
-            pos = rotateVec3(pos, p * PI / 2.0 * mod(triangleIndex, 3.0), vec3(1.0, 0.0, 0.0));
-            pos = rotateVec3(pos, p * PI / 2.0 * mod(triangleIndex, 4.0), vec3(0.0, 1.0, 0.0));
-            pos = rotateVec3(pos, p * time * 2.0 * (cubeIndex + 1.0), vec3(0.0, 0.0, 1.0));
+            pos = rotateVec3(pos, p * PI * mod(tIndex, 2.0), vec3(1.0, 0.0, 0.0));
+            pos = rotateVec3(pos, p * PI / 2.0 * mod(tIndex, 3.0), vec3(0.0, 1.0, 0.0));
+            pos = rotateVec3(pos, p * PI / 2.0 * mod(tIndex, 4.0), vec3(0.0, 0.0, 1.0));
             pos = rotateVec3(pos, p * time * 2.0 * (cubeIndex + 1.0), vec3(1.0, 0.0, 0.0));
+            pos = rotateVec3(pos, p * time * 2.0 * (cubeIndex + 1.0), vec3(0.0, 1.0, 0.0));
           }
 
           //
           // animation 7 - spiral
-          // credit @ takumi animation # 3
+          // direction taken from @ takumi animation # 3
           //
 
-          p = getanimationValue(animationValue7, randomValues.x);
+          p = getanimationValue(animationValue7, triangleRandoms.x);
           if(p > 0.0) {
-            pos *= vec3(1.0, 1.0, 0.0);
-            pos = pos - randomValues.x * p; // spiral creation
-            rad1 = getRad(40.0, randomValues.x * 5.0); 
-            rad2 = getRad(40.0, randomValues.y * 5.0);
+            pos = pos - centerTriangles * p;
+            // spiral creation
+            rad1 = getRad(40.0, triangleRandoms.x * 5.0); 
+            rad2 = getRad(40.0, triangleRandoms.y * 5.0);
             pos = rotateVec3(pos, p * rad1, vec3(1.0, 0, 0)); // rotation speed of the triangles 
             pos = rotateVec3(pos, p * rad2, vec3(0, 1.0, 0));
             n = rotateVec3(n, p * rad1, vec3(1.0, 0, 0)); // rotate normals
             n = rotateVec3(n, p * rad2, vec3(0, 1.0, 0));
-            float radius = 120.0 * map(randomValues.y, -1.0, 1.0, 0.02, 1.0, true); //randomValues.y, -.25, 0.25, -.75, 1.0, false); 
+            float radius = 120.0 * map(triangleRandoms.y, -1.0, 1.0, 0.02, 1.0, true); //triangleRandoms.y, -.25, 0.25, -.75, 1.0, false); 
             // (inward radius feed, outward radius feed, inward radius limit, outward radius limit)
-            float anim2CircleRad = getRad(6.0, randomValues.x * 60.0);
+            float anim2CircleRad = getRad(6.0, triangleRandoms.x * 60.0);
             pos += vec3(
               p * 2.0 * radius * cos(anim2CircleRad),
-              p * 6.0 * sin(getRad(3.0, randomValues.y) * 10.0), // (p * amplitutde * sin(getRad(speed of oscillation, randomValues.y) * number of waves))
+              p * 6.0 * sin(getRad(3.0, triangleRandoms.y) * 10.0), // (p * amplitutde * sin(getRad(speed of oscillation, triangleRandoms.y) * number of waves))
               p * 2.0 * radius * sin(anim2CircleRad)
             );
             pos = rotateVec3(pos, p * getRad(4.0, 0.0), vec3(0.3, 1.0, .5 * sin(time)));
             n = rotateVec3(n, p * getRad(4.0, 0.0), vec3(0.3, 1.0, sin(time)));
           }
 
-
           //
-          // animation 8 something with a cube
-          // credit @ takumi hasegawa animation 2
+          // animation 8 cubes!
+          // direction taken from @ takumi hasegawa animation 2
           //
 
-          p = getanimationValue(animationValue8, randomValues.x);
+          p = getanimationValue(animationValue8, cubeRandoms.x);
           if(p > 0.0) {
-            pos = pos - pos.x * p;
+            pos = pos - centerTriangles * p;
             pos *= (1.0 + p);
-            rad1 = PI * 2.0 * sin(getRad(1.0, pos.x));
-            rad2 = PI * 2.0 * sin(getRad(1.0, pos.y));
+            rad1 = PI * 2.0 * sin(getRad(1.0, cubeRandoms.x));
+            rad2 = PI * 2.0 * sin(getRad(1.0, cubeRandoms.y));
             pos = rotateVec3(pos, p * rad1, vec3(1.0, 0, 0));
             pos = rotateVec3(pos, p * rad2, vec3(0, 1.0, 0));
             n = rotateVec3(n, p * rad1, vec3(1.0, 0, 0));
             n = rotateVec3(n, p * rad2, vec3(0, 1.0, 0));
-            vec3 cubeCenterTo = randomValues * 20.0;
+            vec3 cubeCenterTo = cubeRandoms * 90.0;
             pos += (p * cubeCenterTo);
             pos = rotateVec3(pos, p * getRad(1.0, 0.0), vec3(0.3, 1.0, 0.2));
-            pos += (p * sin(getRad(160.0, 160.0)) * 0.3 * normalize(cubeCenterTo - pos)); 
+            pos += (p * sin(getRad(160.0, cubeRandoms.x * 160.0)) * 0.3 * normalize(cubeCenterTo - pos)); 
           }
       
-
-          //
-
-          // model conversion
-          vec4  modelPos  =  modelMatrix  *  vec4 ( pos ,  1.0 ) ;
-        
-          // view transform
-          vec4  modelViewPos  =  viewMatrix  *  modelPos ;
-          modelViewPos += vec4(position, 0.0) * animationValue1;
-
-          // processing for billboard (animation1)
-          pos -= animationValue1 * position;
-
-
-          modelViewPos += vec4(position, 0.0) * animationValue1;
-
           // Assign projection-transformed coordinates to gl_Position
           gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 
@@ -383,7 +368,7 @@
       fragmentShader: `
         precision mediump float;
 
-        varying vec4 vColor;  // color
+        varying vec4 vColor; // color
 
         // main processing
         void main(){
