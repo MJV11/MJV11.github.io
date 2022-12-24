@@ -1,3 +1,10 @@
+/**
+ * A huge thank you to Takumi Hasegawa, 
+ * whose creations I sought to emulate as I learned both three.js and javascript
+ * by recreating his amazing and awe-inspiring artwork,
+ * albeit without the polish of his expertise
+ */
+
 (function() {
 
   var sample = window.sample || {};
@@ -80,29 +87,29 @@
         // doesn't exist, must be defined
         const float PI = 3.1415926535897932384626433832795;
 
-        // rotate vec3
+        // rotate vec3s
         vec3 rotateVec3(vec3 p, float angle, vec3 axis){
           vec3 a = normalize(axis);
           float s = sin(angle);
           float c = cos(angle);
-          float r = 1.0 - c;
+          float scale = 1.0 - c;
           mat3 m = mat3(
-            a.x * a.x * r + c,
-            a.y * a.x * r + a.z * s,
-            a.z * a.x * r - a.y * s,
-            a.x * a.y * r - a.z * s,
-            a.y * a.y * r + c,
-            a.z * a.y * r + a.x * s,
-            a.x * a.z * r + a.y * s,
-            a.y * a.z * r - a.x * s,
-            a.z * a.z * r + c
+            a.x * a.x * scale + c,
+            a.y * a.x * scale + a.z * s,
+            a.z * a.x * scale - a.y * s,
+            a.x * a.y * scale - a.z * s,
+            a.y * a.y * scale + c,
+            a.z * a.y * scale + a.x * s,
+            a.x * a.z * scale + a.y * s,
+            a.y * a.z * scale - a.x * s,
+            a.z * a.z * scale + c
           );
           return m * p;
         }
 
-        // must write your own map function 
-        float map(float value, float inputMin, float inputMax, float outputMin, float outputMax, bool clamp) {
-          if(clamp == true) {
+        // doesn't exist, must be defined
+        float map(float value, float inputMin, float inputMax, float outputMin, float outputMax, bool limit) {
+          if(limit == true) {
             if(value < inputMin) return outputMin;
             if(value > inputMax) return outputMax;
           }
@@ -118,10 +125,9 @@
           return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
         }
 
-        //
         float getAlpha(float distance) {
-          float da = abs(distance - 400.0) / 500.0;
-          return clamp(1.0 - da, 0.0, 1.0);
+          float x = abs(distance - 400.0) / 500.0;
+          return clamp(1.0 - x, 0.0, 1.0);
         }
 
         // time, scale, offset
@@ -136,18 +142,6 @@
               ? +0.5 * pow(2.0, (20.0 * t) - 10.0)
               : -0.5 * pow(2.0, 10.0 - (t * 20.0)) + 1.0;
         }
-
-        vec3 mod(vec3 x) {
-          return x - floor(x * (1.0 / 289.0)) * 289.0;
-        }
-        
-        vec2 mod(vec2 x) {
-          return x - floor(x * (1.0 / 289.0)) * 289.0;
-        }
-
-        vec3 permute(vec3 x) {
-          return mod(((x*34.0)+1.0)*x);
-        }
         
         float getanimationValue(float animationValue, float randomValue) {
           float p = clamp(-map(randomValue, -1.0, 1.0, 0.0, 0.6, true) + animationValue * 1.5, 0.0, 1.0);
@@ -158,14 +152,13 @@
         // main processing
         void main() {
           vec3 pos = position ;
-          float theta;
           vec3 n = normal;
-          float rad1, rad2;
+          float rad1, rad2; // speed of rotation, in radians
 
           float radius = 30.0;
 
 
-          //
+          // ----------------------------------------------------------------------------------------
           // animation 9 - MV main
           // 
           //
@@ -181,26 +174,25 @@
             pos += (p * sin(getRad(200.0,  200.0)) * 0.06 * normalize(pos));
           }
 
-          //
+          // ----------------------------------------------------------------------------------------
           // animation1 - billboard
           // 
           //
           
-
           p = getanimationValue(animationValue1, triangleRandoms.x);
           if(p > 0.0) {
             pos -= centerTriangles;
-            theta = getRad(4.0, (triangleRandoms.x + triangleRandoms.y + triangleRandoms.z) * 200.0);
-            pos.z += radius + radius * map(sin(theta), -1.0, 1.0, 0.0, 1.0, true);
-            theta = getRad(4.0, triangleRandoms.x * 20.0 );
-            pos = rotateVec3(pos, theta, vec3(0.0, 1.0, 0.0));
-            theta = getRad(4.0, triangleRandoms.y * 20.0);
-            pos = rotateVec3(pos, theta, vec3(0.0,0.0,1.0));
-            theta = getRad(4.0, triangleRandoms.z * 20.0);
-            pos = rotateVec3(pos, theta, vec3(1.0, 0.0, 0.0));
+            rad1 = getRad(4.0, (triangleRandoms.x + triangleRandoms.y + triangleRandoms.z) * 200.0);
+            pos.z += radius + radius * map(sin(rad1), -1.0, 1.0, 0.0, 1.0, true);
+            rad1 = getRad(4.0, triangleRandoms.x * 20.0 );
+            pos = rotateVec3(pos, rad1, vec3(0.0, 1.0, 0.0));
+            rad1 = getRad(4.0, triangleRandoms.y * 20.0);
+            pos = rotateVec3(pos, rad1, vec3(0.0,0.0,1.0));
+            rad1 = getRad(4.0, triangleRandoms.z * 20.0);
+            pos = rotateVec3(pos, rad1, vec3(1.0, 0.0, 0.0));
           }
 
-          //
+          // ----------------------------------------------------------------------------------------
           // animation2 -- sphere (small particles)
           // 
           //
@@ -208,15 +200,15 @@
           p = getanimationValue(animationValue2, triangleRandoms.x);
           if(p > 0.0) {
             pos.z += radius;
-            theta = getRad(6.0, triangleRandoms.x * 10.0);
-            pos = rotateVec3(pos, theta, vec3(0.0, 1.0, 0.0));
-            theta = getRad(6.0, triangleRandoms.y * 10.0);
-            pos = rotateVec3(pos, theta, vec3(1.0, 0.0, 0.0));
-            theta = getRad(6.0, triangleRandoms.z * 10.0);
-            pos = rotateVec3(pos, theta, vec3(0.0, 0.0, 1.0));
+            rad1 = getRad(6.0, triangleRandoms.x * 10.0);
+            pos = rotateVec3(pos, rad1, vec3(0.0, 1.0, 0.0));
+            rad1 = getRad(6.0, triangleRandoms.y * 10.0);
+            pos = rotateVec3(pos, rad1, vec3(1.0, 0.0, 0.0));
+            rad1 = getRad(6.0, triangleRandoms.z * 10.0);
+            pos = rotateVec3(pos, rad1, vec3(0.0, 0.0, 1.0));
           }
 
-          //
+          // ----------------------------------------------------------------------------------------
           // animation3 - cylinder
           // 
           //
@@ -235,12 +227,12 @@
           
               float direction = map(mod(ringIndex, 2.0), 0.0, 1.0, -1.0, 1.0, true);
 
-              theta = direction * getRad(10.0, PI * 2.0 / numVerticesPerRing * mod((ringVIndex - ringIndex) / numRings, numVerticesPerRing));
-              pos = rotateVec3(pos, theta, vec3(0.0, 1.0, 0.0));
+              rad1 = direction * getRad(10.0, PI * 2.0 / numVerticesPerRing * mod((ringVIndex - ringIndex) / numRings, numVerticesPerRing));
+              pos = rotateVec3(pos, rad1, vec3(0.0, 1.0, 0.0));
             }
           }
 
-          //
+          // ----------------------------------------------------------------------------------------
           // animation4 - vibrating shards
           // direction taken from @ takumi hasegawa #4
           //
@@ -256,7 +248,7 @@
             }
           }
 
-          //
+          // ----------------------------------------------------------------------------------------
           // animation 5 - sphere (tangential particles)
           // direction taken from @ takumi hasegawa #5
           // 
@@ -273,7 +265,7 @@
               pos = ((p * sin(getRad(10.0, triangleRandoms.z * 10.0)) + .5 * triangleRandoms.z) * 20.0 * normalize(pos)); // 30.0 makes everything bigger, first 10 increases speed of oscillation
           }
 
-          //
+          // ----------------------------------------------------------------------------------------
           // animation 6 - cube within a cube within a cube (cube cubed)
           // direction taken from @ takumi hasegawa #6
           //
@@ -301,7 +293,7 @@
             pos = rotateVec3(pos, p * time * 2.0 * (cubeIndex + 1.0), vec3(0.0, 1.0, 0.0));
           }
 
-          //
+          // ----------------------------------------------------------------------------------------
           // animation 7 - spiral
           // direction taken from @ takumi animation # 3
           //
@@ -328,9 +320,9 @@
             n = rotateVec3(n, p * getRad(4.0, 0.0), vec3(0.3, 1.0, sin(time)));
           }
 
-          //
-          // animation 8 cubes!
-          // direction taken from @ takumi hasegawa animation 2
+          // ----------------------------------------------------------------------------------------
+          // animation 8 - cubes
+          // credit @ takumi hasegawa #2
           //
 
           p = getanimationValue(animationValue8, cubeRandoms.x);
@@ -348,6 +340,10 @@
             pos = rotateVec3(pos, p * getRad(1.0, 0.0), vec3(0.3, 1.0, 0.2));
             pos += (p * sin(getRad(160.0, cubeRandoms.x * 160.0)) * 0.3 * normalize(cubeCenterTo - pos)); 
           }
+
+
+
+
       
           // Assign projection-transformed coordinates to gl_Position
           gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
