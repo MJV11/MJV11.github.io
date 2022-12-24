@@ -247,7 +247,7 @@
 
           p = getanimationValue(animationValue4, triangleRandoms.x);
           if(p > 0.0) {
-            pos = position - centerTriangles * p;
+            pos -= centerTriangles * p;
             if (mod(triangleIndex, 3.0) > 0.0) { 
               pos.z += (p * (4.0 * triangleRandoms.z * sin(triangleRandoms.z * 100.0))); // (p * initial size of the quill)
               pos = rotateVec3(pos, p * getRad(10.0, triangleRandoms.x * 10.0), vec3(1.0, 0, 0));
@@ -263,7 +263,7 @@
 
           p = getanimationValue(animationValue5, triangleRandoms.x);
           if(p > 0.0) {
-              pos = pos - (pos - normalize(pos) * 3.0) * p; // 3.0 makes everything bigger
+              pos -= (pos - normalize(pos) * 3.0) * p; // 3.0 makes everything bigger
               rad1 = getRad(10.0, triangleRandoms.x * 10.0);
               rad2 = getRad(10.0, triangleRandoms.y * 10.0); // rad relates to the speed of the rotation
               pos = rotateVec3(pos, p * rad1, vec3(1.0, 0, 0));
@@ -280,7 +280,7 @@
 
           p = getanimationValue(animationValue6, triangleRandoms.x);
           if(p > 0.0) {
-            pos = position - centerTriangles * p;
+            pos -= centerTriangles * p;
             rad1 = getRad(30.0, triangleRandoms.x * 10.0);
             rad2 = getRad(30.0, triangleRandoms.y * 10.0);
             pos = rotateVec3(pos, p * rad1, vec3(1.0, 0, 0));

@@ -100,12 +100,12 @@
       let scale = 0.0005;
       orbit.rotateY(e.movementX * scale);
       orbit.rotateX(e.movementY * scale);
-      orbit.rotation.z = 0; //this is important to keep the camera level..
+      orbit.rotation.z = 0; //this is important to keep the camera level
     })
 
     //the camera rotation pivot
     orbit = new THREE.Object3D();
-    orbit.rotation.order = "YXZ"; //this is important to keep level, so Z should be the last axis to rotate in order...
+    orbit.rotation.order = "YXZ"; //this is important to keep level, so Z should be the last axis to rotate in order
     orbit.position = (0, 0, 0);
     self.scene.add(orbit);
 
@@ -200,7 +200,7 @@
     var self = this;
     if (ID == 9) {
       do {
-        ID = Math.round(5 * Math.random() + 3);
+        ID = Math.round(6 * Math.random() + 2.6);
       } while (ID == old);
       self.animation(9);
     } else {
@@ -224,7 +224,7 @@
           self.animation(ID);
           break;
         default:
-          self.animation(7);
+          self.animation(8);
           break;
       }
       old = ID;
