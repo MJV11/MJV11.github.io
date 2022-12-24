@@ -100,10 +100,10 @@
         and instead added the vertices myself via a custom object derived from the InstancedBufferGeometry,
         allowing me to transform the vertices individually. 
         Because I sought to manipulate units of disjointed triangles, I built voxels. The main animation is built programmatically, 
-        instead of via 3D modeling, allowing seamless transitions between its parallelipeds and the other animations.
+        instead of via 3D modeling, allowing seamless transitions between the parallelepiped and the other animations.
       </div>
       <div class="work-description">
-        After that, I move vertices in units of indices, move indices in units triangles, and move triangles in units
+        After that, I move vertices in units of indices, move indices in units of triangles, and move triangles in units
         of solids. The positions, velocities, colors, and sizes of these units are predicated on a noise function also
         inside
         Triangles.JS. All vertex coordinate calculations are done without shaders. This is a technique called GPGPU.
