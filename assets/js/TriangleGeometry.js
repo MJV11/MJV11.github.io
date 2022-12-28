@@ -6,12 +6,13 @@
   // create an array for attributes
   var logoVertices = [];    // logo logoVertices
   var identicalTriangles = [];   // shape logoVertices
-  var triangleIndices = []; // triangleIndices
-  var centerTriangles = []; // triangleIndices
+  var triangleIndices = []; // triangle Indices
+  var cubeIndices = []; // cube Indices
+  var centerTriangles = []; // subtract this to center all cubes
   var cubeRandoms = []; // triangleIndices
   var ringIndices = [];     // ring triangleIndices
   var triangleRandoms = [];    // Random values ​​used for vertex calculation etc.
-  var scale = -1.5;
+  var scale = -1.4;
 
   /**
    * Unique Geoemtry class that extends THREE.BufferGeometry
@@ -183,8 +184,9 @@
   function addCenters(startH, startL, h, l, z) {
     for (i = 0; i < 3; i++) {
       triangleIndices.push(triangleIndices.length);
-      centerTriangles.push(((startL + l) / (Math.abs(startL + l) || 1)) * (Math.abs(startL + l) + .5) * scale);
-      centerTriangles.push(((startH + h) / (Math.abs(startH + h) || 1)) * (Math.abs(startH + h) + .5) * scale);
+      cubeIndices.push(Math.trunc(cubeIndices.length / 36));
+      centerTriangles.push((startL + l + .5) * scale);
+      centerTriangles.push((startH + h + .5) * scale);
       centerTriangles.push((z + .5) * scale);
     }
   }
@@ -247,19 +249,22 @@
 
     }
 
-    for (var i = 0; i < triangleIndices.length/12; i++) {
+    for (var i = 0; i < triangleIndices.length/24; i++) {
       var randomValue = [
         map(Math.random(), 0, 1, -1, 1),
         map(Math.random(), 0, 1, -1, 1),
         map(Math.random(), 0, 1, -1, 1),
       ];
-      for (var j = 0; j < 36; j++) {
+      for (var j = 0; j < 72; j++) {
         cubeRandoms.push(randomValue[0]);   
         cubeRandoms.push(randomValue[1]);   
-        cubeRandoms.push(randomValue[2]); 
+        cubeRandoms.push(randomValue[2]);
+        //cubeIndices.push(i)  
       }
       
     }
+
+    console.log(cubeIndices.length, ringIndices.length, triangleIndices.length, centerTriangles.length/3);
 
     // attributes
     this.addAttribute('position', new THREE.BufferAttribute(new Float32Array(logoVertices), 3));  // vec3 // the shape of the instanced buffer geometry
@@ -269,6 +274,7 @@
     this.addAttribute('centerTriangles', new THREE.BufferAttribute(new Float32Array(centerTriangles), 3));  // vec3 // triangle centers
     this.addAttribute('triangleIndex', new THREE.BufferAttribute(new Uint16Array(triangleIndices), 1));  // index
     this.addAttribute('ringVIndex', new THREE.BufferAttribute(new Float32Array(ringIndices), 1));  // float
+    this.addAttribute('cubeIndex', new THREE.BufferAttribute(new Float32Array(cubeIndices), 1));  // float
     // normals (also an attribute)
     this.computeVertexNormals();
   }
