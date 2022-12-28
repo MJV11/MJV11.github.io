@@ -206,7 +206,7 @@
 
           Tween = getAnimationValue(animationValue2, triangleRandoms.x);
           if(Tween > 0.0) {
-            pos.z += radius * Tween;
+            pos.z += radius;
             rad1 = getRad(6.0, triangleRandoms.x * 10.0);
             pos = rotateVec3(pos, rad1, vec3(0.0, 1.0, 0.0));
             rad1 = getRad(6.0, triangleRandoms.y * 10.0);
@@ -341,8 +341,7 @@
             pos = rotateVec3(pos, Tween * rad2, vec3(0, 1.0, 0));
             n = rotateVec3(n, Tween * rad1, vec3(1.0, 0, 0));
             n = rotateVec3(n, Tween * rad2, vec3(0, 1.0, 0));
-            vec3 cubeCenterTo = cubeRandoms * 100.0;
-            pos *= (1.0 + Tween);
+            vec3 cubeCenterTo = cubeRandoms * 90.0;
             pos += (Tween * cubeCenterTo);
             pos = rotateVec3(pos, Tween * getRad(1.0, 0.0), vec3(0.3, 1.0, 0.2));
             pos += (Tween * sin(getRad(160.0, cubeRandoms.x * 160.0)) * 0.3 * normalize(cubeCenterTo - pos)); 

@@ -249,13 +249,13 @@
 
     }
 
-    for (var i = 0; i < triangleIndices.length/24; i++) {
+    for (var i = 0; i < triangleIndices.length/12; i++) {
       var randomValue = [
         map(Math.random(), 0, 1, -1, 1),
         map(Math.random(), 0, 1, -1, 1),
         map(Math.random(), 0, 1, -1, 1),
       ];
-      for (var j = 0; j < 72; j++) {
+      for (var j = 0; j < 36; j++) {
         cubeRandoms.push(randomValue[0]);   
         cubeRandoms.push(randomValue[1]);   
         cubeRandoms.push(randomValue[2]);
