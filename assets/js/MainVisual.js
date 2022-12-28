@@ -3,8 +3,8 @@
   var sample = window.sample || {};
   window.sample = sample;
 
-  var ID = 9;
-  var old = 9;
+  var ID = 0;
+  var old = 0;
 
 
   /**
@@ -19,6 +19,7 @@
     // animation applicability
     // There are 3 animations defined in the vertex shader
     // value to switch between them
+    this.animationValue0 = 1;
     this.animationValue1 = 0;
     this.animationValue2 = 0;
     this.animationValue3 = 0;
@@ -27,7 +28,8 @@
     this.animationValue6 = 0;
     this.animationValue7 = 0;
     this.animationValue8 = 0;
-    this.animationValue9 = 1;
+    this.animationValue9 = 0;
+    this.animationValue10 = 0;
 
     // initialize
     this.init();
@@ -167,8 +169,8 @@
 
     this.animateTween = TweenMax.to(this, 3, {
       overwrite: false,
-      value: 10,
       ease: Linear.easeNone,
+      animationValue0: (index == 0) ? 1 : 0,
       animationValue1: (index == 1) ? 1 : 0,
       animationValue2: (index == 2) ? 1 : 0,
       animationValue3: (index == 3) ? 1 : 0,
@@ -178,7 +180,9 @@
       animationValue7: (index == 7) ? 1 : 0,
       animationValue8: (index == 8) ? 1 : 0,
       animationValue9: (index == 9) ? 1 : 0,
+      animationValue10: (index == 10) ? 1 : 0,
       onUpdate: function () {
+        self.Triangles.setUniform('animationValue0', self.animationValue0);
         self.Triangles.setUniform('animationValue1', self.animationValue1);
         self.Triangles.setUniform('animationValue2', self.animationValue2);
         self.Triangles.setUniform('animationValue3', self.animationValue3);
@@ -188,6 +192,7 @@
         self.Triangles.setUniform('animationValue7', self.animationValue7);
         self.Triangles.setUniform('animationValue8', self.animationValue8);
         self.Triangles.setUniform('animationValue9', self.animationValue9);
+        self.Triangles.setUniform('animationValue10', self.animationValue10);
       }
     });
   }
@@ -198,13 +203,17 @@
 
   sample.MainVisual.prototype.changeID = function () {
     var self = this;
-    if (ID == 9) {
+    console.log(old, ID);
+    if (ID == 0) {
       do {
-        ID = Math.round(6 * Math.random() + 2.6);
+        ID = Math.round(8 * Math.random() + 1.6);
       } while (ID == old);
-      self.animation(9);
+      self.animation(0);
     } else {
       switch (ID) {
+        case 2:
+          self.animation(ID);
+          break;
         case 3:
           self.animation(ID);
           break;
@@ -223,12 +232,15 @@
         case 8:
           self.animation(ID);
           break;
+        case 9:
+          self.animation(ID);
+          break;
         default:
           self.animation(8);
           break;
       }
       old = ID;
-      ID = 9;    
+      ID = 0;
     }
   }
 
