@@ -90,22 +90,20 @@
       </div>
       <div class="work-description">
         Working with Three.JS experimentally and as a founding member of Berkeley's Google Student Developer
-        Club, along with being inspired by some of the amazing constructions I've seen online, including and especially those
-        by Takumi Hasegawa (whose often indecipherably complex creations offered insights into the workings of Three.js otherwise hidden behind various paywalls),
-        I aspired to be able to recreate a similar centerpiece on an upgraded site, and thus began this latest obsession. 
+        Club, along with being inspired by some of the amazing constructions I've seen online, 
+        I aspired to be able to recreate a similar centerpiece on an upgraded site. Thus began this latest obsession. 
         15,000 choreographed triangles make quite the visual spectacle.
       </div>
       <div class="work-description">
-        The main visual is built with WebGL via Three.JS. However, I didn't use the PlaneGeometry module in the API,
-        and instead added the vertices myself by creating a custom object derived from the InstancedBufferGeometry module,
+        The main visual is built with WebGL via Three.JS. However, I didn't use the PlaneGeometry module in the API.
+        Instead, I added the vertices myself by creating a custom object derived from the InstancedBufferGeometry module,
         allowing me to transform the vertices individually by manipulating voxels, as well as give me creative control over the shaders. 
         The main animation is built programmatically, instead of with 3D modeling, allowing seamless transitions between the parallelepipeds and the other animations.
       </div>
       <div class="work-description">
-        After that, I transform and mutate vertices by their indices. Those packages become groups of triangles, which are then
-        manipulated to develop various solids and patterns. 
-        The positions, velocities, colors, and sizes of these units are acheived by mathematically manipulating
-        vectors sequentially (unfortunately, this means an unfortunate side effect is that the speed of the animation is contingent
+        After that, I transform and mutate vertices in groups of indices, indices in groups of polygons, and polygons in units of solids.
+        The positions, velocities, colors, and sizes of these units are acheived by sequentially manipulating
+        vectors. (Unfortunately, this means an side effect is that the speed of the animation is contingent
         on a user's graphics card. It's very fast on the new Apple M2 chips). 
       </div>
       <div class="work-description">
