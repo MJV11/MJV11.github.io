@@ -7,6 +7,11 @@
   src: url(modernesans.woff) format("woff");
 }
 
+.hidden {
+  display: none !important;
+  opacity: 0;
+}
+
 ::selection {
   background-color: #000000;
 }
@@ -379,14 +384,22 @@ html, body{
   /* set up as flex box, divide left and right */
   position: relative;
   display: none;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+
 
   /* orientation */
   background: white;
   z-index: 50;
   box-shadow: 0vmax 0vmax 2.5vmax rgba(0, 0, 0, 0.50);  
+
+}
+.about {
+  /* set up as flex box, divide left and right */
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
 }
 
@@ -429,6 +442,9 @@ html, body{
   border: .3vmax solid transparent;
 
   margin-bottom: 2vmax;
+
+  object-fit: cover; /* Crop the image to fill the container */
+  object-position: center; /* Center the cropped area */
 }
 
 #left #bio {
@@ -603,7 +619,36 @@ html, body{
   box-shadow: 0vmax 0vmax 2.5vmax rgba(0, 0, 0, 0.50);  
 }
 
-#works #title {
+.works {
+  padding-top: 4vmax;
+  padding-bottom: 4vmax;
+  display: flex; /* Set grid display */
+  flex-wrap: wrap;
+  gap: 4vmax; /* Space between grid items */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: white;
+  z-index: 50;
+  box-shadow: 0vmax 0vmax 2.5vmax rgba(0, 0, 0, 0.50);  
+}
+
+@media (max-width: 768px) {
+  .works {
+    grid-template-columns: 1fr; /* Single column on smaller devices */
+  }
+}
+
+.description_banner {
+  padding: 1.3vmax;
+  font-size: 1.3vmax;
+  color:white;
+  background-color: black;
+  text-align: center;
+  font-family: 'modernesans', sans-serif;
+}
+
+.works #title {
   margin-top: 3vmax;
   font-size: 3.5vmax;
   font-weight: 700;
@@ -611,14 +656,41 @@ html, body{
   text-align: center;
   color: black;
   font-family: 'modernesans', sans-serif;
+
+  cursor: pointer; /* Indicate clickability */
 }
 
-#works .work-item {
-  padding-top: 3vmax;
+/*#works .work-item {
+  padding-top: 1.5vmax;
+  padding-bottom: 1.5vmax;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  background: white;
+}*/
+
+/** .works .work-item {
+display: flex;
+flex-direction: column; /* Stack content inside each work-item 
+align-items: center;
+background: white;
+padding: 1.5vmax;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 10px; /* Rounded corners for better aesthetics 
+white-space: nowrap; /* Prevent text wrapping 
+display: inline-block; /* Allow items to size based on content 
+padding: 0.5rem 1rem; /* Add internal padding for aesthetics 
+} */
+
+.work-item {
+  display: inline-flex; /* Allow items to size based on content */
+  flex-direction: column;
+  padding: 0.5rem 1rem; /* Add internal padding for aesthetics */
+  text-align: center; /* Center-align text */
+  align-items: center;
+  justify-content: center;
+  overflow:wrap;
+
 }
 
 #works .work-item .work-images {
@@ -668,6 +740,12 @@ html, body{
   color:white;
 }
 
+::selection {
+  background-color: #000000; /* Background color for highlighted text */
+  color: #ffffff; /* Text color for highlighted text */
+}
+
+
 #works .work-item .work-image {
   margin-inline: 1vmax;
   height: 30vmax;
@@ -682,6 +760,16 @@ html, body{
 
   color: black;
   font-family: 'modernesans', sans-serif;
+
+  transition: color 0.3s ease; 
+  cursor: pointer; /* Indicate clickability */
+
+}
+.work-title:hover {
+  color: var(--random-color) !important; 
+}
+.work-title.open {
+  text-align: center !important;
 }
 
 #works .work-item .work-date {
@@ -694,13 +782,13 @@ html, body{
   font-family: 'modernesans', sans-serif;
 }
 
-
 #works .work-item .work-description {
   margin-top: 1vmax;
   width: 60%;
 
   justify-content: center;
   text-align: left;
+  overflow: wrap;
   color: black;
   font-family: 'Noto Sans', sans-serif;
 }
@@ -754,3 +842,32 @@ html, body{
   color: rgb(46, 177, 242);
   font-family: 'Noto Sans', sans-serif;
 }
+
+.work-description, .work-skills, .arrowholder {
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  opacity: 1
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 5px 8px 5px; /* Adjust to control triangle size */
+  border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent;
+  animation: radiate 2s ease-out forwards;
+  opacity: 1;
+}
+
+@keyframes radiate {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.5);
+    opacity: 0;
+  }
+}
+

@@ -19,11 +19,11 @@
     // animation applicability
     // There are 3 animations defined in the vertex shader
     // value to switch between them
-    this.animationValue0 = 1;
+    this.animationValue0 = 0;
     this.animationValue1 = 0;
     this.animationValue2 = 0;
     this.animationValue3 = 0;
-    this.animationValue4 = 0;
+    this.animationValue4 = 1;
     this.animationValue5 = 0;
     this.animationValue6 = 0;
     this.animationValue7 = 0;
@@ -158,7 +158,7 @@
 
   /**
    * Change animationValue
-   * @param {number} index - 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8? (animationValue)
+   * @param {number} index - 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10? (animationValue)
    */
   sample.MainVisual.prototype.animate = function (index) {
     if (this.animateTween) {
@@ -180,7 +180,7 @@
       animationValue7: (index == 7) ? 1 : 0,
       animationValue8: (index == 8) ? 1 : 0,
       animationValue9: (index == 9) ? 1 : 0,
-      animationValue10: (index == 10) ? 1 : 0,
+      //animationValue10: (index == 10) ? 1 : 0,
       onUpdate: function () {
         self.Triangles.setUniform('animationValue0', self.animationValue0);
         self.Triangles.setUniform('animationValue1', self.animationValue1);
@@ -192,7 +192,7 @@
         self.Triangles.setUniform('animationValue7', self.animationValue7);
         self.Triangles.setUniform('animationValue8', self.animationValue8);
         self.Triangles.setUniform('animationValue9', self.animationValue9);
-        self.Triangles.setUniform('animationValue10', self.animationValue10);
+        //self.Triangles.setUniform('animationValue10', self.animationValue10);
       }
     });
   }

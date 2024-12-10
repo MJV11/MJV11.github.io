@@ -437,7 +437,7 @@
           // 
           //
 
-          Tween = getAnimationValue(0.0, triangleRandoms.x);
+          Tween = getAnimationValue(animationValue10, triangleRandoms.x);
           if(Tween > 0.0) {
             pos = identicalTriangles;
             radius = 19.0;
@@ -467,10 +467,13 @@
           // Assign projection-transformed coordinates to gl_Position
           gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 
+          float tIndex = floor(triangleIndex / 3.0);
+          float cubeIndex = mod(mod(tIndex, 7.0), 3.0);
+
           float len = length(pos);
           vColor = vec4(hsv2rgb(vec3(
-            map(sin(getRad(2.0,  1.6 + len * 0.3 * (animationValue5 * 0.2 + animationValue6 * 0.2))), -1.0, 1.0, 0.0, 1.0, true),
-            map(cos(getRad(3.0,  2.0 + len * (animationValue8 * 2.0 + animationValue7 * 3.0 + animationValue9 * 1.0))), -1.0, 1.0, 0.3, 0.5, true),
+            map(sin(getRad(2.0,  1.6 + len * 0.3 * (animationValue5 * 0.2 + cubeIndex * 0.3 * animationValue6 * 0.2))), -1.0, 1.0, 0.0, 1.0, true),
+            map(cos(getRad(3.0,  2.0 + len * (animationValue8 * 2.0 + animationValue7 * 3.0 + animationValue9 * 1.0 + animationValue6 * 3.0))), -1.0, 1.0, 0.3, 0.5, true),
             map(cos(getRad(1.0,  0.3)), -1.0, 1.0, 1.6, 2.0, true) + animationValue4 * 0.2
           )), 10.0);
 
