@@ -167,21 +167,33 @@
       </div>
       <div class="work-item">
         <div class="work-title" data-index="8">
-          Basically Magnus Carlsen
+          Grippy Kasparov
         </div>
         <div class="work-date">
           December 2024
         </div>
         <div class="work-description hidden">
-          I'm pretty good at chess. This robot is better.
+          In this project, my team and I programmed a computer to play a game of chess using a UR-10 robot arm
+          with a smart suction cup that can pick up custom chess pieces using haptic search, a searching technique that we 
+          improved upon for the UC Berkeley Embodied Dexterity lab. 
+        </div><div class="work-description hidden">
+          The brain of the opponent is done by utilizing the stockfish API to analyze an encoded board state and return the 
+          best moves, which the robotic arm then performs. The arm relies upon PID controlled path trajectories between all the 
+          squares, relying on calculating the coordinates of each square by knowing where the center of the board is with color 
+          thresholding and the size of each square. The suction cup is actuated by a solenoid to control the flow of air in 
+          and out of a vacuum generator. The hand of the robot knows when it has grabbed a peice because it can measure the
+          pressure of the cup. The cup has 4 chambers with individual pressures. If a pressure reading in one cup is less than another,
+          the robot knows that it must move in the opposite direction to actuate all four chambers and properly grab the peice, allowing us
+          to bypass problems with computer vision and with traditional gripper end-effectors. I lost to the robot, a lot.
         </div>
         <div class="work-skills hidden">
           <div class="skills-container">
             <div class="language"> Python</div>
             <div class="technologies"> ROS</div>
+            <div class="technologies"> Stockfish</div>
           </div>
         </div>
-        <a class="portfolio-link hidden" href="https://github.com/Jungpyo-L/pushpull_suctioncup_106a/tree/main">
+        <a class="portfolio-link hidden" href="https://mjv11two.github.io/design.html">
           [See the Project]
         </a>
       </div>
@@ -215,7 +227,7 @@
           point that gives the ball
           the appropriate trajectory. By releasing, I mean inverting the suction cup's pressure with positive pressure
           generated from reversing
-          a vaccuum through the four chambers of the suction cup used by Berkeley's research lab, which we helped
+          a vacuum through the four chambers of the suction cup used by Berkeley's research lab, which we helped
           improve in this project to
           implement haptic search more effectively. Nothing but net!
         </div>
@@ -382,6 +394,30 @@
         </div>
       </div>
 
+
+      <div class="work-item">
+
+        <div class="work-title" data-index="14">
+          Gif Editor Speedrun
+        </div>
+        <div class="work-date">
+          November 2023
+        </div>
+      
+        <div class="work-description hidden">
+          For my class in Computer Architecture, I developed a gif editor that utilizes matrix convolutions to 
+          blur, sharpen, and compress gifs. The goal of the project was to then make this process as fast as possible, 
+          as matrix multiplication is computationally expensive. After writing clean and efficient code, I was able to
+          acheive a 9x speedup via OpenMP multithreading & x89 SIMD vectorization and a 5x speedup via OpenMPI multicore processing.
+        </div>
+
+        <div class="work-skills hidden">
+          <div class="skills-container">
+            <div class="language"> C </div>
+            <div class="technologies"> Computer Architecture </div>
+          </div>
+        </div>
+      </div>
 
       <div class="work-item">
 
