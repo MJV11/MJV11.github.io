@@ -1,17 +1,15 @@
-(function () {
+(function() {
 
   var sample = window.sample || {};
   window.sample = sample;
 
-  var ID = 0;
-  var old = 0;
-
+  var ID = Math.round(6 * Math.random() + 2);
 
   /**
    * Main visual class
    * @param { number } numVertices - number of Vertices (number of squares)
    */
-  sample.MainVisual = function (numVertices) {
+  sample.MainVisualWithDatGUI = function (numVertices) {
 
     // number of vertices = number of squares
     this.numVertices = numVertices || 10000;
@@ -19,11 +17,11 @@
     // animation applicability
     // There are 3 animations defined in the vertex shader
     // value to switch between them
-    this.animationValue0 = 0;
+    this.animationValue0 = 1;
     this.animationValue1 = 0;
     this.animationValue2 = 0;
     this.animationValue3 = 0;
-    this.animationValue4 = 1;
+    this.animationValue4 = 0;
     this.animationValue5 = 0;
     this.animationValue6 = 0;
     this.animationValue7 = 0;
@@ -38,7 +36,7 @@
   /**
    * Initialize
    */
-  sample.MainVisual.prototype.init = function () {
+  sample.MainVisualWithDatGUI.prototype.init = function() {
     var self = this;
 
     this.$window = $(window);
@@ -61,25 +59,24 @@
     this.scene = new THREE.Scene();
 
     // camera
-    this.camera = new THREE.PerspectiveCamera(35, this.width / this.height, 1, 1000);
+    this.camera = new THREE.PerspectiveCamera(35, this.width / this.height, 10, 1000);
     this.camera.position.set(0, 0, 100);
 
+    // controls
+    // Unless this.renderer.domElement is specified as the second argument, dat.gui's GUI cannot be operated properly
+    this.controls = new THREE.TrackballControls(this.camera, this.renderer.domElement);
+
     // window resize event
-    this.$window.on('resize', function (e) {
+    this.$window.on('resize', function(e) {
       // execute resize method
       self.resize();
     });
 
-    // Initialize Triangles, which extends THREE.Mesh
+    // Initialize Triangles that extends THREE.Mesh
     // When the asynchronous processing ends, fire the resize event and start the animation
-    this.initTriangles()
+    this.initTriangles();
     // Resize the canvas size by firing the resize event
     self.$window.trigger('resize');
-
-
-    // rotate animations
-    // done like this to escape incorrect binding
-    setInterval(() => self.changeID(), 8000);
 
     // start animation
     self.start();
@@ -88,7 +85,7 @@
   /**
    * Initialize triangles
    */
-  sample.MainVisual.prototype.initTriangles = function () {
+  sample.MainVisualWithDatGUI.prototype.initTriangles = function() {
     var self = this;
     // Triangles instantiation
     self.Triangles = new sample.Triangles(
@@ -97,19 +94,22 @@
 
     self.scene.add(self.Triangles);
 
-    document.addEventListener('mousemove', function (e) {
-      let scale = 0.0005;
-      orbit.rotateY(e.movementX * scale);
-      orbit.rotateX(e.movementY * scale);
-      orbit.rotation.z = 0; //this is important to keep the camera level
-    })
+    // Generate GUI for dat.gui
+    self.createDatGUIBox();
 
+    document.addEventListener('mousemove', function(e){
+      let scale = 0.0005;
+      orbit.rotateY( e.movementX * scale );
+      orbit.rotateX( e.movementY * scale ); 
+      orbit.rotation.z = 0; //this is important to keep the camera level..
+    })
+    
     //the camera rotation pivot
     orbit = new THREE.Object3D();
-    orbit.rotation.order = "YXZ"; //this is important to keep level, so Z should be the last axis to rotate in order
+    orbit.rotation.order = "YXZ"; //this is important to keep level, so Z should be the last axis to rotate in order...
     orbit.position = (0, 0, 0);
     self.scene.add(orbit);
-
+    
     //offset the camera and add it to the pivot
     orbit.add(self.camera);
 
@@ -119,10 +119,10 @@
   /**
    * start animation
    */
-  sample.MainVisual.prototype.start = function () {
+  sample.MainVisualWithDatGUI.prototype.start = function() {
     var self = this;
 
-    var enterFrameHandler = function () {
+    var enterFrameHandler = function() {
       requestAnimationFrame(enterFrameHandler);
       self.update();
     };
@@ -134,7 +134,8 @@
   /**
    * Runs inside the animation loop
    */
-  sample.MainVisual.prototype.update = function () {
+  sample.MainVisualWithDatGUI.prototype.update = function() {
+    this.controls.update();
     this.Triangles.update(this.camera);
     this.renderer.render(this.scene, this.camera);
   }
@@ -143,9 +144,12 @@
    * Resize processing
    * @param { jQuery.Event } e - jQuery event object
    */
-  sample.MainVisual.prototype.resize = function () {
+  sample.MainVisualWithDatGUI.prototype.resize = function() {
     this.width = this.$window.width();
     this.height = this.$window.height();
+
+    // Perform resizing of TrackballControls
+    this.controls.handleResize();
 
     // update camera settings
     this.camera.aspect = this.width / this.height;
@@ -155,19 +159,74 @@
     this.renderer.setSize(this.width, this.height);
   }
 
+
+  sample.MainVisualWithDatGUI.prototype.createDatGUIBox = function() {
+    var self = this;
+
+    // dat.gui
+    var gui = new dat.GUI()
+
+    // Place a button to animate the value
+    // Clicking each will call the animation1, animation2, animation3 methods
+    gui.add(this, 'animation0');
+    gui.add(this, 'animation1');
+    gui.add(this, 'animation2');
+    gui.add(this, 'animation3');
+    gui.add(this, 'animation4');
+    gui.add(this, 'animation5');
+    gui.add(this, 'animation6');
+    gui.add(this, 'animation7');
+    gui.add(this, 'animation8');
+    gui.add(this, 'animation9');
+    gui.add(this, 'animation10');
+  }
+  sample.MainVisualWithDatGUI.prototype.animation0 = function() {
+    this.animate(0);
+  }
+  sample.MainVisualWithDatGUI.prototype.animation1 = function() {
+    this.animate(1);
+  }
+  sample.MainVisualWithDatGUI.prototype.animation2 = function() {
+    this.animate(2);
+  }
+  sample.MainVisualWithDatGUI.prototype.animation3 = function() {
+    this.animate(3);
+  }
+  sample.MainVisualWithDatGUI.prototype.animation4 = function() {
+    this.animate(4);
+  }
+  sample.MainVisualWithDatGUI.prototype.animation5 = function() {
+    this.animate(5);
+  }
+  sample.MainVisualWithDatGUI.prototype.animation6 = function() {
+    this.animate(6);
+  }
+  sample.MainVisualWithDatGUI.prototype.animation7 = function() {
+    this.animate(7);
+  }
+  sample.MainVisualWithDatGUI.prototype.animation8 = function() {
+    this.animate(8);
+  }  
+  sample.MainVisualWithDatGUI.prototype.animation9 = function() {
+    this.animate(9);
+  }
+  sample.MainVisualWithDatGUI.prototype.animation10 = function() {
+    this.animate(10);
+  }
+
   /**
    * Change animationValue
-   * @param {number} index - 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10? (animationValue)
+   * @param {number} index - 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8? (animationValue)
    */
-  sample.MainVisual.prototype.animate = function(index) {
+  sample.MainVisualWithDatGUI.prototype.animate = function(index) {
     if (this.animateTween) {
       this.animateTween.kill();
     }
 
     var self = this;
 
-    this.animateTween = TweenMax.to(this, 3, {
-      overwrite: false,
+    this.animateTween = TweenMax.to(this, 2.5, {
+      overwrite: false, 
       ease: Linear.easeNone,
       animationValue0: (index == 0) ? 1 : 0,
       animationValue1: (index == 1) ? 1 : 0,
@@ -179,7 +238,7 @@
       animationValue7: (index == 7) ? 1 : 0,
       animationValue8: (index == 8) ? 1 : 0,
       animationValue9: (index == 9) ? 1 : 0,
-      //animationValue10: (index == 10) ? 1 : 0,
+      animationValue10: (index == 10) ? 1 : 0,
       onUpdate: function () {
         self.Triangles.setUniform('animationValue0', self.animationValue0);
         self.Triangles.setUniform('animationValue1', self.animationValue1);
@@ -191,56 +250,45 @@
         self.Triangles.setUniform('animationValue7', self.animationValue7);
         self.Triangles.setUniform('animationValue8', self.animationValue8);
         self.Triangles.setUniform('animationValue9', self.animationValue9);
-        //self.Triangles.setUniform('animationValue10', self.animationValue10);
+        self.Triangles.setUniform('animationValue10', self.animationValue10);
       }
     });
   }
 
-  sample.MainVisual.prototype.animation = function (i) {
+  sample.MainVisualWithDatGUI.prototype.animation = function(i) {
     this.animate(i);
   }
 
-  sample.MainVisual.prototype.changeID = function () {
+  sample.MainVisualWithDatGUI.prototype.changeID = function() {
     var self = this;
-    console.log(old, ID);
-    if (ID == 0) {
-      do {
-        ID = Math.round(8 * Math.random() + 1.6);
-      } while (ID == old);
-      self.animation(0);
-    } else {
-      switch (ID) {
-        case 2:
-          self.animation(ID);
-          break;
-        case 3:
-          self.animation(ID);
-          break;
-        case 4:
-          self.animation(ID);
-          break;
-        case 5:
-          self.animation(ID);
-          break;
-        case 6:
-          self.animation(ID);
-          break;
-        case 7:
-          self.animation(ID);
-          break;
-        case 8:
-          self.animation(ID);
-          break;
-        case 9:
-          self.animation(ID);
-          break;
-        default:
-          self.animation(8);
-          break;
-      }
-      old = ID;
-      ID = 0;
+
+    () => self.animation(5);
+    setTimeout(self.changeID, 1000)
+    switch (ID) {
+      case 7:
+        self.animation(ID);
+        break;
+      case 2:
+        self.animation(ID);
+        break;
+      case 3:
+        self.animation(ID);
+        break;
+      case 4:
+        self.animation(ID);
+        break;
+      case 5:
+        self.animation(ID);
+        break;
+      case 6:
+        self.animation(ID);
+        break;
+      default:
+        self.animation(4);
+        break;
     }
+
+    ID = Math.round(6 * Math.random() + 2);
   }
 
 })();
