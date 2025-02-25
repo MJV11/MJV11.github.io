@@ -1,2 +1,2 @@
 # MJV11.github.io
-Learning HTML by building a vanity monument
+Learning Web Development by building a vanity monument
