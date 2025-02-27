@@ -73,7 +73,8 @@
         uniform float animationValue7;  
         uniform float animationValue8;  
         uniform float animationValue9;  
-        uniform float animationValue10;  
+        uniform float animationValue10;
+        uniform float hovering;  
 
         // TriangleGeometry attributes
         attribute vec3 position;  
@@ -367,19 +368,15 @@
             pos -= centerTriangles * Tween;
             pos *= 2.0 * scale / 3.0 * Tween;
 
-
             float intervalx = mod(colID + zID + 2.0 * centralize, 2.0 * gridLength);
             float sx = 1.0 * cos(25.0 * (time + 5.0 * intervalx));
             
-
             float intervaly = mod(rowID + zID + 2.0 * centralize, 2.0 * gridLength);
             float sy = 1.0 * cos(25.0 * (time + 5.0 * intervaly));
             
-
             float intervalz = mod(colID + rowID + 2.0 * centralize, 2.0 * gridLength);
             float sz = 1.0 * cos(25.0 * (time + 5.0 * intervalz));
             
-
             pos.x *= .2 * (scale + sx);
             pos.x += rowID * (scale + sx);
             pos.y *= .2 * (scale + sy);
@@ -427,8 +424,6 @@
             } else if(cubeID == 5.0) {
               pos.z -= 10.0 * max(cubeRandoms.x, cubeRandoms.y, cubeRandoms.z) * cos(25.0 * time);
             }
-
-
           }
 
 
@@ -461,8 +456,6 @@
             
             pos = rotateVec3(pos, rad1, vec3(cos(ringID), sin(ringID), max(sin(circleID), cos(circleID))));
           }
-
-
       
           // Assign projection-transformed coordinates to gl_Position
           gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);

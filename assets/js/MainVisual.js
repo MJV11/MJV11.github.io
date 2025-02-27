@@ -3,9 +3,9 @@
   var sample = window.sample || {};
   window.sample = sample;
 
-  var ID = 0;
-  var old = 0;
-
+  var currentAnimationValue = 1000;
+  var currentInterval = 1000;
+  var hovering = false; // flag to track mouse hover state
 
   /**
    * Main visual class
@@ -17,7 +17,7 @@
     this.numVertices = numVertices || 10000;
 
     // animation applicability
-    // There are 3 animations defined in the vertex shader
+    // There are many animations defined in the vertex shader
     // value to switch between them
     this.animationValue0 = 0;
     this.animationValue1 = 0;
@@ -36,7 +36,7 @@
   }
 
   /**
-   * Initialize
+   * Initialize the Main Visual
    */
   sample.MainVisual.prototype.init = function () {
     var self = this;
@@ -48,12 +48,12 @@
 
     // webGL renderer
     this.renderer = new THREE.WebGLRenderer({
-      canvas: this.$mainVisual.find('canvas').get(0),   // #contents on HTML > #main > specify HTMLElement of canvas
+      canvas: this.$mainVisual.find('canvas').get(0),
       alpha: true,
       antialias: true
     });
 
-    // High resolution display support (2x is max)
+    // high resolution display support (2x is max)
     var pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
     this.renderer.setPixelRatio(pixelRatio);
 
@@ -66,22 +66,19 @@
 
     // window resize event
     this.$window.on('resize', function (e) {
-      // execute resize method
       self.resize();
     });
 
-    // Initialize Triangles, which extends THREE.Mesh
-    // When the asynchronous processing ends, fire the resize event and start the animation
+
     this.initTriangles()
-    // Resize the canvas size by firing the resize event
     self.$window.trigger('resize');
 
+    $(document).on('mousemove', function (event) {
+      self.checkHover(event);
+    });
 
-    // rotate animations
-    // done like this to escape incorrect binding
-    setInterval(() => self.changeID(), 8000);
+    setInterval(() => self.changeID(), 100); // check every tenth of a second
 
-    // start animation
     self.start();
   }
 
@@ -90,7 +87,6 @@
    */
   sample.MainVisual.prototype.initTriangles = function () {
     var self = this;
-    // Triangles instantiation
     self.Triangles = new sample.Triangles(
       self.numVertices,
     );
@@ -117,7 +113,7 @@
   }
 
   /**
-   * start animation
+   * Start animation
    */
   sample.MainVisual.prototype.start = function () {
     var self = this;
@@ -128,7 +124,6 @@
     };
 
     enterFrameHandler();
-    //this.rotateAnimations(4)
   }
 
   /**
@@ -151,96 +146,117 @@
     this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
 
-    // Update WebGLRenderer settings
+    // update WebGLRenderer settings
     this.renderer.setSize(this.width, this.height);
   }
 
   /**
-   * Change animationValue
-   * @param {number} index - 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10? (animationValue)
+   * Am I hovering within the specified bounds?
+   * @param {*} event
    */
-  sample.MainVisual.prototype.animate = function(index) {
+  sample.MainVisual.prototype.checkHover = function (event) {
+    var windowWidth = this.$window.width();
+    var windowHeight = this.$window.height();
+
+    var minX = windowWidth * 0.35;  
+    var maxX = windowWidth * 0.65;  
+    var minY = windowHeight * 0.25; 
+    var maxY = windowHeight * 0.75; 
+
+    var mouseX = event.clientX;
+    var mouseY = event.clientY;
+
+    hovering = (mouseX > minX && mouseX < maxX && mouseY > minY && mouseY < maxY);
+  };
+
+  /**
+   * Change animationValue
+   * @param {number} index - 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10? (animationValue)
+   */
+  sample.MainVisual.prototype.animate = function (index) {
     if (this.animateTween) {
-      this.animateTween.kill();
+      this.animateTween.kill(); // kill any existing animation
     }
 
     var self = this;
 
-    this.animateTween = TweenMax.to(this, 3, {
+    // transition all animation values to 0 first
+    let resetValues = {};
+    for (let i = 0; i <= 9; i++) {
+      resetValues[`animationValue${i}`] = 0;
+    }
+    resetValues[`animationValue0`] = 1
+    this.animateTween = TweenMax.to(this, 2.5, {
       overwrite: false,
-      ease: Linear.easeNone,
-      animationValue0: (index == 0) ? 1 : 0,
-      animationValue1: (index == 1) ? 1 : 0,
-      animationValue2: (index == 2) ? 1 : 0,
-      animationValue3: (index == 3) ? 1 : 0,
-      animationValue4: (index == 4) ? 1 : 0,
-      animationValue5: (index == 5) ? 1 : 0,
-      animationValue6: (index == 6) ? 1 : 0,
-      animationValue7: (index == 7) ? 1 : 0,
-      animationValue8: (index == 8) ? 1 : 0,
-      animationValue9: (index == 9) ? 1 : 0,
-      //animationValue10: (index == 10) ? 1 : 0,
+      ease: Power1.easeIn,
+      ...resetValues,
       onUpdate: function () {
-        self.Triangles.setUniform('animationValue0', self.animationValue0);
-        self.Triangles.setUniform('animationValue1', self.animationValue1);
-        self.Triangles.setUniform('animationValue2', self.animationValue2);
-        self.Triangles.setUniform('animationValue3', self.animationValue3);
-        self.Triangles.setUniform('animationValue4', self.animationValue4);
-        self.Triangles.setUniform('animationValue5', self.animationValue5);
-        self.Triangles.setUniform('animationValue6', self.animationValue6);
-        self.Triangles.setUniform('animationValue7', self.animationValue7);
-        self.Triangles.setUniform('animationValue8', self.animationValue8);
-        self.Triangles.setUniform('animationValue9', self.animationValue9);
-        //self.Triangles.setUniform('animationValue10', self.animationValue10);
+        for (let i = 0; i <= 9; i++) {
+          self.Triangles.setUniform(`animationValue${i}`, self[`animationValue${i}`]);
+        }
+      },
+      onComplete: function () {
+        // after transition to 0, start transition to the desired animation index
+        let targetValues = {};
+        for (let i = 0; i <= 9; i++) {
+          targetValues[`animationValue${i}`] = i === index ? 1 : 0;
+        }
+
+        TweenMax.to(self, 2.5, {
+          overwrite: false,
+          ease: Linear.easeNone,
+          ...targetValues,
+          onUpdate: function () {
+            for (let i = 0; i <= 9; i++) {
+              self.Triangles.setUniform(`animationValue${i}`, self[`animationValue${i}`]);
+            }
+          }
+        });
       }
     });
-  }
+  };
 
-  sample.MainVisual.prototype.animation = function (i) {
-    this.animate(i);
-  }
+/**
+ * handles animation pattern changes
+ */
+sample.MainVisual.prototype.changeID = function () {
+  var self = this;
+  var date = new Date();
+  var currentSeconds = date.getTime() / 1000; 
+  var interval = Math.floor(currentSeconds); 
 
-  sample.MainVisual.prototype.changeID = function () {
-    var self = this;
-    console.log(old, ID);
-    if (ID == 0) {
+  if (hovering) {
+    if (currentInterval < interval - 10|| currentAnimationValue == 0) {
+      currentInterval = interval;
       do {
-        ID = Math.round(8 * Math.random() + 1.6);
-      } while (ID == old);
-      self.animation(0);
-    } else {
-      switch (ID) {
-        case 2:
-          self.animation(ID);
-          break;
-        case 3:
-          self.animation(ID);
-          break;
-        case 4:
-          self.animation(ID);
-          break;
-        case 5:
-          self.animation(ID);
-          break;
-        case 6:
-          self.animation(ID);
-          break;
-        case 7:
-          self.animation(ID);
-          break;
-        case 8:
-          self.animation(ID);
-          break;
-        case 9:
-          self.animation(ID);
-          break;
-        default:
-          self.animation(8);
-          break;
-      }
-      old = ID;
-      ID = 0;
-    }
-  }
+        newAnimationValue = Math.floor(Math.random() * (9)) + 1;
+      } while (newAnimationValue == currentAnimationValue)
+      currentAnimationValue = newAnimationValue;
+      self.animate(currentAnimationValue);
+    
+      let canvas = document.getElementById("canvas");
 
-})();
+      // Get numeric values of width and height (remove 'px' if present)
+      let x = canvas.clientWidth;
+      let y = canvas.clientHeight;
+
+      // Calculate the scale factor based on the aspect ratio
+      let scaleFactor = 1 + .1 * (x / y);
+
+      // Apply the new width and height
+      canvas.style.width = `${x * scaleFactor}px`;
+      canvas.style.height = `${y * scaleFactor}px`;
+    }
+  } else {
+    if (currentAnimationValue != 0) {
+      currentAnimationValue = 0;
+      self.animate(0);
+    }
+    document.getElementById("canvas").style.width = "100%";
+    document.getElementById("canvas").style.height = "100%";
+  }
+  console.log("hovering: ", this.hovering, "animation patterns: ", currentAnimationValue) // "interval: ", interval, currentInterval)
+
+};
+
+}) ();
