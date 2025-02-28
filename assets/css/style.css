@@ -48,29 +48,7 @@ html, body{
   padding-top: .1vmax;
 }
 
-#animationBox {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 0;
-}
 
-.animationValue {
-  font-family: 'modernesans', sans-serif;
-  font-size: 2vmax;
-  text-align: center;
-
-  padding-inline: 2.5vmax;
-  width: 2vmax;
-  pointer-events: all;
-}
-
-.animationValue:hover,
-.animationValue.active {
-  /* grow highlight */
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  animation: fill 1s forwards !important;
-}
 
 /* width */
 ::-webkit-scrollbar {
@@ -206,6 +184,35 @@ html, body{
   overflow: scroll;
   background-image: url("assets/icons/arrow-right-solid.svg");
   margin-left: 8px;
+}
+
+#animationBox {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  align-items: center;
+
+  top: 2px;
+}
+
+.animationValue {
+  font-family: 'modernesans', sans-serif;
+  font-size: 2vmax;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: .5vmax;
+  padding-inline: 2.5vmax;
+  width: 2vmax;
+  pointer-events: all;
+}
+
+.animationValue:hover,
+.animationValue.active {
+  /* grow highlight */
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  animation: fill 1s forwards !important;
 }
 
 /*--------------------------------------------------------------
