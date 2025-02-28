@@ -5,6 +5,7 @@
 
   var currentAnimationValue = 1000;
   var currentInterval = 1000;
+  var previouslyHovering = false;
   var hovering = false; // flag to track mouse hover state
 
   /**
@@ -216,8 +217,30 @@
     });
   };
 
+  // Function to dynamically add number tiles
+  function addNumberTiles() {
+    
+  }
+
+  // Function to handle the number tile click or key press
+  function setAnimationValue(value) {
+    currentAnimationValue = value;
+    self.animate(value);
+  }
+
+  // Function to handle key press for numbers (1-9)
+  function handleKeyPress(event) {
+    if (event.key >= '1' && event.key <= '9') {
+      const value = parseInt(event.key);
+      setAnimationValue(value);
+    }
+  }
+
+  // Set up event listener for key presses
+  document.addEventListener("keydown", handleKeyPress);
+
 /**
- * handles animation pattern changes
+ * Handles animation pattern changes
  */
 sample.MainVisual.prototype.changeID = function () {
   var self = this;
@@ -226,37 +249,55 @@ sample.MainVisual.prototype.changeID = function () {
   var interval = Math.floor(currentSeconds); 
 
   if (hovering) {
-    if (currentInterval < interval - 10|| currentAnimationValue == 0) {
+    if (currentAnimationValue == 0) {
+      let canvas = document.getElementById("canvas");
+      let x = canvas.clientWidth;
+      let y = canvas.clientHeight;
+      let scaleFactor = 1 + .1 * (x / y); // scale by aspect ratio
+      canvas.style.width = `${x * scaleFactor}px`;
+      canvas.style.height = `${y * scaleFactor}px`;
+    }
+    if (currentInterval < interval - 10 || currentAnimationValue == 0) {
+      document.querySelectorAll('.animationValue').forEach(el => el.classList.remove('active'));
+
       currentInterval = interval;
       do {
         newAnimationValue = Math.floor(Math.random() * (9)) + 1;
       } while (newAnimationValue == currentAnimationValue)
       currentAnimationValue = newAnimationValue;
       self.animate(currentAnimationValue);
-    
-      let canvas = document.getElementById("canvas");
-
-      // Get numeric values of width and height (remove 'px' if present)
-      let x = canvas.clientWidth;
-      let y = canvas.clientHeight;
-
-      // Calculate the scale factor based on the aspect ratio
-      let scaleFactor = 1 + .1 * (x / y);
-
-      // Apply the new width and height
-      canvas.style.width = `${x * scaleFactor}px`;
-      canvas.style.height = `${y * scaleFactor}px`;
     }
+    previouslyHovering = true;
+
   } else {
-    if (currentAnimationValue != 0) {
-      currentAnimationValue = 0;
-      self.animate(0);
+    if (previouslyHovering) {
+      
+      if (currentAnimationValue != 0) {
+        currentAnimationValue = 0;
+        self.animate(0);
+      }
+      document.getElementById("canvas").style.width = "100%";
+      document.getElementById("canvas").style.height = "100%";
+      previouslyHovering = false;
     }
-    document.getElementById("canvas").style.width = "100%";
-    document.getElementById("canvas").style.height = "100%";
-  }
-  console.log("hovering: ", this.hovering, "animation patterns: ", currentAnimationValue) // "interval: ", interval, currentInterval)
+    else {
+      if (!document.querySelector('.animationValue').dataset.listener) {
+        document.querySelectorAll('.animationValue').forEach(element => {
+          element.dataset.listener = true; // Mark it so we don't add twice
+          element.addEventListener('click', function () {
+            let value = parseInt(this.textContent.trim(), 10);
+            self.animate(value);
 
+            document.querySelectorAll('.animationValue').forEach(el => el.classList.remove('active'));
+            // Add highlight to clicked number
+            this.classList.add('active');
+          });
+        });
+      }
+      // i want to allow users to click the number and pass that value into self.animate()
+    }
+    
+  }
 };
 
 }) ();

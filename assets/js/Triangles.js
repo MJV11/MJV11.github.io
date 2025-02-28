@@ -74,7 +74,6 @@
         uniform float animationValue8;  
         uniform float animationValue9;  
         uniform float animationValue10;
-        uniform float hovering;  
 
         // TriangleGeometry attributes
         attribute vec3 position;  

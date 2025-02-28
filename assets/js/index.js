@@ -29,10 +29,10 @@
     navIsBottom = !isOn;
     if (isOn) {
       nav.className = 'navbarscrolltrigger';
-      //document.getElementById("logo").style.display = "normal";
+      document.getElementById("animationBox").style.display = "none";
     } else {
       nav.className = 'navbar';
-      //document.getElementById("logo").style.display = "none";
+      document.getElementById("animationBox").style.display = "flex";
     }
   }
 
