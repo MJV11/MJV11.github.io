@@ -1,5 +1,8 @@
 (function () {
-
+  let activeElement = document.querySelector(`.animationValue:nth-child(${0 + 1})`);
+  if (activeElement) {
+    activeElement.classList.add('active');
+  }
   var sample = window.sample || {};
   window.sample = sample;
 
