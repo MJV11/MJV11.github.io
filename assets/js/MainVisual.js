@@ -92,7 +92,10 @@
       self.numVertices,
     );
 
+    self.Triangles.name = "Triangles"; // for withdrawal later
     self.scene.add(self.Triangles);
+    console.log(self.scene.children); // Debug all objects in the scene
+
 
     document.addEventListener('mousemove', function (e) {
       let scale = 0.0005;
@@ -217,11 +220,6 @@
     });
   };
 
-  // Function to dynamically add number tiles
-  function addNumberTiles() {
-    
-  }
-
   // Function to handle the number tile click or key press
   function setAnimationValue(value) {
     currentAnimationValue = value;
@@ -266,11 +264,20 @@ sample.MainVisual.prototype.changeID = function () {
       } while (newAnimationValue == currentAnimationValue)
       currentAnimationValue = newAnimationValue;
       self.animate(currentAnimationValue);
+      let activeElement = document.querySelector(`.animationValue:nth-child(${currentAnimationValue + 1})`);
+      if (activeElement) {
+        activeElement.classList.add('active');
+      }
     }
     previouslyHovering = true;
 
   } else {
     if (previouslyHovering) {
+      document.querySelectorAll('.animationValue').forEach(el => el.classList.remove('active'));
+      let activeElement = document.querySelector(`.animationValue:nth-child(${0 + 1})`);
+      if (activeElement) {
+        activeElement.classList.add('active');
+      }
       
       if (currentAnimationValue != 0) {
         currentAnimationValue = 0;
@@ -286,11 +293,15 @@ sample.MainVisual.prototype.changeID = function () {
           element.dataset.listener = true; // Mark it so we don't add twice
           element.addEventListener('click', function () {
             let value = parseInt(this.textContent.trim(), 10);
-            self.animate(value);
+            
 
-            document.querySelectorAll('.animationValue').forEach(el => el.classList.remove('active'));
-            // Add highlight to clicked number
-            this.classList.add('active');
+            document.querySelectorAll('.animationValue').forEach(el => {
+              el.classList.remove('active');            
+            });
+
+          this.classList.add('active');
+
+          self.animate(value);
           });
         });
       }
