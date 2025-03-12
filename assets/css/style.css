@@ -45,9 +45,7 @@ html, body{
   position: relative;
   z-index: -100;
   transition: width 0.5s ease, height 0.5s ease;
-  padding-top: .1vmax;
 }
-
 
 
 /* width */
@@ -96,16 +94,6 @@ html, body{
   */
   position: absolute;
   pointer-events: none;
-  width: 40%;
-}
-
-/* -- Logo -- */
-.masthead-section #logo {
-  height: 11vmax;
-  width: 10vmax;
-  margin-bottom: 1.5vmax;
-  pointer-events: all;
-
 }
 
 #masthead-works,
@@ -115,20 +103,19 @@ html, body{
 
 /* -- Name -- */
 .masthead-section .masthead-title {
-  font-size: 6vmax;
+  font-size: 6em;
   font-weight: 700;
-  line-height: 3.25vmax;
-  margin-bottom: 1.5vmax;
+  line-height: 3.25rem;
+  margin-bottom: 1.5rem;
   color: black;
   font-family: 'modernesans', sans-serif;
 }
 
 /* -- Typed Info By Name -- */
 .masthead-section .masthead-tagline {
-  font-size: 3vmax;
+  font-size: 3em;
   font-style: italic;
-  line-height: 1.5vmax;
-  margin-bottom: 1.5vmax;
+  line-height: 1em;
   color: black;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -191,21 +178,23 @@ html, body{
   flex-direction: row;
   position: absolute;
   align-items: center;
-
+  justify-content: center; 
+  width: 80%; 
+  flex-wrap: wrap; 
   top: 2px;
 }
 
 .animationValue {
   font-family: 'modernesans', sans-serif;
-  font-size: 2vmax;
+  font-size: 2em;
   text-align: center;
   justify-content: center;
   align-items: center;
-
-  padding-top: .5vmax;
-  padding-inline: 2.5vmax;
-  width: 2vmax;
+  padding-top: .5rem;
+  padding-inline: 2.5rem;
+  width: 3rem;
   pointer-events: all;
+  cursor: pointer;
 }
 
 .animationValue:hover,
@@ -234,7 +223,7 @@ html, body{
 
   /* positioning */
   bottom: 0;
-  margin-bottom: 2vmax;
+  margin-bottom: 2rem;
   z-index: 1000;
   width: 100%;
 }
@@ -248,14 +237,14 @@ html, body{
   /* text formatting */
   color: black;
   font-family: 'modernesans', sans-serif;
-  font-size: 1.4vmax;
+  font-size: 1.6rem;
   font-weight: bold;
   text-decoration: none;
 
   /* set line items in nav x px apart */
-  padding-inline: 1.75vw; 
-  padding-top:.25vmax;
-  padding-bottom: 0.25vmax;
+  padding-inline: 1.75rem; 
+  padding-top:.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .navbar #logo,
@@ -298,13 +287,13 @@ html, body{
   /* text formatting */
   color: black;
   font-family: 'modernesans', sans-serif;
-  font-size: 1.6vmax;
+  font-size: 1.6rem;
   font-weight: bold;
   text-decoration: none;
 
   /* set line items in nav x px apart */
   margin-inline: 1.75vw; 
-  padding:.25vmax;
+  padding:.25rem;
 }
 
 .navbarscrolltrigger #logo img,
@@ -312,9 +301,9 @@ html, body{
   align-items: left;
   justify-content: left;
   left: 0;
-  margin-left: 2vmax;
-  height: 2vmax;
-  width: 2vmax;
+  margin-left: 2rem;
+  height: 2rem;
+  width: 2rem;
   position: fixed;
   display: block;
 }
@@ -323,14 +312,23 @@ html, body{
 .scrolled #logo {
   color: black;
   font-family: 'modernesans', sans-serif;
-  font-size: 1.6vmax;
+  font-size: 1.6rem;
   font-weight: bold;
   text-decoration: none;
   position: fixed;
   left: 0;
-  margin-left: 5vmax;
+  margin-left: 5rem;
 
-  padding:.25vmax;
+  padding:.25rem;
+}
+
+@media (max-width: 550px) {
+  .navbarscrolltrigger #logo {
+    display: none;
+  }
+  .navbarscrolltrigger {
+    justify-content: center;
+  }
 }
 
 #navbar .items:hover {
@@ -339,9 +337,8 @@ html, body{
   animation: fill 1s forwards;
 }
 
-
 /* Keyframes */
-@-webkit-keyframes fill {
+@keyframes fill {
   0% {
     height: 1%;
   }
@@ -373,14 +370,13 @@ html, body{
 }
 
 .scrolldown {
-  font-size: 5vmax;
+  font-size: 5rem;
   font-family: 'modernesans', sans-serif;
 
   display: relative;
   position:absolute;
   bottom: 0;
-  margin-bottom: .5vmax;
-  margin-left: .5vmax;
+  margin-bottom: .5rem;
 
   transform: rotate(90deg);
   animation: bounce .75s ease-in-out forwards infinite;
@@ -388,11 +384,10 @@ html, body{
 }
 
 #scrolldownwords {
-  font-size: 2.5vmax;
+  font-size: 2.5rem;
   font-weight: bold;
   transform: rotate(0deg);
-  margin-bottom: 5vmax;
-  margin-left: 0vmax;
+  margin-bottom: 5rem;
   animation: none ;
 }
 
@@ -453,10 +448,11 @@ html, body{
 }
 
 #left {
-  border-radius: 2vmax;
-  padding: 2vmax 2vmax;
+  border-radius: 2rem;
+  padding: 2rem 2rem;
+  margin-top: 2em;
   box-shadow: 0vmax .5vmax 1.5vmax rgba(0, 0, 0, 0.25); 
-  height: 50vmax; 
+  height: 60rem; 
   justify-content: center;
   align-items: center;
 }
@@ -465,7 +461,7 @@ html, body{
   /* text formatting */
   text-align: center;
   color: black;
-  font-size: 3vmax;
+  font-size: 4em;
   font-weight: bold;
 }
 
@@ -475,31 +471,38 @@ html, body{
   border-radius: 10%;
   border: .3vmax solid transparent;
 
-  margin-bottom: 2vmax;
+  margin-bottom: 1rem;
 
   object-fit: cover; /* Crop the image to fill the container */
   object-position: center; /* Center the cropped area */
 }
 
+@media (max-width: 480px) {
+  #about-image, #name {
+    display: none;
+  }
+}
+
 #left #bio {
   text-align: center;
   color: black;
-  font-size: 1vmax;
+  font-size: 1rem;
   font-family: 'Noto Sans', sans-serif;
 
-  margin-top: 2vmax;
+  margin-top: 1rem;
 }
 
 #right #skills-title, #right #coursework-title {
-  font-size: 2.2vmax;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
 #right #skills {
   display: flex;
   flex-direction: column;
-  border-radius: 2vmax;
-  padding: 2vmax 2vmax;
+  border-radius: 2rem;
+  padding: 2rem 2rem;
+  margin-bottom: 2rem;
   box-shadow: 0vmax .5vmax 1.5vmax rgba(0, 0, 0, 0.25);
 }
 
@@ -518,20 +521,20 @@ html, body{
 
   /* text formatting */
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1.2vmax;
+  font-size: 1.2rem;
   font-weight: 500;
 
   /* shape formatting */
-  border-radius: .5vmax;
-  margin-inline: .2vmax;
-  margin-top: 2vmax;
-  margin-bottom: 2vmax;
+  border-radius: .5rem;
+  margin-inline: .2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
-  padding-top: .3vmax;
-  padding-bottom: .3vmax; 
-  padding-left: 1vmax;
-  padding-right: 1vmax;
-  line-height: 3vmax;
+  padding-top: .3rem;
+  padding-bottom: .3rem; 
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 3rem;
 }
 
 
@@ -546,18 +549,18 @@ html, body{
 }
 
 #right #scroll {
-  padding: 2vmax;
+  padding: 2rem;
   justify-content: center;
-  height: 16vmax;
+  height: 16rem;
   flex-wrap: nowrap;
   white-space: nowrap;
   overflow-y: auto;
-  margin-bottom: 1vmax;
+  margin-bottom: 1rem;
 }
 
 /* width */
 #right #scroll::-webkit-scrollbar {
-  width: .5vmax;
+  width: .5rem;
 }
 
 /* Track */
@@ -586,13 +589,13 @@ html, body{
 }
 
 #right #coursework-title {
-  border-radius: 1vmax;
-  padding: 1vmax 1vmax;
+  border-radius: 1rem;
+  padding: 1rem 1rem;
 }
 
 #right #coursework-box {
   box-shadow: 0vmax .5vmax 1.5vmax rgba(0, 0, 0, 0.25);  
-  border-radius: 2vmax;
+  border-radius: 2rem;
   padding: 1vmax 1vmax;
   margin-bottom: 4vmax;
 }
@@ -618,18 +621,18 @@ html, body{
 #right #scroll .scroll-item .scroll-body .CS,
 #right #scroll .scroll-item .scroll-body .PS {
   /* shape formatting */
-  border-radius: .5vmax;
-  margin-inline: .2vmax;
-  margin-top: 1vmax;
-  margin-bottom: 1vmax;
-  padding-top: .1vmax;
-  padding-bottom: .1vmax; 
-  padding-left: 1vmax;
-  padding-right: 1vmax;
-  line-height: 2vmax;
+  border-radius: .5rem;
+  margin-inline: .2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-top: .1rem;
+  padding-bottom: .1rem; 
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 2rem;
 
   text-decoration: none;
-  font-size: 1vmax;
+  font-size: 1rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   flex-wrap: wrap;
@@ -654,8 +657,8 @@ html, body{
 }
 
 .works {
-  padding-top: 4vmax;
-  padding-bottom: 4vmax;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   display: flex; /* Set grid display */
   flex-wrap: wrap;
   gap: 4vmax; /* Space between grid items */
@@ -674,8 +677,8 @@ html, body{
 }
 
 .description_banner {
-  padding: 1.3vmax;
-  font-size: 1.3vmax;
+  padding: 1.3rem;
+  font-size: 1.3rem;
   color:white;
   background-color: black;
   text-align: center;
@@ -683,8 +686,7 @@ html, body{
 }
 
 .works #title {
-  margin-top: 3vmax;
-  font-size: 3.5vmax;
+  font-size: 3.5rem;
   font-weight: 700;
 
   text-align: center;
@@ -694,28 +696,6 @@ html, body{
   cursor: pointer; /* Indicate clickability */
 }
 
-/*#works .work-item {
-  padding-top: 1.5vmax;
-  padding-bottom: 1.5vmax;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: white;
-}*/
-
-/** .works .work-item {
-display: flex;
-flex-direction: column; /* Stack content inside each work-item 
-align-items: center;
-background: white;
-padding: 1.5vmax;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-border-radius: 10px; /* Rounded corners for better aesthetics 
-white-space: nowrap; /* Prevent text wrapping 
-display: inline-block; /* Allow items to size based on content 
-padding: 0.5rem 1rem; /* Add internal padding for aesthetics 
-} */
-
 .work-item {
   display: inline-flex; /* Allow items to size based on content */
   flex-direction: column;
@@ -724,7 +704,8 @@ padding: 0.5rem 1rem; /* Add internal padding for aesthetics
   align-items: center;
   justify-content: center;
   overflow:wrap;
-
+  max-width: 100%;
+  padding-top: 3rem;
 }
 
 #works .work-item .work-images {
@@ -732,16 +713,19 @@ padding: 0.5rem 1rem; /* Add internal padding for aesthetics
   flex-direction: row;
   justify-content: center;
 
-  padding: 2vmax;
-  height: 30vmax;
-  width: 60vmax;
-  margin-bottom: 1vmax;
+  padding: 2rem;
+  height: 30rem;
+  width: 60rem;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  margin-inline: 1rem;
+
 }
 
 .arrowholder {
   display: flex;
   flex-direction: row;
-  width: 70vmax;
+  width: 70rem;
   justify-content: center;
   align-items: center;
 }
@@ -752,12 +736,12 @@ padding: 0.5rem 1rem; /* Add internal padding for aesthetics
   cursor: pointer;
   position: relative;
   width: auto;
-  height: 1.5vmax;
-  padding: 1vmax;
-  padding-bottom: 2vmax;
+  height: 1.5rem;
+  padding: 1rem;
+  padding-bottom: 2rem;
   color: black;
   font-weight: bold;
-  font-size: 2vmax;
+  font-size: 2rem;
   transition: 0.6s ease;
   border-radius: 10%;
   user-select: none;
@@ -780,16 +764,10 @@ padding: 0.5rem 1rem; /* Add internal padding for aesthetics
 }
 
 
-#works .work-item .work-image {
-  margin-inline: 1vmax;
-  height: 30vmax;
-  width: 80vmax;
-}
-
 #works .work-item .work-title {
   text-align: center;
 
-  font-size: 3vmax;
+  font-size: 3rem;
   font-weight: 700;
 
   color: black;
@@ -809,7 +787,7 @@ padding: 0.5rem 1rem; /* Add internal padding for aesthetics
 #works .work-item .work-date {
   text-align: center;
 
-  font-size: 1vmax;
+  font-size: 1.5rem;
   font-weight: 700;
 
   color: gray;
@@ -817,7 +795,7 @@ padding: 0.5rem 1rem; /* Add internal padding for aesthetics
 }
 
 #works .work-item .work-description {
-  margin-top: 1vmax;
+  margin-top: 1rem;
   width: 60%;
 
   justify-content: center;
@@ -828,7 +806,7 @@ padding: 0.5rem 1rem; /* Add internal padding for aesthetics
 }
 
 #works .work-item .skills-container {
-  margin-top: 1vmax;
+  margin-top: 1rem;
 }
 
 #works .work-item .skills-container .language, 
@@ -841,20 +819,20 @@ padding: 0.5rem 1rem; /* Add internal padding for aesthetics
 
   /* text formatting */
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1.2vmax;
+  font-size: 1.2rem;
   font-weight: 500;
 
   /* shape formatting */
-  border-radius: .5vmax;
-  margin-inline: .2vmax;
-  margin-top: 2vmax;
-  margin-bottom: 2vmax;
+  border-radius: .5rem;
+  margin-inline: .2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
-  padding-top: .3vmax;
-  padding-bottom: .3vmax; 
-  padding-left: 1vmax;
-  padding-right: 1vmax;
-  line-height: 3vmax;
+  padding-top: .3rem;
+  padding-bottom: .3rem; 
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 3rem;
 }
 
 #works .work-item .skills-container .language {
@@ -868,7 +846,7 @@ padding: 0.5rem 1rem; /* Add internal padding for aesthetics
 }
 
 .portfolio-link {
-  margin-top: 1vmax;
+  margin-top: 1rem;
   width: 60%;
 
   justify-content: center;
