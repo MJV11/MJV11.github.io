@@ -99,12 +99,14 @@
         <a class="next" onclick="plusSlides(1, 0)">❯</a>
       </div-->
         <div class="work-description hidden">
-          I have refreshed my website again. Every year, I get a little better at web development, and so every year, it seems 
+          I have refreshed my website again. Every year, I get a little better at web development, and so every year, it
+          seems
           pertinent to update my portfolio.
         </div>
         <div class="work-description hidden">
-          After working with Three.JS experimentally and after being inspired by some of the amazing constructions I've seen online,
-          I aspired to be able to recreate a similar centerpiece on an my site. 
+          After working with Three.JS experimentally and after being inspired by some of the amazing constructions I've
+          seen online,
+          I aspired to be able to recreate a similar centerpiece on an my site.
           15,000 choreographed triangles make quite the visual spectacle.
         </div>
         <div class="work-description hidden">
@@ -114,36 +116,42 @@
           allowing me to transform the vertices individually by manipulating voxels, as well as give me creative control
           over the shaders.
           The main animation is built programmatically, instead of with 3D modeling, allowing seamless transitions
-          between the parallelepipeds and the other animations. Though more complicated, I beleive the customization 
+          between the parallelepipeds and the other animations. Though more complicated, I beleive the customization
           resulted in a superior product.
         </div>
         <div class="work-description hidden">
-          After constructing the triangles, I transform and mutate vertices in groups of indices, indices in groups of polygons, and polygons
+          After constructing the triangles, I transform and mutate vertices in groups of indices, indices in groups of
+          polygons, and polygons
           in units of solids.
           The positions, velocities, colors, and sizes of these units are acheived by sequentially manipulating
-          the triangles as vectors. (Unfortunately, this means an side effect is that the speed of the animation is contingent
+          the triangles as vectors. (Unfortunately, this means an side effect is that the speed of the animation is
+          contingent
           on a user's graphics card. It's very fast on the new Apple M2 chips).
         </div>
         <div class="work-description hidden">
           All of these animation patterns are written in the vertex shader.
-          Instead of writing a bunch of animation methods inside the object in Javascript, I transform vertices matrices by
+          Instead of writing a bunch of animation methods inside the object in Javascript, I transform vertices matrices
+          by
           manipulating
-          vectors directly in the shader, which significantly reduces processing time, allowing me to add thousands of triangles to the
+          vectors directly in the shader, which significantly reduces processing time, allowing me to add thousands of
+          triangles to the
           animation
           without exploding a viewer's computer.
         </div>
         <div class="work-description hidden">
-          This is done by manipulating the animationValue coefficients, an attribute I built in to the object created in Triangles.js.
+          This is done by manipulating the animationValue coefficients, an attribute I built in to the object created in
+          Triangles.js.
           It determines which animations to apply. When set to zero, an animation cannot be triggered.
           When set to one, that animation parameter is then applied to the positions vector.
         </div>
         <div class="work-description hidden">
           Because the animationValue is set instantly across all triangles,
           but processing those triangles happens sequentially inside the vertex shader,
-          the resulting switch from one pattern to another allows seamless transitions between the two animation patterns
+          the resulting switch from one pattern to another allows seamless transitions between the two animation
+          patterns
           These transitions are drawn out a few extra seconds by creating intermediary
           frames with Tween.JS, which interpolates the intermediary positions between the start and end points.
-          . 
+          .
         </div>
         <div class="work-description hidden">
           The RBG color transition is also quite interesting. Instead of writing an algorithm in the fragment shader, I
@@ -179,14 +187,44 @@
 
       <div class="work-item">
         <div class="work-title" data-index="17">
+          Demo: Pedals and Pixels
+        </div>
+        <div class="work-date">
+          April 2025
+        </div>
+        <div class="work-description hidden">
+          This project leverages Three.js to transform static images into interactive particle systems that respond to
+          mouse movements through advanced raycasting techniques. Custom WebGL shaders break down the image into
+          individual particles, with each particle's behavior governed by the original pixel's color data and position.
+          The interactive component uses a sophisticated touch texture system that creates beautiful ripple effects as
+          the user's cursor moves across the scene. The application demonstrates proficiency in 3D graphics programming,
+          shader development, and creating engaging user interactions through WebGL. Layered atop that is my power curve
+          drawn indirectly from Strava and Intervals.icu's RESTful API. The final result is a visually
+          stunning effect where seemingly static images come alive with dynamic, fluid movements that follow the user's
+          cursor in three-dimensional space.
+        </div>
+        <div class="work-skills hidden">
+          <div class="skills-container">
+            <div class="language"> React</div>
+          </div>
+        </div>
+        <a class="portfolio-link hidden" href="https://github.com/MJV11/pedalsandpixels">
+          [See the Project]
+        </a><a class="portfolio-link hidden" href="https://pedalsandpixels.netlify.app/">
+          [See the Site]
+        </a>
+      </div>
+
+      <div class="work-item">
+        <div class="work-title" data-index="17">
           MemoryBlue SDR Outsourcing Calculator
         </div>
         <div class="work-date">
           April 2025
         </div>
         <div class="work-description hidden">
-          Contracted work from MemoryBlue to build them a calculator webapp. This calculator compares the cost 
-          of insourcing a SDR team versus outsourcing to MemoryBlue. If you or your loved ones would also like to 
+          Contracted work from MemoryBlue to build them a calculator webapp. This calculator compares the cost
+          of insourcing a SDR team versus outsourcing to MemoryBlue. If you or your loved ones would also like to
           contract out to me to build a cost comparison calculator please let me know before Trump nukes the economy.
         </div>
         <div class="work-skills hidden">
@@ -200,7 +238,7 @@
           [See the Site]
         </a>
       </div>
-      
+
       <div class="work-item">
         <div class="work-title" data-index="17">
           Jack Black Soundpack
@@ -210,8 +248,8 @@
         </div>
         <div class="work-description hidden">
           I grew up playing Minecraft. My favorite part of the Minecraft Movie trailer was listening to Jack
-          Black exclaim verbatim various minecraft items. I put those exclamations into a modpack. If you liked 
-          listening to Jack Black exclaim items awesomely, you will enjoy him repeating it in your ear eternally 
+          Black exclaim verbatim various minecraft items. I put those exclamations into a modpack. If you liked
+          listening to Jack Black exclaim items awesomely, you will enjoy him repeating it in your ear eternally
         </div>
         <div class="work-skills hidden">
           <div class="skills-container">
@@ -238,17 +276,19 @@
           only to result in my very soggy butt shivering in the wet and cold. So, given that no garmin app or widget
           for my cycling computer that forecasts rain at my current position currently exists, I made one. Now I still
           get wet but at least I get advance warning.
-        </div><div class="work-description hidden">
-          Zephyr is a Connect IQ Data Field for Garmin Edge cycling computers that provides real-time wind and 
+        </div>
+        <div class="work-description hidden">
+          Zephyr is a Connect IQ Data Field for Garmin Edge cycling computers that provides real-time wind and
           precipitation information based on your current location.
-          
+
           Designed for cyclists who want to stay informed about weather conditions during their rides.
 
           It features current wind speed and direction, percipation, and automatic updates by GPS position.
-          Zephyr has been tested and confirmed to work on the Garmin Edge 530. Other Connect IQ capable 
+          Zephyr has been tested and confirmed to work on the Garmin Edge 530. Other Connect IQ capable
           Edge devices should work but have not been extensively tested.
-        </div><div class="work-description hidden">
-          Written in Monkey C. 
+        </div>
+        <div class="work-description hidden">
+          Written in Monkey C.
         </div>
         <div class="work-skills hidden">
           <div class="skills-container">
@@ -268,13 +308,17 @@
           January 2025
         </div>
         <div class="work-description hidden">
-          As I commute across the Bay, I am very bored. This is a site to help me optimize playing Orna, a GPS RPG, by informing me on
-          which of five randomly spawned towers have the maximum level floors for the highest possible loot. They reset weekly with a 23
-          hour cooldown, so the 
-          next maximum floor time is also posted in case I want to see if I can hit it 24 hours in advance so as to hit it multiple times 
+          As I commute across the Bay, I am very bored. This is a site to help me optimize playing Orna, a GPS RPG, by
+          informing me on
+          which of five randomly spawned towers have the maximum level floors for the highest possible loot. They reset
+          weekly with a 23
+          hour cooldown, so the
+          next maximum floor time is also posted in case I want to see if I can hit it 24 hours in advance so as to hit
+          it multiple times
           per week as I bart through San Francisco.
-        </div><div class="work-description hidden">
-          Written in React and TypeScript. 
+        </div>
+        <div class="work-description hidden">
+          Written in React and TypeScript.
         </div>
         <div class="work-skills hidden">
           <div class="skills-container">
@@ -298,17 +342,27 @@
         </div>
         <div class="work-description hidden">
           In this project, my team and I programmed a computer to play a game of chess using a UR-10 robot arm
-          with a smart suction cup that can pick up custom chess pieces using haptic search, a searching technique that we 
-          improved upon for the UC Berkeley Embodied Dexterity lab. 
-        </div><div class="work-description hidden">
-          The brain of the opponent is done by utilizing the stockfish API to analyze an encoded board state and return the 
-          best moves, which the robotic arm then performs. The arm relies upon PID controlled path trajectories between all the 
-          squares, relying on calculating the coordinates of each square by knowing where the center of the board is with color 
-          thresholding and the size of each square. The suction cup is actuated by a solenoid to control the flow of air in 
-          and out of a vacuum generator. The hand of the robot knows when it has grabbed a peice because it can measure the
-          pressure of the cup. The cup has 4 chambers with individual pressures. If a pressure reading in one cup is less than another,
-          the robot knows that it must move in the opposite direction to actuate all four chambers and properly grab the peice, allowing us
-          to bypass problems with computer vision and with traditional gripper end-effectors. I lost to the robot, a lot.
+          with a smart suction cup that can pick up custom chess pieces using haptic search, a searching technique that
+          we
+          improved upon for the UC Berkeley Embodied Dexterity lab.
+        </div>
+        <div class="work-description hidden">
+          The brain of the opponent is done by utilizing the stockfish API to analyze an encoded board state and return
+          the
+          best moves, which the robotic arm then performs. The arm relies upon PID controlled path trajectories between
+          all the
+          squares, relying on calculating the coordinates of each square by knowing where the center of the board is
+          with color
+          thresholding and the size of each square. The suction cup is actuated by a solenoid to control the flow of air
+          in
+          and out of a vacuum generator. The hand of the robot knows when it has grabbed a peice because it can measure
+          the
+          pressure of the cup. The cup has 4 chambers with individual pressures. If a pressure reading in one cup is
+          less than another,
+          the robot knows that it must move in the opposite direction to actuate all four chambers and properly grab the
+          peice, allowing us
+          to bypass problems with computer vision and with traditional gripper end-effectors. I lost to the robot, a
+          lot.
         </div>
         <div class="work-skills hidden">
           <div class="skills-container">
@@ -375,9 +429,12 @@
           November 2024
         </div>
         <div class="work-description hidden">
-          In this project, I implemented a subset of the TCP protocol. This implementation provides reliability, but does not account for 
-          congestion control. It supports the 3-way handshake, receiving in-order and out-of-order data, sending data, honoring the advertisement
-          window, passive and active closing, retransmitting packets that have not been acknowledged, and updating RTO by estimating RTT. 
+          In this project, I implemented a subset of the TCP protocol. This implementation provides reliability, but
+          does not account for
+          congestion control. It supports the 3-way handshake, receiving in-order and out-of-order data, sending data,
+          honoring the advertisement
+          window, passive and active closing, retransmitting packets that have not been acknowledged, and updating RTO
+          by estimating RTT.
         </div>
         <div class="work-skills hidden">
           <div class="skills-container">
@@ -395,13 +452,16 @@
           October 2024
         </div>
         <div class="work-description hidden">
-          From a browser interface, users can construct their own network models, and then send pings between the routers on those
-          models. After implementing basic forwarding, static route construction, timeouts, and advertisement sending, 
-          I gave users the ability to design their own protocols. Users can turn on split horizon, route poisoning, poison-reverse,
-          poisoning expired routes, counting-to-infinity, and incremental triggered updates on routing table updates, 
-          router uplinks, and router downlinks. 
-          These features allow users to see the step-by-step convergence of a routing protocol, thereby developing an intuition for 
-          how effective routing works. 
+          From a browser interface, users can construct their own network models, and then send pings between the
+          routers on those
+          models. After implementing basic forwarding, static route construction, timeouts, and advertisement sending,
+          I gave users the ability to design their own protocols. Users can turn on split horizon, route poisoning,
+          poison-reverse,
+          poisoning expired routes, counting-to-infinity, and incremental triggered updates on routing table updates,
+          router uplinks, and router downlinks.
+          These features allow users to see the step-by-step convergence of a routing protocol, thereby developing an
+          intuition for
+          how effective routing works.
         </div>
 
         <div class="work-skills hidden">
@@ -425,14 +485,21 @@
           Septemper 2024
         </div>
         <div class="work-description hidden">
-          A robust traceroute that can track all of the routers between you, the source IP address of the traceroute ping, and a given
-          destination address. I implemented handling for any odd server responses, including handling invalid ICMP packets, 
-          contradictory time expired error codes on packets with valid TTLs, ICMP responses wrapping non-IPv6 packets, truncated buffers,
-          unrequested UDP responses, and options header field support. I also handled odd network topologies, including router loops, network firewalls,
-          nonresponsive routers, silent routers, routers specifically configured to ignore traceroute requests. Finally, I handled duplicate packets,
-          including duplicated responses, duplicated requests, and delayed duplicates from previous traceroute executions by sending each 
-          execution to a random selection of ports, sending randomly generated payloads and analyzing the returned payload, and by, less innovatively,
-          just tracking received IP addresses and the unique packet IDs both that I sent and that they send back. 
+          A robust traceroute that can track all of the routers between you, the source IP address of the traceroute
+          ping, and a given
+          destination address. I implemented handling for any odd server responses, including handling invalid ICMP
+          packets,
+          contradictory time expired error codes on packets with valid TTLs, ICMP responses wrapping non-IPv6 packets,
+          truncated buffers,
+          unrequested UDP responses, and options header field support. I also handled odd network topologies, including
+          router loops, network firewalls,
+          nonresponsive routers, silent routers, routers specifically configured to ignore traceroute requests. Finally,
+          I handled duplicate packets,
+          including duplicated responses, duplicated requests, and delayed duplicates from previous traceroute
+          executions by sending each
+          execution to a random selection of ports, sending randomly generated payloads and analyzing the returned
+          payload, and by, less innovatively,
+          just tracking received IP addresses and the unique packet IDs both that I sent and that they send back.
         </div>
 
         <div class="work-skills hidden">
@@ -527,12 +594,13 @@
         <div class="work-date">
           November 2023
         </div>
-      
+
         <div class="work-description hidden">
-          For my class in Computer Architecture, I developed a gif editor that utilizes matrix convolutions to 
-          blur, sharpen, and compress gifs. The goal of the project was to then make this process as fast as possible, 
+          For my class in Computer Architecture, I developed a gif editor that utilizes matrix convolutions to
+          blur, sharpen, and compress gifs. The goal of the project was to then make this process as fast as possible,
           as matrix multiplication is computationally expensive. After writing clean and efficient code, I was able to
-          acheive a 9x speedup via OpenMP multithreading & x89 SIMD vectorization and a 5x speedup via OpenMPI multicore processing.
+          acheive a 9x speedup via OpenMP multithreading & x89 SIMD vectorization and a 5x speedup via OpenMPI multicore
+          processing.
         </div>
 
         <div class="work-skills hidden">
@@ -689,7 +757,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="work-item">
 
         <div class="work-title" data-index="13">
@@ -705,21 +773,26 @@
             <img class="work-image5" src="assets/files/images/Works/Ngrams/ngram1.png" loading="lazy">
             <img class="work-image5" src="assets/files/images/Works/Ngrams/ngram2.png" loading="lazy">
             <img class="work-image5" src="assets/files/images/Works/Ngrams/ngram3.png" loading="lazy">
-            <img class="work-image5" src="assets/files/images/Works/Ngrams/ngram4.png" loading="lazy">            
+            <img class="work-image5" src="assets/files/images/Works/Ngrams/ngram4.png" loading="lazy">
           </div>
           <a class="next" onclick="plusSlides(1, 4)">❯</a>
         </div>
         <div class="work-description hidden">
           In this project, I gathered datasets on words, their usage per year, their synonyms, and their hyponyms.
-          A hyponym is a word that shares an is-a relationship with another word. Then, much like google can chart words and their 
-          popularity by year, I too developed a browser-based viewport with the same function. Additionally, given a word, this tool
+          A hyponym is a word that shares an is-a relationship with another word. Then, much like google can chart words
+          and their
+          popularity by year, I too developed a browser-based viewport with the same function. Additionally, given a
+          word, this tool
           can display a word and its hyponym graph with a custom depth,
           charting the relationships between these words. The project encodes each word with a
-          unique number and stores the hyponym relationships in a custom graph datastructure built atop a hashmap. Then, utilizing 
-          more hashmaps, I then created a dictionary to map between words and numbers and visa-versa. I used timeseries treemaps to 
-          organize popularity data. When a user gives the browser tool a word, it can then traverse these maps to generate the requested
+          unique number and stores the hyponym relationships in a custom graph datastructure built atop a hashmap. Then,
+          utilizing
+          more hashmaps, I then created a dictionary to map between words and numbers and visa-versa. I used timeseries
+          treemaps to
+          organize popularity data. When a user gives the browser tool a word, it can then traverse these maps to
+          generate the requested
           data, which is finally outputted back into the window, alphabetized by another handy tree set.
-        </div>        
+        </div>
         <div class="work-skills hidden">
           <div class="skills-container">
             <div class="language"> Java </div>
@@ -939,7 +1012,7 @@
 
         <div id="skills">
           <div id="skills-title">
-            I like to code in 
+            I like to code in
           </div>
           <div class="skills-container">
             <div class="language"> C</div>
@@ -951,7 +1024,7 @@
             <div class="language"> RISC-V</div>
           </div>
         </div>
-        
+
         <div id="skills">
           <div id="skills-title">
             I have experience with
